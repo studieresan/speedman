@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
   // MARK: Outlets
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
   // MARK: Lifecycle
   override func viewDidLoad() {
@@ -26,7 +27,13 @@ class LoginViewController: UIViewController {
       let password = passwordField.text, !password.isEmpty else {
       return // TODO: show user error
     }
-    print(email, password)
+    activityIndicator.startAnimating()
+    API.login(email: email, password: password) { success in
+      self.activityIndicator.stopAnimating()
+      if success {
+        self.performSegue(withIdentifier: "loginSegue", sender: self)
+      }
+    }
   }
 
   /*

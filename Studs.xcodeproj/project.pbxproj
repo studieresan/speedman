@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
+		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
+		AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB35819820110DB600673D3F /* Alamofire.framework */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
 		ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		AB35819820110DB600673D3F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABFD7FBC2010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +74,21 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AB35819720110DB600673D3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB35819820110DB600673D3F /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ABFD7FAB2010EF6200BCA86C = {
 			isa = PBXGroup;
 			children = (
 				ABFD7FB62010EF6200BCA86C /* Studs */,
 				ABFD7FCB2010EF6200BCA86C /* StudsTests */,
 				ABFD7FB52010EF6200BCA86C /* Products */,
+				AB35819720110DB600673D3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +108,7 @@
 				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
 				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
 				ABFD7FBB2010EF6200BCA86C /* Main.storyboard */,
+				AB35819520110AC900673D3F /* API.swift */,
 				AB358193201105CA00673D3F /* LoginViewController.swift */,
 				ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */,
 				AB0499E32010F78D00810E31 /* Supporting Files */,
@@ -120,6 +135,7 @@
 				ABFD7FB02010EF6200BCA86C /* Sources */,
 				ABFD7FB12010EF6200BCA86C /* Frameworks */,
 				ABFD7FB22010EF6200BCA86C /* Resources */,
+				AB35819B20111E3000673D3F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -208,6 +224,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AB35819B20111E3000673D3F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABFD7FB02010EF6200BCA86C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -217,6 +250,7 @@
 				ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
 				ABFD7FDA2010F1F600BCA86C /* EventsTableViewController.swift in Sources */,
+				AB35819620110AC900673D3F /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +404,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Studs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -385,6 +423,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Studs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
