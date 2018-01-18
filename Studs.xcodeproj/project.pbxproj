@@ -10,6 +10,7 @@
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
 		AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB35819820110DB600673D3F /* Alamofire.framework */; };
+		AB35819D2011307200673D3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819C2011307200673D3F /* User.swift */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
 		ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AB35819820110DB600673D3F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		AB35819C2011307200673D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABFD7FBC2010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
 				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
 				ABFD7FBB2010EF6200BCA86C /* Main.storyboard */,
+				AB35819C2011307200673D3F /* User.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
 				AB358193201105CA00673D3F /* LoginViewController.swift */,
 				ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */,
@@ -248,6 +251,7 @@
 			files = (
 				AB358194201105CA00673D3F /* LoginViewController.swift in Sources */,
 				ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */,
+				AB35819D2011307200673D3F /* User.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
 				ABFD7FDA2010F1F600BCA86C /* EventsTableViewController.swift in Sources */,
 				AB35819620110AC900673D3F /* API.swift in Sources */,
