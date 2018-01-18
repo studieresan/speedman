@@ -30,5 +30,16 @@ struct API {
                         }
     }
   }
+
+  /// Logs out by dropping all cookies associated with the base URL.
+  static func logout(completion: (() -> Void)? = nil) {
+    let cstorage = HTTPCookieStorage.shared
+    if let cookies = cstorage.cookies(for: URL(string: self.baseURL)!) {
+      for cookie in cookies {
+        cstorage.deleteCookie(cookie)
+      }
+    }
+    completion?()
+  }
 }
 
