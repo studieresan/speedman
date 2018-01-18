@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
-		ABFD7FBA2010EF6200BCA86C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB92010EF6200BCA86C /* ViewController.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
 		ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */; };
 		ABFD7FC22010EF6200BCA86C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FC02010EF6200BCA86C /* LaunchScreen.storyboard */; };
 		ABFD7FCD2010EF6200BCA86C /* StudsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FCC2010EF6200BCA86C /* StudsTests.swift */; };
+		ABFD7FDA2010F1F600BCA86C /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */; };
+		ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FDB2010F2C400BCA86C /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,6 @@
 /* Begin PBXFileReference section */
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ABFD7FB92010EF6200BCA86C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABFD7FBC2010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABFD7FC12010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +36,8 @@
 		ABFD7FC82010EF6200BCA86C /* StudsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FCC2010EF6200BCA86C /* StudsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudsTests.swift; sourceTree = "<group>"; };
 		ABFD7FCE2010EF6200BCA86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
+		ABFD7FDB2010F2C400BCA86C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB0499E32010F78D00810E31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */,
+				ABFD7FC02010EF6200BCA86C /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		ABFD7FAB2010EF6200BCA86C = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +88,12 @@
 		ABFD7FB62010EF6200BCA86C /* Studs */ = {
 			isa = PBXGroup;
 			children = (
-				ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */,
-				ABFD7FB92010EF6200BCA86C /* ViewController.swift */,
+				ABFD7FC32010EF6200BCA86C /* Info.plist */,
+				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
+				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
 				ABFD7FBB2010EF6200BCA86C /* Main.storyboard */,
 				ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */,
-				ABFD7FC02010EF6200BCA86C /* LaunchScreen.storyboard */,
-				ABFD7FC32010EF6200BCA86C /* Info.plist */,
+				AB0499E32010F78D00810E31 /* Supporting Files */,
 			);
 			path = Studs;
 			sourceTree = "<group>";
@@ -199,8 +210,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABFD7FBA2010EF6200BCA86C /* ViewController.swift in Sources */,
+				ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
+				ABFD7FDA2010F1F600BCA86C /* EventsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Studs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.studieresan.Studs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Studs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.studieresan.Studs;
 				PRODUCT_NAME = "$(TARGET_NAME)";
