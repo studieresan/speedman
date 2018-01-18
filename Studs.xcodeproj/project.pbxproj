@@ -84,6 +84,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB35819E2011334B00673D3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
+				AB35819C2011307200673D3F /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AB35819F2011335700673D3F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
+				AB358193201105CA00673D3F /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		ABFD7FAB2010EF6200BCA86C = {
 			isa = PBXGroup;
 			children = (
@@ -107,12 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				ABFD7FC32010EF6200BCA86C /* Info.plist */,
-				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
-				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
+				AB35819F2011335700673D3F /* ViewControllers */,
+				AB35819E2011334B00673D3F /* Models */,
 				ABFD7FBB2010EF6200BCA86C /* Main.storyboard */,
-				AB35819C2011307200673D3F /* User.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
-				AB358193201105CA00673D3F /* LoginViewController.swift */,
 				ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */,
 				AB0499E32010F78D00810E31 /* Supporting Files */,
 			);
