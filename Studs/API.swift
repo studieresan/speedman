@@ -68,4 +68,21 @@ struct API {
       completion(result)
     }
   }
+
+  /// Gets all events as an array
+  static func getEvents(completion: @escaping (Result<[Event]>) -> Void) {
+    let query = """
+    query {
+      allEvents {
+        id
+        companyName
+        schedule
+        privateDescription
+        date
+        location
+      }
+    }
+    """
+    performGraphQLQuery(queryName: "allEvents", query: query, completion: completion)
+  }
 }
