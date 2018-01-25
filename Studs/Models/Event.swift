@@ -8,9 +8,11 @@
 
 import Foundation
 
-struct Event {
+struct Event: Codable {
   let id: String
-  let companyName: String
-  let date: Date
+  let companyName: String?
+  let schedule: String?
+  let location: String?
+  let privateDescription: String?
+  let date: String?
 }
-

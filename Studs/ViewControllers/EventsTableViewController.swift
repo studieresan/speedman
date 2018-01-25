@@ -25,11 +25,11 @@ class EventsTableViewController: UITableViewController {
     super.viewDidLoad()
     title = "Events"
 
-    let event1 = Event(id: "event1", companyName: "Company 1",
-                       date: Date())
-    let event2 = Event(id: "event2", companyName: "Company 2",
-                       date: Date())
-    events.append(contentsOf: [event1, event2])
+//    let event1 = Event(id: "event1", companyName: "Company 1",
+//                       date: Date())
+//    let event2 = Event(id: "event2", companyName: "Company 2",
+//                       date: Date())
+//    events.append(contentsOf: [event1, event2])
   }
 
   // MARK: - UITableViewDataSource
@@ -49,7 +49,7 @@ class EventsTableViewController: UITableViewController {
 
     let event = events[indexPath.row]
     cell.textLabel?.text = event.companyName
-    cell.detailTextLabel?.text = dateFormatter.string(from: event.date)
+//    cell.detailTextLabel?.text = dateFormatter.string(from: event.date)
 
     return cell
   }
