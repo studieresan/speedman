@@ -11,6 +11,7 @@
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
 		AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB35819820110DB600673D3F /* Alamofire.framework */; };
 		AB35819D2011307200673D3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819C2011307200673D3F /* User.swift */; };
+		ABE3CD9E201A05370037342C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE3CD9D201A05370037342C /* SwiftyJSON.framework */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
 		ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AB35819820110DB600673D3F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AB35819C2011307200673D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ABE3CD9D201A05370037342C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABFD7FBC2010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */,
+				ABE3CD9E201A05370037342C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +82,7 @@
 		AB35819720110DB600673D3F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ABE3CD9D201A05370037342C /* SwiftyJSON.framework */,
 				AB35819820110DB600673D3F /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -251,6 +255,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			outputPaths = (
 			);
