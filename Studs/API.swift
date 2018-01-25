@@ -8,10 +8,13 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 struct API {
-  static let baseURL = "https://studs18-overlord.herokuapp.com"
-  static let loginURL = baseURL + "/login"
+  private static let baseURL = "https://studs18-overlord.herokuapp.com"
+//  private static let baseURL = "http://localhost:5040"
+  private static let loginURL = baseURL + "/login"
+  private static let graphQLURL = baseURL + "/graphql"
 
   /// Tries to log in the user using email and password.
   /// Success boolean is available in completion handler.
@@ -41,5 +44,28 @@ struct API {
     }
     completion?()
   }
-}
 
+  /// Performs a GraphQL query, decodes the response to a model conforming to
+  /// the Decodable protocol, and returns it in a Result to the completion handler.
+  private static func performGraphQLQuery<T: Decodable>(queryName: String,
+                                                        query: String,
+                                                        completion: @escaping (Result<T>) -> Void) {
+    let jsonDecoder = JSONDecoder()
+    // TODO: Add date decoding strategy
+
+    let parameters = ["query": query]
+    Alamofire.request(graphQLURL, method: .post, parameters: parameters).responseJSON { response in
+      let result = Result<T>() {
+        switch response.result {
+        case .success(let value):
+          let json = JSON(value)
+          let queryJson = json["data"][queryName]
+          return try jsonDecoder.decode(T.self, from: queryJson.rawData())
+        case .failure(let error):
+          throw error
+        }
+      }
+      completion(result)
+    }
+  }
+}
