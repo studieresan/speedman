@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tn4-N4-BrG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q5s-6F-4pX">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -49,7 +49,13 @@
                             <outlet property="delegate" destination="Khd-gE-RfT" id="4d9-NS-UxC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="52H-Ve-kU0"/>
+                    <navigationItem key="navigationItem" id="52H-Ve-kU0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="TZO-Fo-KvT">
+                            <connections>
+                                <action selector="logout:" destination="Khd-gE-RfT" id="vb6-8c-wSY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3as-Cc-Dsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,7 +64,7 @@
         <!--Login View Controller-->
         <scene sceneID="GIm-mc-iaR">
             <objects>
-                <viewController id="tn4-N4-BrG" customClass="LoginViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="login" id="tn4-N4-BrG" customClass="LoginViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YXX-WD-mjK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,7 +156,6 @@
         <!--Navigation Controller-->
         <scene sceneID="c93-jz-QfX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="maU-IQ-W9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q5s-6F-4pX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bjz-wM-7TV">
@@ -162,6 +167,7 @@
                         <segue destination="Khd-gE-RfT" kind="relationship" relationship="rootViewController" id="qz5-2t-j2I"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="maU-IQ-W9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-449" y="32"/>
         </scene>

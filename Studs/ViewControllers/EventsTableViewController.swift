@@ -36,6 +36,15 @@ class EventsTableViewController: UITableViewController {
     }
   }
 
+  // MARK: Actions
+  @IBAction func logout(_ sender: UIBarButtonItem) {
+    API.logout() {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let logInCtrl = storyboard.instantiateViewController(withIdentifier: "login")
+      self.present(logInCtrl, animated: true) {}
+    }
+  }
+
   // MARK: - UITableViewDataSource
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
