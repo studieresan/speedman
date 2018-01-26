@@ -25,11 +25,15 @@ class EventsTableViewController: UITableViewController {
     super.viewDidLoad()
     title = "Events"
 
-//    let event1 = Event(id: "event1", companyName: "Company 1",
-//                       date: Date())
-//    let event2 = Event(id: "event2", companyName: "Company 2",
-//                       date: Date())
-//    events.append(contentsOf: [event1, event2])
+    API.getEvents() { result in
+      switch result {
+      case .success(let events):
+        self.events = events
+        self.tableView.reloadData()
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
 
   // MARK: - UITableViewDataSource
