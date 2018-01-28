@@ -14,6 +14,7 @@ struct API {
   private static let baseURL = "https://studs18-overlord.herokuapp.com"
 //  private static let baseURL = "http://localhost:5040"
   private static let loginURL = baseURL + "/login"
+  private static let logoutURL = baseURL + "/logout"
   private static let graphQLURL = baseURL + "/graphql"
 
   /// Tries to log in the user using email and password.
@@ -34,15 +35,19 @@ struct API {
     }
   }
 
-  /// Logs out by dropping all cookies associated with the base URL.
-  static func logout(completion: (() -> Void)? = nil) {
+  /// Logs out by dropping all cookies associated with the base URL and
+  /// requesting that the server destroys the session
+  static func logout() {
+    // Make the server destroy the session
+    Alamofire.request(logoutURL)
+
+    // Drop cookies
     let cstorage = HTTPCookieStorage.shared
     if let cookies = cstorage.cookies(for: URL(string: self.baseURL)!) {
       for cookie in cookies {
         cstorage.deleteCookie(cookie)
       }
     }
-    completion?()
   }
 
   /// Performs a GraphQL query, decodes the response to a model conforming to
