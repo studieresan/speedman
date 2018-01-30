@@ -103,14 +103,21 @@ class EventsTableViewController: UITableViewController {
    }
    */
 
-  /*
-   // MARK: - Navigation
+  // MARK: - Navigation
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "eventDetailSegue", sender: self)
+  }
 
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard segue.identifier == "eventDetailSegue" else {
+      return
+    }
+
+    if let selectedCell = tableView.indexPathForSelectedRow {
+      if let eventsVC = segue.destination as? EventDetailViewController {
+        eventsVC.event = events[selectedCell.row]
+      }
+    }
+  }
 
 }
