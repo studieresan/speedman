@@ -28,10 +28,14 @@ class LoginViewController: UIViewController {
       return // TODO: show user error
     }
     activityIndicator.startAnimating()
-    API.login(email: email, password: password) { success in
+    API.login(email: email, password: password) { result in
       self.activityIndicator.stopAnimating()
-      if success {
+      switch result {
+      case .success():
         self.performSegue(withIdentifier: "loginSegue", sender: self)
+      case .failure(let error):
+        // TODO: Show some error to user
+        print(error)
       }
     }
   }
