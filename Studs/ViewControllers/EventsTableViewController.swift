@@ -60,9 +60,11 @@ class EventsTableViewController: UITableViewController {
                                              for: indexPath)
 
     let event = events[indexPath.row]
-    cell.textLabel?.text = event.companyName
-//    cell.detailTextLabel?.text = dateFormatter.string(from: event.date)
-
+    if let eventsCell = cell as? EventTableViewCell {
+      eventsCell.nameLabel.text = event.companyName
+      eventsCell.dateLabel.text = "Today"
+      eventsCell.locationLabel.text = event.location
+    }
     return cell
   }
 
