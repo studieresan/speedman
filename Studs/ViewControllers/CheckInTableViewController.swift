@@ -10,9 +10,22 @@ import UIKit
 
 class CheckInTableViewController: UITableViewController {
 
+  // MARK: - Properties
+  var users = [User]()
+
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    API.getUsers() { result in
+      switch result {
+      case .success(let users):
+        self.users = users
+        self.tableView.reloadData()
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
 
   // MARK: - UITableViewController
@@ -30,14 +43,15 @@ class CheckInTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return users.count
   }
 
   override func tableView(_ tableView: UITableView,
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "checkInCell",
                                              for: indexPath)
-    cell.textLabel?.text = "Jonathan B"
+    let user = users[indexPath.row]
+    cell.textLabel?.text = "\(user.firstName ?? "") \(user.lastName ?? "")"
     return cell
   }
 
