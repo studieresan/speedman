@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 struct API {
-  private static let baseURL = "https://studs18-overlord.herokuapp.com"
-  //  private static let baseURL = "http://localhost:5040"
+//  private static let baseURL = "https://studs18-overlord.herokuapp.com"
+  private static let baseURL = "http://localhost:5040"
   private static let loginURL = baseURL + "/login"
   private static let logoutURL = baseURL + "/logout"
   private static let graphQLURL = baseURL + "/graphql"
@@ -91,6 +91,24 @@ struct API {
     }
     """
     performGraphQLQuery(queryName: "allEvents", query: query,
+                        completion: completion)
+  }
+
+  /// Gets all Studs members as an array
+  static func getUsers(completion: @escaping (Result<[User]>) -> Void) {
+    let query = """
+    query {
+      users(memberType: studs_member) {
+        profile {
+          id
+          firstName
+          lastName
+          phone
+        }
+      }
+    }
+    """
+    performGraphQLQuery(queryName: "users", query: query,
                         completion: completion)
   }
 }
