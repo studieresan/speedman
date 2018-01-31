@@ -228,6 +228,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oPY-tD-X8x"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="OMf-44-BXE">
+                        <barButtonItem key="rightBarButtonItem" title="Check-in" id="TMx-lp-bjJ">
+                            <connections>
+                                <segue destination="Uaj-hK-Paj" kind="show" identifier="checkInSegue" id="0df-Hz-k9f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="agendaLabel" destination="Ygp-54-ol9" id="Yys-TV-2zY"/>
                         <outlet property="descriptionLabel" destination="wjg-zy-LbZ" id="EmF-1e-Inh"/>
@@ -236,6 +245,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="beP-uR-5mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1200.8" y="31.773399014778327"/>
+        </scene>
+        <!--Check-in-->
+        <scene sceneID="hzq-Z9-yCA">
+            <objects>
+                <tableViewController title="Check-in" id="Uaj-hK-Paj" customClass="CheckInTableViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WZd-at-tPC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="checkInCell" textLabel="uv3-rx-RQk" style="IBUITableViewCellStyleDefault" id="miZ-ii-77g">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="miZ-ii-77g" id="ci3-Pu-4Mm">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Firstname Lastname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uv3-rx-RQk">
+                                            <rect key="frame" x="16" y="0.0" width="319" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Uaj-hK-Paj" id="6jO-Jg-4Gj"/>
+                            <outlet property="delegate" destination="Uaj-hK-Paj" id="VxM-D0-sHf"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dBZ-cP-aWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2014" y="32"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="GIm-mc-iaR">
@@ -246,7 +294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fBC-bT-0SY">
-                                <rect key="frame" x="16" y="313" width="343" height="196.66666666666663"/>
+                                <rect key="frame" x="16" y="312.66666666666669" width="343" height="196.66666666666669"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DK6-iG-Yca">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="58.333333333333336"/>
@@ -278,7 +326,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lbv-Mr-fbn">
-                                                <rect key="frame" x="0.0" y="28.333333333333371" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="28.333333333333314" width="343" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
@@ -289,7 +337,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l8B-hu-QJB">
-                                        <rect key="frame" x="0.0" y="166.66666666666669" width="66" height="30"/>
+                                        <rect key="frame" x="0.0" y="166.66666666666663" width="66" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFH-V8-b3E">
                                                 <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
