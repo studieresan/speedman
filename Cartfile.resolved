@@ -1,2 +1,3 @@
+github "AgileBits/onepassword-extension" "bcc4cc97fed9a6e73fa204f2e61138e353cb3ef7"
 github "Alamofire/Alamofire" "4.6.0"
 github "SwiftyJSON/SwiftyJSON" "4.0.0"
