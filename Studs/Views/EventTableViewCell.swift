@@ -12,7 +12,7 @@ import UIKit
 class EventTableViewCell: UITableViewCell {
 
   // MARK: - Outlets
-  @IBOutlet weak var bgView: RoundedShadowView!
+  @IBOutlet weak var bgView: RoundedShadowView?
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
@@ -26,17 +26,17 @@ class EventTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
-    defaultColor = bgView.backgroundColor!
+    defaultColor = bgView?.backgroundColor!
   }
 
   // MARK: - UITableViewCell
   override func setHighlighted(_ highlighted: Bool, animated: Bool) {
     super.setHighlighted(highlighted, animated: animated)
-    bgView.backgroundColor = highlighted ? highlightColor : defaultColor
+    bgView?.backgroundColor = highlighted ? highlightColor : defaultColor
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    bgView.backgroundColor = selected ? highlightColor : defaultColor
+    bgView?.backgroundColor = selected ? highlightColor : defaultColor
   }
 }
