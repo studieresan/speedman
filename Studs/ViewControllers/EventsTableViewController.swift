@@ -26,7 +26,11 @@ class EventsTableViewController: UITableViewController {
     API.getEvents() { result in
       switch result {
       case .success(let events):
-        self.events = events
+        self.events = events.sorted() { (e1, e2) in
+          guard let e1Date = e1.date else { return false }
+          guard let e2Date = e2.date else { return false }
+          return e1Date.timeIntervalSince(e2Date) < 0
+        }
         self.tableView.reloadData()
       case .failure(let error):
         print(error)
