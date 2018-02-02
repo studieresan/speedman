@@ -35,14 +35,14 @@ struct Event: Decodable {
     privateDescription = try container.decode(String?.self, forKey: .privateDescription)
 
     let dateString = try container.decode(String?.self, forKey: .date)
-    date = Formatter.iso8601Fractional.date(from: dateString ?? "")
+    date = DateFormatter.iso8601Fractional.date(from: dateString ?? "")
   }
 }
 
-extension Formatter {
-  static let iso8601Fractional: ISO8601DateFormatter = {
-    let formatter = ISO8601DateFormatter()
-    formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+extension DateFormatter {
+  static let iso8601Fractional: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
     return formatter
   }()
 }
