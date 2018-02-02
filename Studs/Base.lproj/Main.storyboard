@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q5s-6F-4pX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tn4-N4-BrG">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -294,10 +294,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fBC-bT-0SY">
-                                <rect key="frame" x="16" y="312.66666666666669" width="343" height="196.66666666666669"/>
+                                <rect key="frame" x="16" y="287.66666666666669" width="343" height="248.66666666666669"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH5-Ji-qkW">
+                                        <rect key="frame" x="0.0" y="0.33333333333337123" width="81" height="27"/>
+                                        <state key="normal" title="Button" image="onepassword-button"/>
+                                        <connections>
+                                            <action selector="autofillFrom1Password:" destination="tn4-N4-BrG" eventType="touchUpInside" id="sG1-U8-RPA"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DK6-iG-Yca">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="58.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="52.333333333333371" width="343" height="58.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdW-35-DPj">
                                                 <rect key="frame" x="0.0" y="0.0" width="41" height="20.333333333333332"/>
@@ -317,7 +324,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KoG-8A-ieU">
-                                        <rect key="frame" x="0.0" y="83.333333333333314" width="343" height="58.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="135.66666666666669" width="343" height="58.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHo-Ob-BxF">
                                                 <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="20.333333333333332"/>
@@ -337,7 +344,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="l8B-hu-QJB">
-                                        <rect key="frame" x="0.0" y="166.66666666666663" width="66" height="30"/>
+                                        <rect key="frame" x="0.0" y="219" width="66" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFH-V8-b3E">
                                                 <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
@@ -369,6 +376,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Tz0-Zw-qaY" id="Mtb-YX-FHS"/>
                         <outlet property="emailField" destination="uew-ky-DRv" id="JlI-VR-6He"/>
+                        <outlet property="onePasswordButton" destination="sH5-Ji-qkW" id="FtU-0r-hDg"/>
                         <outlet property="passwordField" destination="Lbv-Mr-fbn" id="wf4-Hq-Eou"/>
                         <segue destination="q5s-6F-4pX" kind="show" identifier="loginSegue" id="ubb-K2-j12"/>
                     </connections>
@@ -396,4 +404,7 @@
             <point key="canvasLocation" x="-449" y="32"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="onepassword-button" width="27" height="27"/>
+    </resources>
 </document>

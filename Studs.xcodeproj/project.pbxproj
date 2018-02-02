@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB0A88A12024B62F00318106 /* OnePasswordExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0A88A02024B62F00318106 /* OnePasswordExtension.framework */; };
+		AB0A88A52024BDE400318106 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A88A42024BDE400318106 /* 1Password.xcassets */; };
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
 		AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB35819820110DB600673D3F /* Alamofire.framework */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		AB0A88A02024B62F00318106 /* OnePasswordExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePasswordExtension.framework; path = Carthage/Build/iOS/OnePasswordExtension.framework; sourceTree = "<group>"; };
+		AB0A88A42024BDE400318106 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = "Carthage/Checkouts/onepassword-extension/1Password.xcassets"; sourceTree = SOURCE_ROOT; };
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AB35819820110DB600673D3F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		AB0499E32010F78D00810E31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AB0A88A42024BDE400318106 /* 1Password.xcassets */,
 				ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */,
 				ABFD7FC02010EF6200BCA86C /* LaunchScreen.storyboard */,
 			);
@@ -258,6 +261,7 @@
 			files = (
 				ABFD7FC22010EF6200BCA86C /* LaunchScreen.storyboard in Resources */,
 				ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */,
+				AB0A88A52024BDE400318106 /* 1Password.xcassets in Resources */,
 				ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import OnePasswordExtension
 
 class LoginViewController: UIViewController {
 
   // MARK: Outlets
+  @IBOutlet weak var onePasswordButton: UIButton!
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -18,6 +20,8 @@ class LoginViewController: UIViewController {
   // MARK: Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    onePasswordButton.isHidden =
+      (false == OnePasswordExtension.shared().isAppExtensionAvailable())
   }
 
   // MARK: Actions
@@ -38,6 +42,20 @@ class LoginViewController: UIViewController {
         print(error)
       }
     }
+  }
+
+  @IBAction func autofillFrom1Password(_ sender: UIButton) {
+    OnePasswordExtension.shared().findLogin(forURLString: "https://studieresan.se", for: self, sender: sender, completion: { (loginDictionary, error) in
+      guard let loginDictionary = loginDictionary else {
+        if let error = error as NSError?, error.code != AppExtensionErrorCodeCancelledByUser {
+          print("Error invoking 1Password App Extension for find login: \(String(describing: error))")
+        }
+        return
+      }
+
+      self.emailField.text = loginDictionary[AppExtensionUsernameKey] as? String
+      self.passwordField.text = loginDictionary[AppExtensionPasswordKey] as? String
+    })
   }
 
   /*
