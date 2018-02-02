@@ -13,9 +13,7 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Properties
   private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .medium
-    dateFormatter.timeStyle = .none
-    dateFormatter.locale = Locale(identifier: "sv_SE")
+    dateFormatter.dateFormat = "E dd/MM, HH:mm"
     return dateFormatter
   }()
   private var events = [Event]()
@@ -62,7 +60,10 @@ class EventsTableViewController: UITableViewController {
     let event = events[indexPath.row]
     if let eventsCell = cell as? EventTableViewCell {
       eventsCell.nameLabel.text = event.companyName
-      eventsCell.dateLabel.text = "Today"
+      eventsCell.dateLabel.text = nil
+      if let date = event.date {
+        eventsCell.dateLabel?.text = dateFormatter.string(from: date)
+      }
       eventsCell.locationLabel.text = event.location
     }
     return cell

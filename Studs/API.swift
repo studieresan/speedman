@@ -57,7 +57,6 @@ struct API {
     (queryName: String, query: String, completion: @escaping (Result<T>) -> Void) {
 
     let jsonDecoder = JSONDecoder()
-    // TODO: Add date decoding strategy
 
     let parameters = ["query": query]
     Alamofire.request(graphQLURL, method: .post,parameters: parameters)
