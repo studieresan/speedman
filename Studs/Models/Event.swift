@@ -14,6 +14,8 @@ struct Event: Decodable {
   let schedule: String?
   let location: String?
   let privateDescription: String?
+  let beforeSurveys: [String]?
+  let afterSurveys: [String]?
   let date: Date?
 
   enum CodingKeys: String, CodingKey {
@@ -22,6 +24,8 @@ struct Event: Decodable {
     case schedule
     case location
     case privateDescription
+    case beforeSurveys
+    case afterSurveys
     case date
   }
 
@@ -33,6 +37,8 @@ struct Event: Decodable {
     schedule = try container.decode(String?.self, forKey: .schedule)
     location = try container.decode(String?.self, forKey: .location)
     privateDescription = try container.decode(String?.self, forKey: .privateDescription)
+    beforeSurveys = try container.decode([String]?.self, forKey: .beforeSurveys)
+    afterSurveys = try container.decode([String]?.self, forKey: .afterSurveys)
 
     let dateString = try container.decode(String?.self, forKey: .date)
     date = DateFormatter.iso8601Fractional.date(from: dateString ?? "")

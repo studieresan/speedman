@@ -12,7 +12,8 @@ import SwiftyJSON
 
 struct API {
 //  private static let baseURL = "https://studs18-overlord.herokuapp.com"
-  private static let baseURL = "http://localhost:5040"
+//  private static let baseURL = "http://localhost:5040"
+  private static let baseURL = "http://jonathans-mbp-tb.local:5040"
   private static let loginURL = baseURL + "/login"
   private static let logoutURL = baseURL + "/logout"
   private static let graphQLURL = baseURL + "/graphql"
@@ -86,6 +87,8 @@ struct API {
         privateDescription
         date
         location
+        beforeSurveys
+        afterSurveys
       }
     }
     """
@@ -98,8 +101,8 @@ struct API {
     let query = """
     query {
       users(memberType: studs_member) {
+        id
         profile {
-          id
           firstName
           lastName
           phone
