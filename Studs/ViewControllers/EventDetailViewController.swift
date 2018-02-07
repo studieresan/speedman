@@ -12,7 +12,6 @@ class EventDetailViewController: UIViewController {
 
   // MARK: - Outlets
   @IBOutlet weak var descriptionLabel: UILabel!
-  @IBOutlet weak var agendaLabel: UILabel!
 
   // MARK: - Properties
   var event: Event!
@@ -23,10 +22,8 @@ class EventDetailViewController: UIViewController {
 
     // Do any additional setup after loading the view.
     descriptionLabel.numberOfLines = 0
-    agendaLabel.numberOfLines = 0
 
     title = event.companyName
     descriptionLabel.text = event.privateDescription
-    agendaLabel.text = event.schedule
   }
 }
