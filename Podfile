@@ -9,6 +9,7 @@ target 'Studs' do
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON', '~> 4.0'
   pod '1PasswordExtension', '~> 1.8.5'
+  pod 'FirebaseFirestore', '~> 0.10'
 
   target 'StudsTests' do
     inherit! :search_paths
