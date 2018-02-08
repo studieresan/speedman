@@ -1,3 +1,0 @@
-github "Alamofire/Alamofire" ~> 4.5
-github "SwiftyJSON/SwiftyJSON"
-github "AgileBits/onepassword-extension" "add-framework-support"

@@ -7,18 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB0A88A12024B62F00318106 /* OnePasswordExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0A88A02024B62F00318106 /* OnePasswordExtension.framework */; };
-		AB0A88A52024BDE400318106 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A88A42024BDE400318106 /* 1Password.xcassets */; };
+		66B767C71991D25578D78A68 /* Pods_Studs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D30DB152248835B06BB7B8 /* Pods_Studs.framework */; };
+		AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB265668202C8FA200131CE6 /* 1Password.xcassets */; };
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
-		AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB35819820110DB600673D3F /* Alamofire.framework */; };
 		AB35819D2011307200673D3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819C2011307200673D3F /* User.swift */; };
 		AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B06B42022062000752C68 /* CheckInTableViewController.swift */; };
 		AB6DF34C201F6755002D3A71 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34B201F6755002D3A71 /* RoundedShadowView.swift */; };
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
 		AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
-		ABE3CD9E201A05370037342C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE3CD9D201A05370037342C /* SwiftyJSON.framework */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
 		ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */; };
@@ -26,6 +24,7 @@
 		ABFD7FCD2010EF6200BCA86C /* StudsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FCC2010EF6200BCA86C /* StudsTests.swift */; };
 		ABFD7FDA2010F1F600BCA86C /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */; };
 		ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FDB2010F2C400BCA86C /* Event.swift */; };
+		F375BF076A3AE905914C490A /* Pods_StudsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213607445BDFBBA43A6AA552 /* Pods_StudsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,18 +38,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AB0A88A02024B62F00318106 /* OnePasswordExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePasswordExtension.framework; path = Carthage/Build/iOS/OnePasswordExtension.framework; sourceTree = "<group>"; };
-		AB0A88A42024BDE400318106 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = "Carthage/Checkouts/onepassword-extension/1Password.xcassets"; sourceTree = SOURCE_ROOT; };
+		213607445BDFBBA43A6AA552 /* Pods_StudsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42D30DB152248835B06BB7B8 /* Pods_Studs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D426C87E169DCC6E29FC1E6 /* Pods-Studs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studs/Pods-Studs.debug.xcconfig"; sourceTree = "<group>"; };
+		51D2133166048698BA35458C /* Pods-Studs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studs.release.xcconfig"; path = "Pods/Target Support Files/Pods-Studs/Pods-Studs.release.xcconfig"; sourceTree = "<group>"; };
+		AB265668202C8FA200131CE6 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Pods/1PasswordExtension/1Password.xcassets; sourceTree = SOURCE_ROOT; };
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		AB35819820110DB600673D3F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		AB35819C2011307200673D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB5B06B42022062000752C68 /* CheckInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTableViewController.swift; sourceTree = "<group>"; };
 		AB6DF34B201F6755002D3A71 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		ABE3CD9D201A05370037342C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABFD7FBC2010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +62,8 @@
 		ABFD7FCE2010EF6200BCA86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		ABFD7FDB2010F2C400BCA86C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		BD3375F1EF02C8694D507296 /* Pods-StudsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StudsTests/Pods-StudsTests.release.xcconfig"; sourceTree = "<group>"; };
+		FE97D925C5C467A5DA7A38B9 /* Pods-StudsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StudsTests/Pods-StudsTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB35819A20111DFB00673D3F /* Alamofire.framework in Frameworks */,
-				ABE3CD9E201A05370037342C /* SwiftyJSON.framework in Frameworks */,
-				AB0A88A12024B62F00318106 /* OnePasswordExtension.framework in Frameworks */,
+				66B767C71991D25578D78A68 /* Pods_Studs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,16 +79,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F375BF076A3AE905914C490A /* Pods_StudsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32CE4450607B6283CFDD37E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D426C87E169DCC6E29FC1E6 /* Pods-Studs.debug.xcconfig */,
+				51D2133166048698BA35458C /* Pods-Studs.release.xcconfig */,
+				FE97D925C5C467A5DA7A38B9 /* Pods-StudsTests.debug.xcconfig */,
+				BD3375F1EF02C8694D507296 /* Pods-StudsTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AB0499E32010F78D00810E31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AB0A88A42024BDE400318106 /* 1Password.xcassets */,
+				AB265668202C8FA200131CE6 /* 1Password.xcassets */,
 				ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */,
 				ABFD7FC02010EF6200BCA86C /* LaunchScreen.storyboard */,
 			);
@@ -101,6 +113,8 @@
 				AB0A88A02024B62F00318106 /* OnePasswordExtension.framework */,
 				ABE3CD9D201A05370037342C /* SwiftyJSON.framework */,
 				AB35819820110DB600673D3F /* Alamofire.framework */,
+				42D30DB152248835B06BB7B8 /* Pods_Studs.framework */,
+				213607445BDFBBA43A6AA552 /* Pods_StudsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -141,6 +155,7 @@
 				ABFD7FCB2010EF6200BCA86C /* StudsTests */,
 				ABFD7FB52010EF6200BCA86C /* Products */,
 				AB35819720110DB600673D3F /* Frameworks */,
+				32CE4450607B6283CFDD37E6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -185,10 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABFD7FD12010EF6200BCA86C /* Build configuration list for PBXNativeTarget "Studs" */;
 			buildPhases = (
+				C79700E48B9DEAC19D3388C1 /* [CP] Check Pods Manifest.lock */,
 				ABFD7FB02010EF6200BCA86C /* Sources */,
 				ABFD7FB12010EF6200BCA86C /* Frameworks */,
 				ABFD7FB22010EF6200BCA86C /* Resources */,
-				AB35819B20111E3000673D3F /* ShellScript */,
+				5E87291FE45DACDBE95F25F4 /* [CP] Embed Pods Frameworks */,
+				68BAB899FEBE27CEC4B24606 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABFD7FD42010EF6200BCA86C /* Build configuration list for PBXNativeTarget "StudsTests" */;
 			buildPhases = (
+				AFEE9C47A30AB06F19CC59C2 /* [CP] Check Pods Manifest.lock */,
 				ABFD7FC42010EF6200BCA86C /* Sources */,
 				ABFD7FC52010EF6200BCA86C /* Frameworks */,
 				ABFD7FC62010EF6200BCA86C /* Resources */,
+				A76BD869BD86219E4D9D8582 /* [CP] Embed Pods Frameworks */,
+				32DBE7819DC44AAF106560AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,8 +284,8 @@
 			files = (
 				ABFD7FC22010EF6200BCA86C /* LaunchScreen.storyboard in Resources */,
 				ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */,
+				AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */,
 				ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */,
-				AB0A88A52024BDE400318106 /* 1Password.xcassets in Resources */,
 				ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,21 +300,108 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AB35819B20111E3000673D3F /* ShellScript */ = {
+		32DBE7819DC44AAF106560AF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/OnePasswordExtension.framework",
 			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudsTests/Pods-StudsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E87291FE45DACDBE95F25F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Studs/Pods-Studs-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/1PasswordExtension/OnePasswordExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OnePasswordExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Studs/Pods-Studs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68BAB899FEBE27CEC4B24606 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Studs/Pods-Studs-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A76BD869BD86219E4D9D8582 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudsTests/Pods-StudsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFEE9C47A30AB06F19CC59C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C79700E48B9DEAC19D3388C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Studs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -463,12 +570,12 @@
 		};
 		ABFD7FD22010EF6200BCA86C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D426C87E169DCC6E29FC1E6 /* Pods-Studs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Studs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -482,12 +589,12 @@
 		};
 		ABFD7FD32010EF6200BCA86C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51D2133166048698BA35458C /* Pods-Studs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Studs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -501,6 +608,7 @@
 		};
 		ABFD7FD52010EF6200BCA86C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE97D925C5C467A5DA7A38B9 /* Pods-StudsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -517,6 +625,7 @@
 		};
 		ABFD7FD62010EF6200BCA86C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD3375F1EF02C8694D507296 /* Pods-StudsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
