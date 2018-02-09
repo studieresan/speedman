@@ -17,6 +17,7 @@
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
 		AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */; };
 		AB9B3781202C9F50002D641D /* EventCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3780202C9F50002D641D /* EventCheckin.swift */; };
+		AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3782202CA5AA002D641D /* Firebase.swift */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		AB9B3780202C9F50002D641D /* EventCheckin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckin.swift; sourceTree = "<group>"; };
+		AB9B3782202CA5AA002D641D /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Firebase.swift; path = Studs/Firebase.swift; sourceTree = SOURCE_ROOT; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				AB6DF34D20206661002D3A71 /* Views */,
 				AB35819F2011335700673D3F /* ViewControllers */,
 				ABFD7FBB2010EF6200BCA86C /* Main.storyboard */,
+				AB9B3782202CA5AA002D641D /* Firebase.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
 				ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */,
 				ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */,
@@ -434,6 +437,7 @@
 				AB35819D2011307200673D3F /* User.swift in Sources */,
 				AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */,
 				AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */,
+				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
 				AB6DF34C201F6755002D3A71 /* RoundedShadowView.swift in Sources */,
 				AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */,
