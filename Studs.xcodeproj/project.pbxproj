@@ -16,6 +16,7 @@
 		AB6DF34C201F6755002D3A71 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34B201F6755002D3A71 /* RoundedShadowView.swift */; };
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
 		AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */; };
+		AB9B3781202C9F50002D641D /* EventCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3780202C9F50002D641D /* EventCheckin.swift */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		AB6DF34B201F6755002D3A71 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		AB9B3780202C9F50002D641D /* EventCheckin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckin.swift; sourceTree = "<group>"; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
 				AB35819C2011307200673D3F /* User.swift */,
+				AB9B3780202C9F50002D641D /* EventCheckin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB358194201105CA00673D3F /* LoginViewController.swift in Sources */,
+				AB9B3781202C9F50002D641D /* EventCheckin.swift in Sources */,
 				ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */,
 				AB35819D2011307200673D3F /* User.swift in Sources */,
 				AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */,
