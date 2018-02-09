@@ -11,7 +11,9 @@ import UIKit
 class CheckInTableViewController: UITableViewController {
 
   // MARK: - Properties
+  var event: Event!
   var users = [User]()
+  var checkins = [EventCheckin]()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -23,16 +25,28 @@ class CheckInTableViewController: UITableViewController {
         self.users = users
         self.tableView.reloadData()
       case .failure(let error):
+        self.navigationController?.popViewController(animated: true)
         print(error)
       }
+    }
+    // Stream realtime updates from the checkins-database
+    Firebase.streamCheckins(eventId: event.id) { [unowned self] checkins in
+      self.checkins = checkins
+      self.tableView.reloadData()
     }
   }
 
   // MARK: - UITableViewController
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let cell = tableView.cellForRow(at: indexPath) {
-      cell.accessoryType = cell.accessoryType == .checkmark ? .none : .checkmark
-      tableView.deselectRow(at: indexPath, animated: true)
+    let user = users[indexPath.row]
+    // Toggle checkin
+    if !checkins.contains(where: { $0.userId == user.id }) {
+      Firebase.addCheckin(userId: user.id, byUserId: user.id, eventId: event.id)
+    } else {
+      if let index = checkins.index(where: { $0.userId == user.id }) {
+        let checkin = checkins[index]
+        Firebase.removeCheckin(checkinId: checkin.id)
+      }
     }
   }
 
@@ -52,6 +66,11 @@ class CheckInTableViewController: UITableViewController {
                                              for: indexPath)
     let user = users[indexPath.row]
     cell.textLabel?.text = "\(user.firstName ?? "") \(user.lastName ?? "")"
+
+    // Checkmark if checked in
+    cell.accessoryType = checkins.contains { $0.userId == user.id }
+      ? .checkmark
+      : .none
     return cell
   }
 

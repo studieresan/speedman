@@ -26,4 +26,15 @@ class EventDetailViewController: UIViewController {
     title = event.companyName
     descriptionLabel.text = event.privateDescription
   }
+
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard segue.identifier == "checkInSegue" else {
+      return
+    }
+
+    if let checkinVC = segue.destination as? CheckInTableViewController {
+      checkinVC.event = self.event
+    }
+  }
 }
