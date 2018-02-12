@@ -96,17 +96,35 @@ struct API {
                         completion: completion)
   }
 
+  private static var userFields =
+  """
+  id
+  profile {
+    firstName
+    lastName
+    phone
+  }
+  """
+
+  /// Get the currently logged in user
+  static func getUser(completion: @escaping (Result<User>) -> Void) {
+    let query = """
+    query {
+      user {
+        \(API.userFields)
+      }
+    }
+    """
+    performGraphQLQuery(queryName: "user", query: query,
+                        completion: completion)
+  }
+
   /// Gets all Studs members as an array
   static func getUsers(completion: @escaping (Result<[User]>) -> Void) {
     let query = """
     query {
       users(memberType: studs_member) {
-        id
-        profile {
-          firstName
-          lastName
-          phone
-        }
+        \(API.userFields)
       }
     }
     """
