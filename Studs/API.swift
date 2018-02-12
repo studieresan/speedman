@@ -33,6 +33,7 @@ struct API {
           completion(.failure(error))
         } else {
           completion(.success(()))
+          UserManager.shared.renewUser()
         }
     }
   }
@@ -50,6 +51,7 @@ struct API {
         cstorage.deleteCookie(cookie)
       }
     }
+    UserManager.shared.logout()
   }
 
   /// Performs a GraphQL query, decodes the response to a model conforming to
