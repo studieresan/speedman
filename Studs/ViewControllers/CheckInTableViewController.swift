@@ -30,9 +30,9 @@ class CheckInTableViewController: UITableViewController {
       }
     }
     // Stream realtime updates from the checkins-database
-    Firebase.streamCheckins(eventId: event.id) { [unowned self] checkins in
-      self.checkins = checkins
-      self.tableView.reloadData()
+    Firebase.streamCheckins(eventId: event.id) { [weak self] checkins in
+      self?.checkins = checkins
+      self?.tableView.reloadData()
     }
   }
 
