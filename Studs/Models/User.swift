@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Decodable {
+struct User: Codable {
   let id: String
   let firstName: String?
   let lastName: String?
@@ -35,5 +35,16 @@ struct User: Decodable {
     firstName = try profile.decode(String?.self, forKey: .firstName)
     lastName = try profile.decode(String?.self, forKey: .lastName)
     phone = try profile.decode(String?.self, forKey: .phone)
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(id, forKey: .id)
+
+    var profile = container.nestedContainer(keyedBy: ProfileCodingKeys.self,
+                                            forKey: .profile)
+    try profile.encode(firstName, forKey: .firstName)
+    try profile.encode(lastName, forKey: .lastName)
+    try profile.encode(phone, forKey: .phone)
   }
 }
