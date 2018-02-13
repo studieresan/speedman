@@ -48,14 +48,19 @@ class CheckInTableViewController: UITableViewController {
 
     // Toggle checkin
     if let checkin = checkins.first(where: { $0.userId == user.id }) {
-      print(checkin)
       if checkin.userId == loggedInUser.id ||
         checkin.checkedInById == loggedInUser.id {
         // Only allow users to remove their own checkins
         // TODO: Allow users with event permissions to modify all checkins
         Firebase.removeCheckin(checkinId: checkin.id)
       } else {
-        // TODO: Show alert with error
+        // Show error alert
+        let alert = UIAlertController(title: "Not Allowed",
+                                      message: "You may only remove check-ins of yourself or check-ins done by yourself.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
       }
     } else {
       Firebase.addCheckin(userId: user.id, byUserId: loggedInUser.id,
