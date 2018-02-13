@@ -39,14 +39,22 @@ class CheckInTableViewController: UITableViewController {
   // MARK: - UITableViewController
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let user = users[indexPath.row]
+    guard let loggedInUser = UserManager.shared.user else { return }
+
     // Toggle checkin
-    if !checkins.contains(where: { $0.userId == user.id }) {
-      Firebase.addCheckin(userId: user.id, byUserId: user.id, eventId: event.id)
-    } else {
-      if let index = checkins.index(where: { $0.userId == user.id }) {
-        let checkin = checkins[index]
+    if let checkin = checkins.first(where: { $0.userId == user.id }) {
+      print(checkin)
+      if checkin.userId == loggedInUser.id ||
+        checkin.checkedInById == loggedInUser.id {
+        // Only allow users to remove their own checkins
+        // TODO: Allow users with event permissions to modify all checkins
         Firebase.removeCheckin(checkinId: checkin.id)
+      } else {
+        // TODO: Show alert with error
       }
+    } else {
+      Firebase.addCheckin(userId: user.id, byUserId: loggedInUser.id,
+                          eventId: event.id)
     }
   }
 
