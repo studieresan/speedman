@@ -351,7 +351,7 @@
         <!--Login View Controller-->
         <scene sceneID="GIm-mc-iaR">
             <objects>
-                <viewController storyboardIdentifier="login" id="tn4-N4-BrG" customClass="LoginViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="tn4-N4-BrG" customClass="LoginViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YXX-WD-mjK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,7 +451,7 @@
         <!--Navigation Controller-->
         <scene sceneID="c93-jz-QfX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q5s-6F-4pX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationVC" automaticallyAdjustsScrollViewInsets="NO" id="q5s-6F-4pX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bjz-wM-7TV">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>

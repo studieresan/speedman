@@ -24,8 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FirebaseApp.configure()
     firestoreDB = Firestore.firestore()
 
-    // Setup our User Manager
-    _ = UserManager.shared
+    // Pick initial view controller depending on if logged in or not
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let startingVC = UserManager.shared.isLoggedIn
+      ? storyboard.instantiateInitialViewController()
+      : storyboard.instantiateViewController(withIdentifier: "loginVC")
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.rootViewController = startingVC
+    window?.makeKeyAndVisible()
     return true
   }
 

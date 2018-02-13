@@ -42,7 +42,7 @@ class EventsTableViewController: UITableViewController {
   @IBAction func logout(_ sender: UIBarButtonItem) {
     API.logout()
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let logInCtrl = storyboard.instantiateViewController(withIdentifier: "login")
+    let logInCtrl = storyboard.instantiateViewController(withIdentifier: "loginVC")
     self.present(logInCtrl, animated: true) {}
   }
 
