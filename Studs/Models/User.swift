@@ -14,6 +14,10 @@ struct User: Codable {
   let lastName: String?
   let phone: String?
 
+  var fullName: String {
+    return "\(firstName ?? "") \(lastName ?? "")"
+  }
+
   enum CodingKeys: String, CodingKey {
     case id
     case profile

@@ -14,6 +14,11 @@ class CheckInTableViewController: UITableViewController {
   var event: Event!
   var users = [User]()
   var checkins = [EventCheckin]()
+  private let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    return dateFormatter
+  }()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -75,10 +80,16 @@ class CheckInTableViewController: UITableViewController {
     let user = users[indexPath.row]
     cell.textLabel?.text = "\(user.firstName ?? "") \(user.lastName ?? "")"
 
-    // Checkmark if checked in
-    cell.accessoryType = checkins.contains { $0.userId == user.id }
-      ? .checkmark
-      : .none
+    // Setup cell depending on checked in or not
+    if let checkin = checkins.first(where: { $0.userId == user.id }) {
+      let time = dateFormatter.string(from: checkin.checkedInAt)
+      let actor = users.first(where: { $0.id == checkin.checkedInById })
+      cell.detailTextLabel?.text = "\(actor?.fullName ?? "-") at \(time)"
+      cell.accessoryType = .checkmark
+    } else {
+      cell.detailTextLabel?.text = " "
+      cell.accessoryType = .none
+    }
     return cell
   }
 
