@@ -9,6 +9,7 @@
 //  TODO: Get rid of this singleton?
 
 import Foundation
+import Alamofire
 
 class UserManager {
   static let shared = UserManager()
@@ -17,21 +18,25 @@ class UserManager {
     return user != nil
   }
 
-  var user: User? {
+  private(set) var user: User? {
     didSet {
+      let defaults = UserDefaults.standard
       if let user = user {
-        let userDefaults = UserDefaults.standard
+        // Save user to defaults
         let archivedUser: Data? = try? PropertyListEncoder().encode(user)
-        userDefaults.setValue(archivedUser, forKey: UserManager.defaultsKey)
-        userDefaults.synchronize()
+        defaults.setValue(archivedUser, forKey: UserManager.defaultsKey)
+      } else {
+        // Drop user from defaults
+        defaults.setValue(nil, forKey: UserManager.defaultsKey)
       }
+      defaults.synchronize()
     }
   }
 
   private init() {
     // Try to get user from file system
-    let userDefaults = UserDefaults.standard
-    if let archivedUser = userDefaults.object(forKey: UserManager.defaultsKey) as? Data {
+    let defaults = UserDefaults.standard
+    if let archivedUser = defaults.object(forKey: UserManager.defaultsKey) as? Data {
       user = try? PropertyListDecoder().decode(User.self, from: archivedUser)
     }
 
@@ -40,23 +45,27 @@ class UserManager {
   }
 
   /// Gets the currently logged in user from the API
+  /// If the API returns an unauthorized error, the current user is dropped.
   func renewUser() {
     API.getUser { result in
       switch result {
       case .success(let user):
         self.user = user
-      default:
-        break
+      case .failure(let error):
+        if let error = error as? AFError {
+          // If error comes from unauthorized request we're not logged in
+          // Then we'll drop the user
+          if error.responseCode == 403 {
+            // 403: Unauthorized
+            self.user = nil
+          }
+        }
       }
     }
   }
 
-
-  func logout() {
+  func dropUser() {
     user = nil
-    let userDefaults = UserDefaults.standard
-    userDefaults.setValue(nil, forKey: UserManager.defaultsKey)
-    userDefaults.synchronize()
   }
 }
 

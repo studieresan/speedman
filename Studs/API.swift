@@ -11,9 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 struct API {
-//  private static let baseURL = "https://studs18-overlord.herokuapp.com"
-//  private static let baseURL = "http://localhost:5040"
-  private static let baseURL = "http://jonathans-mbp-tb.local:5040"
+  private static let baseURL = "https://studs18-overlord.herokuapp.com"
   private static let loginURL = baseURL + "/login"
   private static let logoutURL = baseURL + "/logout"
   private static let graphQLURL = baseURL + "/graphql"
@@ -51,7 +49,7 @@ struct API {
         cstorage.deleteCookie(cookie)
       }
     }
-    UserManager.shared.logout()
+    UserManager.shared.dropUser()
   }
 
   /// Performs a GraphQL query, decodes the response to a model conforming to
@@ -62,7 +60,8 @@ struct API {
     let jsonDecoder = JSONDecoder()
 
     let parameters = ["query": query]
-    Alamofire.request(graphQLURL, method: .post,parameters: parameters)
+    Alamofire.request(graphQLURL, method: .post, parameters: parameters)
+      .validate()
       .responseJSON { response in
         let result = Result<T>() {
           switch response.result {
