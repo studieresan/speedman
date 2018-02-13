@@ -1,9 +1,11 @@
-# Uncomment the next line to define a global platform for your project
+# Global project platform
 platform :ios, '11.0'
 
 target 'Studs' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  # Use dynamic frameworks (Swift - YES)
   use_frameworks!
+  # Ignore warnings from pods
+  inhibit_all_warnings!
 
   # Pods for Studs
   pod 'Alamofire', '~> 4.5'
