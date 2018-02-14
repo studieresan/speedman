@@ -48,20 +48,7 @@ class CheckInTableViewController: UITableViewController {
 
     // Toggle checkin
     if let checkin = checkins.first(where: { $0.userId == user.id }) {
-      if checkin.userId == loggedInUser.id ||
-        checkin.checkedInById == loggedInUser.id {
-        // Only allow users to remove their own checkins
-        // TODO: Allow users with event permissions to modify all checkins
-        Firebase.removeCheckin(checkinId: checkin.id)
-      } else {
-        // Show error alert
-        let alert = UIAlertController(title: "Not Allowed",
-                                      message: "You may only remove check-ins of yourself or check-ins done by yourself.",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
-      }
+      Firebase.removeCheckin(checkinId: checkin.id)
     } else {
       Firebase.addCheckin(userId: user.id, byUserId: loggedInUser.id,
                           eventId: event.id)
@@ -83,13 +70,12 @@ class CheckInTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "checkInCell",
                                              for: indexPath)
     let user = users[indexPath.row]
-    cell.textLabel?.text = "\(user.firstName ?? "") \(user.lastName ?? "")"
+    cell.textLabel?.text = "\(user.fullName)"
 
     // Setup cell depending on checked in or not
     if let checkin = checkins.first(where: { $0.userId == user.id }) {
       let time = dateFormatter.string(from: checkin.checkedInAt)
-      let actor = users.first(where: { $0.id == checkin.checkedInById })
-      cell.detailTextLabel?.text = "\(actor?.fullName ?? "-") at \(time)"
+      cell.detailTextLabel?.text = "\(time)"
       cell.accessoryType = .checkmark
     } else {
       cell.detailTextLabel?.text = " "
