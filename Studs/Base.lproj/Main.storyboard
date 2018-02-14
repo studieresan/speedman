@@ -135,10 +135,31 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ev-16N">
-                                                <rect key="frame" x="11" y="20" width="353" height="208.66666666666666"/>
+                                                <rect key="frame" x="11" y="11" width="353" height="416.66666666666669"/>
                                                 <subviews>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxo-59-cfu" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
+                                                        <subviews>
+                                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-cV-AZp">
+                                                                <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
+                                                            </mapView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="tIK-cV-AZp" firstAttribute="leading" secondItem="qxo-59-cfu" secondAttribute="leading" id="6Lo-cx-dqf"/>
+                                                            <constraint firstItem="tIK-cV-AZp" firstAttribute="top" secondItem="qxo-59-cfu" secondAttribute="top" id="KEj-7Q-2U2"/>
+                                                            <constraint firstAttribute="trailing" secondItem="tIK-cV-AZp" secondAttribute="trailing" id="Utn-W6-QHj"/>
+                                                            <constraint firstAttribute="height" constant="200" id="ka8-gH-ZFG"/>
+                                                            <constraint firstAttribute="bottom" secondItem="tIK-cV-AZp" secondAttribute="bottom" id="vox-8v-rE4"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxC-Tu-E7p" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="72.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="208" width="353" height="72.666666666666686"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9AC-aP-cOw">
                                                                 <rect key="frame" x="8" y="7.9999999999999964" width="337" height="56.666666666666657"/>
@@ -150,7 +171,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem impsum dolor sit amet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woE-bu-3jy">
-                                                                        <rect key="frame" x="0.0" y="36.333333333333343" width="337" height="20.333333333333329"/>
+                                                                        <rect key="frame" x="0.0" y="36.333333333333314" width="337" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -188,7 +209,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Eqa-yS-ihu">
-                                                        <rect key="frame" x="0.0" y="80.666666666666657" width="353" height="128"/>
+                                                        <rect key="frame" x="0.0" y="288.66666666666669" width="353" height="128"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3K-5s-7yZ" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="172.66666666666666" height="128"/>
@@ -262,7 +283,7 @@
                                         <color key="backgroundColor" red="0.95295017959999995" green="0.95292967559999997" blue="0.95293372870000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="WR0-ev-16N" firstAttribute="leading" secondItem="ow2-zZ-b5D" secondAttribute="leading" constant="11" id="KsR-Ya-ndS"/>
-                                            <constraint firstItem="WR0-ev-16N" firstAttribute="top" secondItem="ow2-zZ-b5D" secondAttribute="top" constant="20" symbolic="YES" id="Wsg-1Q-Tn3"/>
+                                            <constraint firstItem="WR0-ev-16N" firstAttribute="top" secondItem="ow2-zZ-b5D" secondAttribute="top" constant="11" id="Wsg-1Q-Tn3"/>
                                             <constraint firstAttribute="trailing" secondItem="WR0-ev-16N" secondAttribute="trailing" constant="11" id="gPx-Y4-aey"/>
                                         </constraints>
                                     </view>
@@ -296,6 +317,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="woE-bu-3jy" id="7RA-hI-Z4e"/>
+                        <outlet property="mapView" destination="tIK-cV-AZp" id="pE5-nv-w19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="beP-uR-5mk" userLabel="First Responder" sceneMemberID="firstResponder"/>

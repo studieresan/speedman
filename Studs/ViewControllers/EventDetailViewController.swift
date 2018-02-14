@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class EventDetailViewController: UIViewController {
 
   // MARK: - Outlets
   @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var mapView: MKMapView!
 
   // MARK: - Properties
   var event: Event!
@@ -25,6 +27,22 @@ class EventDetailViewController: UIViewController {
 
     title = event.companyName
     descriptionLabel.text = event.privateDescription
+
+    // Lookup coordinates for address and place pin on map
+    if let address = event.location {
+      let geocoder = CLGeocoder()
+      geocoder.geocodeAddressString(address) { placemarks, _ in
+        guard let placemarks = placemarks else { return }
+        guard let coordinate = placemarks[0].location?.coordinate else { return }
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = "\(self.event.companyName ?? ""): \(address)"
+        self.mapView.addAnnotation(pin)
+        self.mapView.showAnnotations([pin], animated: true)
+      }
+    } else {
+      mapView.isHidden = true
+    }
   }
 
   // MARK: - Navigation
