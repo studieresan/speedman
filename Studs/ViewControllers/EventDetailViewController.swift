@@ -49,7 +49,12 @@ class EventDetailViewController: UIViewController {
 
     // Hide survey buttons if event has no survey
     beforeSurveyButton.isHidden = event.beforeSurveys?.first == nil
-    afterSurveyButton.isHidden = event.afterSurveys?.first == nil
+    if event.date != nil, event.date?.compare(Date()) == .orderedDescending {
+      // Hide the after survey button if event has not started
+      afterSurveyButton.isHidden = true
+    } else {
+      afterSurveyButton.isHidden = event.afterSurveys?.first == nil
+    }
   }
 
   // MARK: - Actions
