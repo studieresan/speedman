@@ -137,24 +137,50 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ev-16N">
                                                 <rect key="frame" x="11" y="11" width="353" height="416.66666666666669"/>
                                                 <subviews>
-                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxo-59-cfu" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKl-sN-bln" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
                                                         <subviews>
-                                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-cV-AZp">
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxo-59-cfu" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
-                                                            </mapView>
+                                                                <subviews>
+                                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-cV-AZp">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
+                                                                    </mapView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="tIK-cV-AZp" firstAttribute="leading" secondItem="qxo-59-cfu" secondAttribute="leading" id="6Lo-cx-dqf"/>
+                                                                    <constraint firstItem="tIK-cV-AZp" firstAttribute="top" secondItem="qxo-59-cfu" secondAttribute="top" id="KEj-7Q-2U2"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="tIK-cV-AZp" secondAttribute="trailing" id="Utn-W6-QHj"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="tIK-cV-AZp" secondAttribute="bottom" id="vox-8v-rE4"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="tIK-cV-AZp" firstAttribute="leading" secondItem="qxo-59-cfu" secondAttribute="leading" id="6Lo-cx-dqf"/>
-                                                            <constraint firstItem="tIK-cV-AZp" firstAttribute="top" secondItem="qxo-59-cfu" secondAttribute="top" id="KEj-7Q-2U2"/>
-                                                            <constraint firstAttribute="trailing" secondItem="tIK-cV-AZp" secondAttribute="trailing" id="Utn-W6-QHj"/>
-                                                            <constraint firstAttribute="height" constant="200" id="ka8-gH-ZFG"/>
-                                                            <constraint firstAttribute="bottom" secondItem="tIK-cV-AZp" secondAttribute="bottom" id="vox-8v-rE4"/>
+                                                            <constraint firstItem="qxo-59-cfu" firstAttribute="top" secondItem="mKl-sN-bln" secondAttribute="top" id="3Rv-rQ-Pf1"/>
+                                                            <constraint firstAttribute="bottom" secondItem="qxo-59-cfu" secondAttribute="bottom" id="4j9-ar-SbF"/>
+                                                            <constraint firstAttribute="trailing" secondItem="qxo-59-cfu" secondAttribute="trailing" id="efM-C2-uzA"/>
+                                                            <constraint firstItem="qxo-59-cfu" firstAttribute="leading" secondItem="mKl-sN-bln" secondAttribute="leading" id="gD0-gC-pHv"/>
+                                                            <constraint firstAttribute="height" constant="200" id="nxq-vx-d3e"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                <real key="value" value="0.20000000000000001"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                <size key="value" width="0.0" height="0.5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
