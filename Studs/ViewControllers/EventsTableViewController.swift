@@ -23,6 +23,15 @@ class EventsTableViewController: UITableViewController {
     super.viewDidLoad()
     title = "Events"
 
+    fetchEvents()
+    // Setup swipe down to refresh action
+    refreshControl?.addTarget(self, action: #selector(fetchEvents),
+                              for: .valueChanged)
+  }
+
+  // MARK: -
+  /// Fetch events from API and reload table view
+  @objc func fetchEvents() {
     API.getEvents() { result in
       switch result {
       case .success(let events):
@@ -36,6 +45,8 @@ class EventsTableViewController: UITableViewController {
         print(error)
       }
     }
+    // If triggered by manual refresh, end the animation
+    self.refreshControl?.endRefreshing()
   }
 
   // MARK: - Actions

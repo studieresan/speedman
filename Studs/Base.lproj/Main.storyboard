@@ -112,6 +112,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0WX-eF-ffD">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                    </refreshControl>
                     <connections>
                         <segue destination="VxP-ZX-Htj" kind="show" identifier="eventDetailSegue" id="kSx-Xh-XvX"/>
                     </connections>
