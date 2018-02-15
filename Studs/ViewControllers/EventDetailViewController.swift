@@ -8,12 +8,15 @@
 
 import UIKit
 import MapKit
+import SafariServices
 
 class EventDetailViewController: UIViewController {
 
   // MARK: - Outlets
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var beforeSurveyButton: RoundedShadowView!
+  @IBOutlet weak var afterSurveyButton: RoundedShadowView!
 
   // MARK: - Properties
   var event: Event!
@@ -43,6 +46,28 @@ class EventDetailViewController: UIViewController {
     } else {
       mapView.isHidden = true
     }
+
+    // Hide survey buttons if event has no survey
+    beforeSurveyButton.isHidden = event.beforeSurveys?.first == nil
+    afterSurveyButton.isHidden = event.afterSurveys?.first == nil
+  }
+
+  // MARK: - Actions
+  @IBAction func beforeSurveyTapped(_ sender: UITapGestureRecognizer) {
+    guard let url = event.beforeSurveys?.first else { return }
+    openURL(url: url)
+  }
+
+  @IBAction func afterSurveyTapped(_ sender: UITapGestureRecognizer) {
+    guard let url = event.afterSurveys?.first else { return }
+    openURL(url: url)
+  }
+
+  /// Open the given url in a SFSafariViewController
+  func openURL(url: String) {
+    guard let url = URL(string: url) else { return }
+    let safariVC = SFSafariViewController(url: url)
+    self.present(safariVC, animated: true)
   }
 
   // MARK: - Navigation

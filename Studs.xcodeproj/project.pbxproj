@@ -21,6 +21,7 @@
 		AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3782202CA5AA002D641D /* Firebase.swift */; };
 		ABBCA9DF2034966000353E8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABBCA9DE2034966000353E8E /* MapKit.framework */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
+		ABE7619F2035D0900098D838 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7619E2035D0900098D838 /* SafariServices.framework */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
 		ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		AB9B3782202CA5AA002D641D /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Firebase.swift; path = Studs/Firebase.swift; sourceTree = SOURCE_ROOT; };
 		ABBCA9DE2034966000353E8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABE7619E2035D0900098D838 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABFD7FBC2010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE7619F2035D0900098D838 /* SafariServices.framework in Frameworks */,
 				ABBCA9DF2034966000353E8E /* MapKit.framework in Frameworks */,
 				66B767C71991D25578D78A68 /* Pods_Studs.framework in Frameworks */,
 			);
@@ -119,6 +122,7 @@
 		AB35819720110DB600673D3F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ABE7619E2035D0900098D838 /* SafariServices.framework */,
 				ABBCA9DE2034966000353E8E /* MapKit.framework */,
 				42D30DB152248835B06BB7B8 /* Pods_Studs.framework */,
 				213607445BDFBBA43A6AA552 /* Pods_StudsTests.framework */,

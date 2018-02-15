@@ -135,7 +135,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ev-16N">
-                                                <rect key="frame" x="11" y="11" width="353" height="416.66666666666669"/>
+                                                <rect key="frame" x="11" y="11" width="353" height="348.66666666666669"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKl-sN-bln" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
@@ -235,21 +235,24 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Eqa-yS-ihu">
-                                                        <rect key="frame" x="0.0" y="288.66666666666669" width="353" height="128"/>
+                                                        <rect key="frame" x="0.0" y="288.66666666666669" width="353" height="60"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3K-5s-7yZ" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="172.66666666666666" height="128"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="172.66666666666666" height="60"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-S9-FhZ">
-                                                                        <rect key="frame" x="37.666666666666657" y="8" width="97" height="112"/>
-                                                                        <state key="normal" title="Before Survey"/>
-                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8W-24-qkI">
+                                                                        <rect key="frame" x="31.666666666666664" y="11" width="107.33333333333334" height="38"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
-                                                                    <constraint firstItem="gdC-S9-FhZ" firstAttribute="centerX" secondItem="K3K-5s-7yZ" secondAttribute="centerX" id="WzU-oG-dTJ"/>
-                                                                    <constraint firstItem="gdC-S9-FhZ" firstAttribute="top" secondItem="K3K-5s-7yZ" secondAttribute="top" constant="8" id="eEd-z9-ui5"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="gdC-S9-FhZ" secondAttribute="bottom" constant="8" id="iFu-pd-0Vx"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="P8W-24-qkI" secondAttribute="bottom" constant="11" id="Fdh-xU-xaQ"/>
+                                                                    <constraint firstItem="P8W-24-qkI" firstAttribute="centerX" secondItem="K3K-5s-7yZ" secondAttribute="centerX" id="QJJ-1U-EzF"/>
+                                                                    <constraint firstItem="P8W-24-qkI" firstAttribute="top" secondItem="K3K-5s-7yZ" secondAttribute="top" constant="11" id="krQ-mK-bY6"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -268,20 +271,26 @@
                                                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="Olf-4i-A4S" appends="YES" id="ECh-p1-1VI"/>
+                                                                </connections>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lua-SC-rD3" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
-                                                                <rect key="frame" x="180.66666666666663" y="0.0" width="172.33333333333337" height="128"/>
+                                                                <rect key="frame" x="180.66666666666663" y="0.0" width="172.33333333333337" height="60"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXq-LU-0x2">
-                                                                        <rect key="frame" x="44" y="8" width="85" height="112"/>
-                                                                        <state key="normal" title="After Survey"/>
-                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3s-ld-zuY">
+                                                                        <rect key="frame" x="38.666666666666693" y="11" width="94.666666666666686" height="38"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
-                                                                    <constraint firstItem="CXq-LU-0x2" firstAttribute="top" secondItem="Lua-SC-rD3" secondAttribute="top" constant="8" id="0v9-Nb-Es9"/>
-                                                                    <constraint firstItem="CXq-LU-0x2" firstAttribute="centerX" secondItem="Lua-SC-rD3" secondAttribute="centerX" id="KWq-dK-SXG"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="CXq-LU-0x2" secondAttribute="bottom" constant="8" id="hSH-Kg-VGy"/>
+                                                                    <constraint firstItem="V3s-ld-zuY" firstAttribute="centerX" secondItem="Lua-SC-rD3" secondAttribute="centerX" id="5C7-lY-pJe"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="V3s-ld-zuY" secondAttribute="bottom" constant="11" id="Bpw-kh-noH"/>
+                                                                    <constraint firstItem="V3s-ld-zuY" firstAttribute="top" secondItem="Lua-SC-rD3" secondAttribute="top" constant="11" id="rIc-6G-ggT"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -300,6 +309,9 @@
                                                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="vZq-Do-cfv" appends="YES" id="7sG-fo-Qpj"/>
+                                                                </connections>
                                                             </view>
                                                         </subviews>
                                                     </stackView>
@@ -342,11 +354,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="afterSurveyButton" destination="Lua-SC-rD3" id="XkV-Wr-PsH"/>
+                        <outlet property="beforeSurveyButton" destination="K3K-5s-7yZ" id="sJe-nX-IIj"/>
                         <outlet property="descriptionLabel" destination="woE-bu-3jy" id="7RA-hI-Z4e"/>
                         <outlet property="mapView" destination="tIK-cV-AZp" id="pE5-nv-w19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="beP-uR-5mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Olf-4i-A4S">
+                    <connections>
+                        <action selector="beforeSurveyTapped:" destination="VxP-ZX-Htj" id="xUt-ST-Xm7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="vZq-Do-cfv">
+                    <connections>
+                        <action selector="afterSurveyTapped:" destination="VxP-ZX-Htj" id="hOa-Ky-8FL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1200.8" y="31.773399014778327"/>
         </scene>
