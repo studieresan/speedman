@@ -147,7 +147,7 @@
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxo-59-cfu" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
                                                                 <subviews>
-                                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-cV-AZp">
+                                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tIK-cV-AZp">
                                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
                                                                     </mapView>
                                                                 </subviews>

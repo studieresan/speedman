@@ -20,6 +20,7 @@ class EventDetailViewController: UIViewController {
 
   // MARK: - Properties
   var event: Event!
+  private let locationManager = CLLocationManager()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -55,6 +56,18 @@ class EventDetailViewController: UIViewController {
     } else {
       afterSurveyButton.isHidden = event.afterSurveys?.first == nil
     }
+
+    // Try to use location
+    if CLLocationManager.locationServicesEnabled() {
+      locationManager.requestWhenInUseAuthorization()
+      locationManager.distanceFilter = 10
+      locationManager.startUpdatingLocation()
+    }
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    locationManager.stopUpdatingLocation()
+    super.viewWillDisappear(animated)
   }
 
   // MARK: - Actions
