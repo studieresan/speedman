@@ -12,13 +12,14 @@ class CheckInTableViewController: UITableViewController {
 
   // MARK: - Properties
   var event: Event!
-  var users = [User]()
-  var checkins = [EventCheckin]()
+  private var users = [User]()
+  private var checkins = [EventCheckin]()
   private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "HH:mm"
     return dateFormatter
   }()
+  private let haptic = UISelectionFeedbackGenerator()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -53,6 +54,7 @@ class CheckInTableViewController: UITableViewController {
       Firebase.addCheckin(userId: user.id, byUserId: loggedInUser.id,
                           eventId: event.id)
     }
+    haptic.selectionChanged()
   }
 
   // MARK: - UITableViewDataSource
