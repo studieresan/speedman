@@ -13,6 +13,11 @@ struct User: Codable {
   let firstName: String?
   let lastName: String?
   let phone: String?
+  let permissions: [Permission]
+
+  enum Permission: String, Codable {
+    case events = "events_permission"
+  }
 
   var fullName: String {
     return "\(firstName ?? "") \(lastName ?? "")"
@@ -20,6 +25,7 @@ struct User: Codable {
 
   enum CodingKeys: String, CodingKey {
     case id
+    case permissions
     case profile
   }
 
@@ -33,6 +39,7 @@ struct User: Codable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
 
     id = try container.decode(String.self, forKey: .id)
+    permissions = try container.decode([Permission].self, forKey: .permissions)
 
     let profile = try container.nestedContainer(keyedBy: ProfileCodingKeys.self,
                                                 forKey: .profile)
@@ -44,6 +51,7 @@ struct User: Codable {
   func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(id, forKey: .id)
+    try container.encode(permissions, forKey: .permissions)
 
     var profile = container.nestedContainer(keyedBy: ProfileCodingKeys.self,
                                             forKey: .profile)

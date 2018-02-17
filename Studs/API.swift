@@ -100,6 +100,7 @@ struct API {
   private static var userFields =
   """
   id
+  permissions
   profile {
     firstName
     lastName
