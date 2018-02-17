@@ -61,13 +61,36 @@ class EventDetailViewController: UIViewController {
     if CLLocationManager.locationServicesEnabled() {
       locationManager.requestWhenInUseAuthorization()
       locationManager.distanceFilter = 10
-      locationManager.startUpdatingLocation()
     }
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    locationManager.startUpdatingLocation()
+    super.viewWillAppear(animated)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     locationManager.stopUpdatingLocation()
     super.viewWillDisappear(animated)
+  }
+
+  deinit {
+    applyMapViewMemoryLeakFix()
+  }
+
+  /// Mitigate MKMapView memory leaks
+  /// http://www.openradar.me/33400943
+  func applyMapViewMemoryLeakFix() {
+    switch mapView.mapType {
+    case .standard, .mutedStandard:
+      mapView.mapType = .satellite
+    default:
+      mapView.mapType = .standard
+    }
+    mapView.showsUserLocation = false
+    mapView.delegate = nil
+    mapView.removeFromSuperview()
+    mapView = nil
   }
 
   // MARK: - Actions
