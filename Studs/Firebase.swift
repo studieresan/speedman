@@ -44,13 +44,37 @@ struct Firebase {
 
     db.collection("checkins").document(checkinId).delete() { err in
       if let err = err {
-        print("Error removing document: \(err)")
+        print("Error removing checkin: \(err)")
       }
     }
   }
 
-  /// Stream updates from the check-in database
-  static func streamCheckins(eventId: String, handler: @escaping ([EventCheckin]) -> Void) {
+  /// Stream updates for a specific checkin
+  static func streamCheckin(eventId: String, userId: String,
+                            handler: @escaping (EventCheckin?) -> Void) {
+    // TODO: Look into a way to do this better
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    guard let db = appDelegate.firestoreDB else { return }
+
+    db.collection("checkins")
+      .whereField("eventId", isEqualTo: eventId)
+      .whereField("userId", isEqualTo: userId)
+      .limit(to: 1)
+      .addSnapshotListener { querySnapshot, error in
+        if let error = error {
+          print("Error fetching checkin: \(error)")
+        }
+        guard let document = querySnapshot?.documents.first else {
+          return handler(nil)
+        }
+        let checkin = createCheckin(from: document)
+        handler(checkin)
+    }
+  }
+
+  /// Stream updates to checkins for a specific event
+  static func streamCheckins(eventId: String,
+                             handler: @escaping ([EventCheckin]) -> Void) {
     // TODO: Look into a way to do this better
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     guard let db = appDelegate.firestoreDB else { return }
@@ -58,20 +82,24 @@ struct Firebase {
     db.collection("checkins").whereField("eventId", isEqualTo: eventId)
       .addSnapshotListener { querySnapshot, error in
         guard let documents = querySnapshot?.documents else {
-          print("Error fetching documents: \(error!)")
+          print("Error fetching checkins: \(error!)")
           return
         }
-        let checkins = documents.map { (doc) -> EventCheckin in
-          let date = DateFormatter.iso8601Fractional.date(from: doc["checkedInAt"]! as! String)
-          return EventCheckin(
-            id: doc.documentID,
-            eventId: doc["eventId"]! as! String,
-            userId: doc["userId"]! as! String,
-            checkedInById: doc["checkedInById"]! as! String,
-            checkedInAt: date ?? Date()
-          )
-        }
+        let checkins = documents.map(createCheckin)
         handler(checkins)
     }
+  }
+
+  /// Helper to convert a firebase document to our EventCheckin model
+  private static func createCheckin(from document: QueryDocumentSnapshot) -> EventCheckin {
+    let dateString = document["checkedInAt"] as! String
+    let date = DateFormatter.iso8601Fractional.date(from: dateString)
+    return EventCheckin(
+      id: document.documentID,
+      eventId: document["eventId"]! as! String,
+      userId: document["userId"]! as! String,
+      checkedInById: document["checkedInById"]! as! String,
+      checkedInAt: date ?? Date()
+    )
   }
 }
