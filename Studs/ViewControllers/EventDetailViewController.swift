@@ -62,6 +62,13 @@ class EventDetailViewController: UIViewController {
       locationManager.requestWhenInUseAuthorization()
       locationManager.distanceFilter = 10
     }
+
+    // Hide button to check-in manager if insufficient permissions
+    if let user = UserManager.shared.user,
+      !user.permissions.contains(.events) {
+      // TODO: Separate permission for checkins
+      navigationItem.rightBarButtonItem = nil
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
