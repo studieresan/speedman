@@ -113,12 +113,18 @@ class EventDetailViewController: UIViewController {
 
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard segue.identifier == "checkInSegue" else {
-      return
-    }
-
-    if let checkinVC = segue.destination as? CheckInTableViewController {
-      checkinVC.event = self.event
+    guard let identifier = segue.identifier else { return }
+    switch identifier {
+    case "checkInSegue":
+      if let checkinVC = segue.destination as? CheckInTableViewController {
+        checkinVC.event = self.event
+      }
+    case "checkinButtonSetupSegue":
+      if let buttonVC = segue.destination as? CheckinButtonViewController {
+        buttonVC.event = self.event
+      }
+    default:
+      break
     }
   }
 }

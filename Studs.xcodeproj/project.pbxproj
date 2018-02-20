@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		66B767C71991D25578D78A68 /* Pods_Studs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D30DB152248835B06BB7B8 /* Pods_Studs.framework */; };
 		AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12A2192031DF280049DF6F /* UserManager.swift */; };
+		AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */; };
 		AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB265668202C8FA200131CE6 /* 1Password.xcassets */; };
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
@@ -48,6 +49,7 @@
 		4D426C87E169DCC6E29FC1E6 /* Pods-Studs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studs/Pods-Studs.debug.xcconfig"; sourceTree = "<group>"; };
 		51D2133166048698BA35458C /* Pods-Studs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studs.release.xcconfig"; path = "Pods/Target Support Files/Pods-Studs/Pods-Studs.release.xcconfig"; sourceTree = "<group>"; };
 		AB12A2192031DF280049DF6F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinButtonViewController.swift; sourceTree = "<group>"; };
 		AB265668202C8FA200131CE6 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Pods/1PasswordExtension/1Password.xcassets; sourceTree = SOURCE_ROOT; };
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		AB35819F2011335700673D3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */,
 				AB5B06B42022062000752C68 /* CheckInTableViewController.swift */,
 				AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */,
 				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
@@ -457,6 +460,7 @@
 				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
 				AB6DF34C201F6755002D3A71 /* RoundedShadowView.swift in Sources */,
+				AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */,
 				AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */,
 				ABFD7FDA2010F1F600BCA86C /* EventsTableViewController.swift in Sources */,
 				AB35819620110AC900673D3F /* API.swift in Sources */,

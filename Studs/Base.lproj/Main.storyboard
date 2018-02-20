@@ -113,6 +113,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0WX-eF-ffD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
@@ -139,7 +140,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ev-16N">
-                                                <rect key="frame" x="11" y="11" width="353" height="348.66666666666669"/>
+                                                <rect key="frame" x="11" y="11" width="353" height="411.66666666666669"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKl-sN-bln" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="200"/>
@@ -188,8 +189,17 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lse-i8-4kh">
+                                                        <rect key="frame" x="0.0" y="213" width="353" height="55"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="55" id="oKa-6E-iFx"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <segue destination="pPB-Rc-2AJ" kind="embed" identifier="checkinButtonSetupSegue" id="avx-8A-ylo"/>
+                                                        </connections>
+                                                    </containerView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxC-Tu-E7p" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="208" width="353" height="72.666666666666686"/>
+                                                        <rect key="frame" x="0.0" y="271" width="353" height="72.666666666666686"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9AC-aP-cOw">
                                                                 <rect key="frame" x="8" y="7.9999999999999964" width="337" height="56.666666666666657"/>
@@ -239,13 +249,13 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Eqa-yS-ihu">
-                                                        <rect key="frame" x="0.0" y="288.66666666666669" width="353" height="60"/>
+                                                        <rect key="frame" x="0.0" y="351.66666666666669" width="353" height="60"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3K-5s-7yZ" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="172.66666666666666" height="60"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Before Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8W-24-qkI">
-                                                                        <rect key="frame" x="31.666666666666664" y="11" width="107.33333333333334" height="38"/>
+                                                                        <rect key="frame" x="31.666666666666664" y="10.999999999999943" width="107.33333333333334" height="38"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -283,7 +293,7 @@
                                                                 <rect key="frame" x="180.66666666666663" y="0.0" width="172.33333333333337" height="60"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After Survey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3s-ld-zuY">
-                                                                        <rect key="frame" x="38.666666666666693" y="11" width="94.666666666666686" height="38"/>
+                                                                        <rect key="frame" x="38.666666666666693" y="10.999999999999943" width="94.666666666666686" height="38"/>
                                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -541,6 +551,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="maU-IQ-W9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-449" y="32"/>
+        </scene>
+        <!--Checkin Button View Controller-->
+        <scene sceneID="kh4-DR-uPv">
+            <objects>
+                <viewController id="pPB-Rc-2AJ" customClass="CheckinButtonViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OTl-wF-Zfj" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="353" height="55"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UB8-3K-Jgb">
+                                <rect key="frame" x="8" y="8" width="337" height="39"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydx-hv-34A">
+                                        <rect key="frame" x="134" y="0.0" width="69.333333333333314" height="19.666666666666668"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not checked in - Tap to check in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohd-oT-E6L">
+                                        <rect key="frame" x="77.000000000000014" y="19.666666666666671" width="183.33333333333337" height="19.333333333333329"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18823529410000001" green="0.23137254900000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="UB8-3K-Jgb" firstAttribute="top" secondItem="OTl-wF-Zfj" secondAttribute="top" constant="8" id="50d-ov-VCi"/>
+                            <constraint firstAttribute="bottom" secondItem="UB8-3K-Jgb" secondAttribute="bottom" constant="8" id="Il0-t2-h2e"/>
+                            <constraint firstAttribute="trailing" secondItem="UB8-3K-Jgb" secondAttribute="trailing" constant="8" id="moN-Rh-6vM"/>
+                            <constraint firstItem="UB8-3K-Jgb" firstAttribute="leading" secondItem="OTl-wF-Zfj" secondAttribute="leading" constant="8" id="vIJ-EO-wdA"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="0.20000000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="upu-nM-bdy" appends="YES" id="f1q-nX-dVf"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="subtitleLabel" destination="Ohd-oT-E6L" id="Heg-dL-xrg"/>
+                        <outlet property="titleLabel" destination="ydx-hv-34A" id="CD5-eq-81Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Fl-rH-RvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="upu-nM-bdy">
+                    <connections>
+                        <action selector="buttonTapped:" destination="pPB-Rc-2AJ" id="9Uh-of-Xfn"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1201" y="442"/>
         </scene>
     </scenes>
     <resources>
