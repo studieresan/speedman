@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class CheckinButtonViewController: UIViewController {
+class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
 
   // MARK: - Outlets
   @IBOutlet weak var titleLabel: UILabel!
@@ -17,16 +18,22 @@ class CheckinButtonViewController: UIViewController {
   // MARK: - Properties
   var event: Event!
   var checkin: EventCheckin?
+  private var eventLocation: CLLocation? = CLLocation()
+  private var currentLocation: CLLocation?
+
+  private let haptic = UISelectionFeedbackGenerator()
+  private let locationManager = CLLocationManager()
   private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "HH:mm"
     return dateFormatter
   }()
-  private let haptic = UISelectionFeedbackGenerator()
 
+  // Possible states the button can be in
   private enum State {
     case open
-    case disabled
+    case wrong_time
+    case wrong_location
     case checkedIn
   }
 
@@ -39,6 +46,36 @@ class CheckinButtonViewController: UIViewController {
       self.checkin = checkin
       self.updateUI()
     }
+
+    // Lookup CLLocation for event
+    if let address = event.location {
+      let geocoder = CLGeocoder()
+      geocoder.geocodeAddressString(address) { placemarks, _ in
+        self.eventLocation = placemarks?[0].location
+        self.updateUI()
+      }
+    }
+
+    // Reqest access to location services
+    if CLLocationManager.locationServicesEnabled() {
+      locationManager.requestWhenInUseAuthorization()
+      locationManager.distanceFilter = 10
+      locationManager.delegate = self
+    }
+    updateUI()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    locationManager.startUpdatingLocation()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    locationManager.stopUpdatingLocation()
+  }
+
+  // MARK: - CLLocationManagerDelegate
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    currentLocation = locationManager.location
     updateUI()
   }
 
@@ -67,9 +104,15 @@ class CheckinButtonViewController: UIViewController {
       view.backgroundColor = #colorLiteral(red: 0.4503, green: 0.7803, blue: 0.0, alpha: 1)
       titleLabel.alpha = 1.0
       view.alpha = 1.0
-    case .disabled:
+    case .wrong_time:
       titleLabel.text = "Check-in closed"
       subtitleLabel.text = "Check-in opens when event starts"
+      view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+      titleLabel.alpha = 0.5
+      view.alpha = 0.5
+    case .wrong_location:
+      titleLabel.text = "Check in"
+      subtitleLabel.text = "Check-in is only available on location of event"
       view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
       titleLabel.alpha = 0.5
       view.alpha = 0.5
@@ -77,12 +120,14 @@ class CheckinButtonViewController: UIViewController {
   }
 
   private func getState() -> State {
-    if checkin != nil {
-      return .checkedIn
-    } else if event.date?.compare(Date()) == .orderedDescending {
-      return .disabled
-    } else {
-      return .open
+    if checkin != nil { return .checkedIn }
+    if event.date?.compare(Date()) == .orderedDescending { return .wrong_time }
+    if let eventLocation = eventLocation {
+      if currentLocation == nil ||
+        currentLocation!.distance(from: eventLocation) > 200 {
+        return .wrong_location
+      }
     }
+    return .open
   }
 }
