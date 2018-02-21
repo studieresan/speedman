@@ -32,8 +32,8 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
   // Possible states the button can be in
   private enum State {
     case open
-    case wrong_time
-    case wrong_location
+    case wrongTime
+    case wrongLocation
     case checkedIn
   }
 
@@ -74,7 +74,8 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
   }
 
   // MARK: - CLLocationManagerDelegate
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+  func locationManager(_ manager: CLLocationManager,
+                       didUpdateLocations locations: [CLLocation]) {
     currentLocation = locationManager.location
     updateUI()
   }
@@ -104,13 +105,13 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
       view.backgroundColor = #colorLiteral(red: 0.4503, green: 0.7803, blue: 0.0, alpha: 1)
       titleLabel.alpha = 1.0
       view.alpha = 1.0
-    case .wrong_time:
+    case .wrongTime:
       titleLabel.text = "Check-in closed"
       subtitleLabel.text = "Check-in opens when event starts"
       view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
       titleLabel.alpha = 0.5
       view.alpha = 0.5
-    case .wrong_location:
+    case .wrongLocation:
       titleLabel.text = "Check in"
       subtitleLabel.text = "Check-in is only available on location of event"
       view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
@@ -121,11 +122,11 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
 
   private func getState() -> State {
     if checkin != nil { return .checkedIn }
-    if event.date?.compare(Date()) == .orderedDescending { return .wrong_time }
+    if event.date?.compare(Date()) == .orderedDescending { return .wrongTime }
     if let eventLocation = eventLocation {
       if currentLocation == nil ||
         currentLocation!.distance(from: eventLocation) > 200 {
-        return .wrong_location
+        return .wrongLocation
       }
     }
     return .open

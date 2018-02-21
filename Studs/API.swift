@@ -53,9 +53,11 @@ struct API {
   }
 
   /// Performs a GraphQL query, decodes the response to a model conforming to
-  /// the Decodable protocol, and returns it in a Result to the completion handler.
+  /// the Decodable protocol, and returns it in a Result to the
+  /// completion handler.
   private static func performGraphQLQuery<T: Decodable>
-    (queryName: String, query: String, completion: @escaping (Result<T>) -> Void) {
+    (queryName: String, query: String, completion: @escaping (Result<T>)
+    -> Void) {
 
     let jsonDecoder = JSONDecoder()
 
@@ -63,7 +65,7 @@ struct API {
     Alamofire.request(graphQLURL, method: .post, parameters: parameters)
       .validate()
       .responseJSON { response in
-        let result = Result<T>() {
+        let result = Result<T> {
           switch response.result {
           case .success(let value):
             let json = JSON(value)

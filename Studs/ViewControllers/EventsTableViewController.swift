@@ -32,12 +32,12 @@ class EventsTableViewController: UITableViewController {
   // MARK: -
   /// Fetch events from API and reload table view
   @objc func fetchEvents() {
-    API.getEvents() { result in
+    API.getEvents { result in
       switch result {
       case .success(let events):
-        self.events = events.sorted() { (e1, e2) in
-          guard let e1Date = e1.date else { return false }
-          guard let e2Date = e2.date else { return false }
+        self.events = events.sorted {
+          guard let e1Date = $0.date else { return false }
+          guard let e2Date = $1.date else { return false }
           return e1Date.timeIntervalSince(e2Date) < 0
         }
         self.tableView.reloadData()

@@ -1,0 +1,17 @@
+disabled_rules:
+  - todo # Allow todos and fixme's
+
+identifier_name:
+  excluded:
+    - id # Allow 'id' as variable name
+
+# Mandatory trailing comma to avoid unnecessary diff
+trailing_comma:
+  mandatory_comma: true
+
+# Try to keep 90 columns max
+line_length: 90
+
+# Don't lint CocoaPods
+excluded:
+  - Pods

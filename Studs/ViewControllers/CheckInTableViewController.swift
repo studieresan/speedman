@@ -25,7 +25,7 @@ class CheckInTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    API.getUsers() { result in
+    API.getUsers { result in
       switch result {
       case .success(let users):
         self.users = users
@@ -86,28 +86,29 @@ class CheckInTableViewController: UITableViewController {
     return cell
   }
 
-  // MARK - UITableViewDelegate
+  // MARK: - UITableViewDelegate
   // Return an action to call a person on left swipe on user cell
   override func tableView(_ tableView: UITableView,
-                          trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    let user = users[indexPath.row]
+                          trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+    -> UISwipeActionsConfiguration? {
+      let user = users[indexPath.row]
 
-    let empty = UISwipeActionsConfiguration()
-    guard let number = user.phone?
-      .replacingOccurrences(of: " ", with: "") else { return empty }
-    guard let callURL = URL(string: "tel://\(number)") else { return empty }
-    guard UIApplication.shared.canOpenURL(callURL) else { return empty }
+      let empty = UISwipeActionsConfiguration()
+      guard
+        let number = user.phone?.replacingOccurrences(of: " ", with: ""),
+        let callURL = URL(string: "tel://\(number)"),
+        UIApplication.shared.canOpenURL(callURL)
+      else { return empty }
 
-    // If there's a number that can be made into an URL and called, setup action
-    let call = UIContextualAction(style: .normal, title: "Call") {
-      _ ,_ , completion in
-      UIApplication.shared.open(callURL)
-      completion(true)
-    }
-    call.image = UIImage(named: "PhoneIcon")
-    // TODO: Break out color to constant class
-    call.backgroundColor = #colorLiteral(red: 0.1876, green: 0.2319, blue: 0.2957, alpha: 1)
-    return UISwipeActionsConfiguration(actions: [call])
+      // If there's a number that can be made into an URL and called, setup action
+      let call = UIContextualAction(style: .normal, title: "Call") { _, _, completion in
+        UIApplication.shared.open(callURL)
+        completion(true)
+      }
+      call.image = UIImage(named: "PhoneIcon")
+      // TODO: Break out color to constant class
+      call.backgroundColor = #colorLiteral(red: 0.1876, green: 0.2319, blue: 0.2957, alpha: 1)
+      return UISwipeActionsConfiguration(actions: [call])
   }
 
 }

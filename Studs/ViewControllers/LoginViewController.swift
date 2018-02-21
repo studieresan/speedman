@@ -90,7 +90,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     API.login(email: email, password: password) { result in
       self.activityIndicator.stopAnimating()
       switch result {
-      case .success():
+      case .success:
         self.performSegue(withIdentifier: "loginSegue", sender: self)
       case .failure(let error):
         // TODO: Show some error to user
@@ -124,16 +124,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
   // MARK: - 1Password
   @IBAction func autofillFrom1Password(_ sender: UIButton) {
-    OnePasswordExtension.shared().findLogin(forURLString: "https://studieresan.se", for: self, sender: sender, completion: { (loginDictionary, error) in
-      guard let loginDictionary = loginDictionary else {
-        if let error = error as NSError?, error.code != AppExtensionErrorCodeCancelledByUser {
-          print("Error invoking 1Password App Extension for find login: \(String(describing: error))")
+    // swiftlint:disable line_length
+    OnePasswordExtension.shared()
+      .findLogin(forURLString: "https://studieresan.se", for: self, sender: sender) { (loginDictionary, error) in
+        guard let loginDictionary = loginDictionary else {
+          if let error = error as NSError?,
+            error.code != AppExtensionErrorCodeCancelledByUser {
+            print("Error invoking 1Password App Extension for find login: \(error)")
+          }
+          return
         }
-        return
-      }
 
-      self.emailField.text = loginDictionary[AppExtensionUsernameKey] as? String
-      self.passwordField.text = loginDictionary[AppExtensionPasswordKey] as? String
-    })
+        self.emailField.text = loginDictionary[AppExtensionUsernameKey] as? String
+        self.passwordField.text = loginDictionary[AppExtensionPasswordKey] as? String
+      }
+    // swiftlint:enable line_length
   }
 }

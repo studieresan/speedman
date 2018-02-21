@@ -19,7 +19,7 @@ class EventTableViewCell: UITableViewCell {
 
   // MARK: - Properties
   @IBInspectable
-  let highlightColor: UIColor = #colorLiteral(red: 0.952861011, green: 0.9529945254, blue: 0.9528190494, alpha: 1)
+  var highlightColor: UIColor = #colorLiteral(red: 0.952861011, green: 0.9529945254, blue: 0.9528190494, alpha: 1)
   var defaultColor: UIColor!
 
   // MARK: - Lifecycle

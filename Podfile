@@ -13,6 +13,9 @@ target 'Studs' do
   pod '1PasswordExtension', '~> 1.8.5'
   pod 'FirebaseFirestore', '~> 0.10'
 
+  # Dev dependencies
+  pod 'SwiftLint'
+
   target 'StudsTests' do
     inherit! :search_paths
     # Pods for testing
