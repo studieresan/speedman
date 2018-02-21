@@ -26,6 +26,8 @@ class EventDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    configureSurveyButtons()
+
     // Do any additional setup after loading the view.
     descriptionLabel.numberOfLines = 0
 
@@ -48,15 +50,6 @@ class EventDetailViewController: UIViewController {
       mapView.isHidden = true
     }
 
-    // Hide survey buttons if event has no survey
-    beforeSurveyButton.isHidden = event.beforeSurveys?.first == nil
-    if event.date != nil, event.date?.compare(Date()) == .orderedDescending {
-      // Hide the after survey button if event has not started
-      afterSurveyButton.isHidden = true
-    } else {
-      afterSurveyButton.isHidden = event.afterSurveys?.first == nil
-    }
-
     // Try to use location
     if CLLocationManager.locationServicesEnabled() {
       locationManager.requestWhenInUseAuthorization()
@@ -68,6 +61,21 @@ class EventDetailViewController: UIViewController {
       !user.permissions.contains(.events) {
       // TODO: Separate permission for checkins
       navigationItem.rightBarButtonItem = nil
+    }
+  }
+
+  /// Hide the event surveys buttons conditionally.
+  /// Hides the after survey before the event and hides the before survey
+  /// after the event starts.
+  func configureSurveyButtons() {
+    beforeSurveyButton.isHidden = (event.beforeSurveys == nil)
+    afterSurveyButton.isHidden = (event.afterSurveys == nil)
+    if let date = event.date {
+      if date.compare(Date()) == .orderedDescending {
+        afterSurveyButton.isHidden = true
+      } else {
+        beforeSurveyButton.isHidden = true
+      }
     }
   }
 
