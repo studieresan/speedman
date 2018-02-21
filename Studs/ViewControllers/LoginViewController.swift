@@ -12,10 +12,14 @@ import OnePasswordExtension
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
   // MARK: Outlets
+  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var onePasswordButton: UIButton!
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+  // MARK: Properties
+  var activeTextField: UITextField?
 
   // MARK: Lifecycle
   override func viewDidLoad() {
@@ -24,6 +28,50 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     passwordField.delegate = self
     onePasswordButton.isHidden =
       !OnePasswordExtension.shared().isAppExtensionAvailable()
+
+    // Setup listening to keyboard events
+    NotificationCenter.default
+      .addObserver(self, selector: #selector(keyboardDidShow(notification:)),
+                   name: .UIKeyboardDidShow, object: nil)
+    NotificationCenter.default
+      .addObserver(self, selector: #selector(keyboardDidHide(notification:)),
+                   name: .UIKeyboardDidHide, object: nil)
+  }
+
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+
+  // MARK: - Keyboard handling
+  // When the keyboard appears, it might cover the active text field.
+  // This allows scrolling of the view and scrolls it so that the active
+  // text-field is visible
+  @objc func keyboardDidShow(notification: NSNotification) {
+    if let userInfo = notification.userInfo {
+      let kbSize = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size
+      let inset = UIEdgeInsets(top: 0, left: 0,
+                               bottom: (kbSize?.height ?? 0) + 10, right: 0)
+      scrollView.contentInset = inset
+      scrollView.scrollIndicatorInsets = inset
+
+      if let activeTextField = activeTextField {
+        var visibleRect = self.view.frame
+        visibleRect.size.height -= kbSize?.height ?? 0
+
+        let textFieldRect = activeTextField.convert(activeTextField.frame,
+                                                    to: scrollView)
+
+        // If the active field is not visible, scroll so that it is.
+        if !visibleRect.contains(textFieldRect) {
+          scrollView.scrollRectToVisible(textFieldRect, animated: true)
+        }
+      }
+    }
+  }
+
+  @objc func keyboardDidHide(notification: NSNotification) {
+    scrollView.contentInset = UIEdgeInsets.zero
+    scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
   }
 
   // MARK: Actions
@@ -52,6 +100,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
   }
 
   // MARK: - UITextFieldDelegate
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    activeTextField = textField
+  }
+
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    activeTextField = nil
+  }
+
+  // Move next text field or try to submit login
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     switch textField {
     case emailField:
