@@ -9,7 +9,7 @@
 import UIKit
 import OnePasswordExtension
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
   // MARK: Outlets
   @IBOutlet weak var onePasswordButton: UIButton!
@@ -20,16 +20,23 @@ class LoginViewController: UIViewController {
   // MARK: Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    emailField.delegate = self
+    passwordField.delegate = self
     onePasswordButton.isHidden =
-      (false == OnePasswordExtension.shared().isAppExtensionAvailable())
+      !OnePasswordExtension.shared().isAppExtensionAvailable()
   }
 
   // MARK: Actions
   @IBAction func loginButtonPressed(_ sender: UIButton) {
+    tryLogin()
+  }
+
+  // MARK: -
+  func tryLogin() {
     guard
       let email = emailField.text, !email.isEmpty,
       let password = passwordField.text, !password.isEmpty else {
-      return // TODO: show user error
+        return // TODO: show user error
     }
     activityIndicator.startAnimating()
     API.login(email: email, password: password) { result in
@@ -44,6 +51,21 @@ class LoginViewController: UIViewController {
     }
   }
 
+  // MARK: - UITextFieldDelegate
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    switch textField {
+    case emailField:
+      passwordField.becomeFirstResponder()
+    case passwordField:
+      passwordField.resignFirstResponder()
+      tryLogin()
+    default:
+      break
+    }
+    return false
+  }
+
+  // MARK: - 1Password
   @IBAction func autofillFrom1Password(_ sender: UIButton) {
     OnePasswordExtension.shared().findLogin(forURLString: "https://studieresan.se", for: self, sender: sender, completion: { (loginDictionary, error) in
       guard let loginDictionary = loginDictionary else {
@@ -57,15 +79,4 @@ class LoginViewController: UIViewController {
       self.passwordField.text = loginDictionary[AppExtensionPasswordKey] as? String
     })
   }
-
-  /*
-   // MARK: - Navigation
-
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
-
 }
