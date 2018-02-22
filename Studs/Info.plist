@@ -19,7 +19,9 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.1.1</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>12</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>org-appextension-feature-password-management</string>
@@ -39,7 +41,7 @@
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
