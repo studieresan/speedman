@@ -16,7 +16,12 @@ class EventsTableViewController: UITableViewController {
     dateFormatter.dateFormat = "E dd/MM, HH:mm"
     return dateFormatter
   }()
-  private var events = [Event]()
+  private var events = [Event]() {
+    didSet {
+      tableView.reloadData()
+      scheduleEventsNotifications()
+    }
+  }
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -30,7 +35,7 @@ class EventsTableViewController: UITableViewController {
   }
 
   // MARK: -
-  /// Fetch events from API and reload table view
+  /// Fetch events from API
   @objc func fetchEvents() {
     API.getEvents { result in
       switch result {
@@ -40,13 +45,17 @@ class EventsTableViewController: UITableViewController {
           guard let e2Date = $1.date else { return false }
           return e1Date.timeIntervalSince(e2Date) < 0
         }
-        self.tableView.reloadData()
       case .failure(let error):
         print(error)
       }
     }
     // If triggered by manual refresh, end the animation
     self.refreshControl?.endRefreshing()
+  }
+
+  private func scheduleEventsNotifications() {
+    let manager = NotificationsManager.shared
+    events.forEach(manager.scheduleNotifications)
   }
 
   // MARK: - Actions
