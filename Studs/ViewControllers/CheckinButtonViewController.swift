@@ -20,6 +20,21 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
   var checkin: EventCheckin?
   private var eventLocation: CLLocation? = CLLocation()
   private var currentLocation: CLLocation?
+  private var checkinStart: Date? {
+    // Allow checking in 30 minutes early
+    return event.date?.addingTimeInterval(-(60 * 30))
+  }
+  private var state: State {
+    if checkin != nil { return .checkedIn }
+    if let checkinStart = checkinStart, checkinStart > Date() { return .wrongTime }
+    if let eventLocation = eventLocation {
+      if currentLocation == nil ||
+        currentLocation!.distance(from: eventLocation) > 200 {
+        return .wrongLocation
+      }
+    }
+    return .open
+  }
 
   private let haptic = UISelectionFeedbackGenerator()
   private let locationManager = CLLocationManager()
@@ -82,7 +97,7 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
 
   // MARK: - Actions
   @IBAction func buttonTapped(_ sender: UITapGestureRecognizer) {
-    guard getState() == State.open else { return }
+    guard state == State.open else { return }
     guard let user = UserManager.shared.user else { return }
     guard checkin == nil else { return }
     Firebase.addCheckin(userId: user.id, byUserId: user.id, eventId: event.id)
@@ -91,7 +106,7 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
 
   // MARK: -
   private func updateUI() {
-    switch getState() {
+    switch state {
     case .open:
       titleLabel.text = "Check in"
       subtitleLabel.text = "Not checked in - Tap to check in"
@@ -107,28 +122,21 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
       view.alpha = 1.0
     case .wrongTime:
       titleLabel.text = "Check-in closed"
-      subtitleLabel.text = "Check-in opens when event starts"
+      if let date = checkinStart, Calendar.current.isDateInToday(date) {
+        let time = dateFormatter.string(from: date)
+        subtitleLabel.text = "Check-in opens at \(time)"
+      } else {
+        subtitleLabel.text = "Check-in opens on day of event"
+      }
       view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
       titleLabel.alpha = 0.5
       view.alpha = 0.5
     case .wrongLocation:
       titleLabel.text = "Check in"
-      subtitleLabel.text = "Check-in is only available on location of event"
+      subtitleLabel.text = "Checking in is only possible on location of event"
       view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
       titleLabel.alpha = 0.5
       view.alpha = 0.5
     }
-  }
-
-  private func getState() -> State {
-    if checkin != nil { return .checkedIn }
-    if event.date?.compare(Date()) == .orderedDescending { return .wrongTime }
-    if let eventLocation = eventLocation {
-      if currentLocation == nil ||
-        currentLocation!.distance(from: eventLocation) > 200 {
-        return .wrongLocation
-      }
-    }
-    return .open
   }
 }
