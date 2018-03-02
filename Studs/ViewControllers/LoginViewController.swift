@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
   // MARK: Outlets
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var contentView: UIView!
   @IBOutlet weak var onePasswordButton: UIButton!
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
@@ -36,10 +37,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     NotificationCenter.default
       .addObserver(self, selector: #selector(keyboardDidHide(notification:)),
                    name: .UIKeyboardDidHide, object: nil)
+
+    scrollView.backgroundColor = UIColor(patternImage: UIImage(named: "FlowerPattern")!)
+    contentView.backgroundColor = UIColor.clear
   }
 
   deinit {
     NotificationCenter.default.removeObserver(self)
+  }
+
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 
   // MARK: - Keyboard handling
