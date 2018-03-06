@@ -58,7 +58,7 @@ class EventDetailViewController: UIViewController {
 
     // Hide button to check-in manager if insufficient permissions
     if let user = UserManager.shared.user,
-      !user.permissions.contains(.events) {
+      !user.permissions.contains(.checkins) {
       // TODO: Separate permission for checkins
       navigationItem.rightBarButtonItem = nil
     }

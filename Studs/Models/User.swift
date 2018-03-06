@@ -17,6 +17,7 @@ struct User: Codable {
 
   enum Permission: String, Codable {
     case events = "events_permission"
+    case checkins = "checkins_permission"
   }
 
   var fullName: String {
