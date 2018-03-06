@@ -43,7 +43,7 @@ class EventsTableViewController: UITableViewController {
         self.events = events.sorted {
           guard let e1Date = $0.date else { return false }
           guard let e2Date = $1.date else { return false }
-          return e1Date.timeIntervalSince(e2Date) < 0
+          return e1Date > e2Date
         }
       case .failure(let error):
         print(error)

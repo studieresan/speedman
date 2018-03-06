@@ -362,7 +362,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="OMf-44-BXE">
-                        <barButtonItem key="rightBarButtonItem" title="Check-in" id="TMx-lp-bjJ">
+                        <barButtonItem key="rightBarButtonItem" title="Check-ins" id="TMx-lp-bjJ">
                             <connections>
                                 <segue destination="Uaj-hK-Paj" kind="show" identifier="checkInSegue" id="0df-Hz-k9f"/>
                             </connections>
