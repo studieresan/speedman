@@ -472,7 +472,7 @@
                                                             <constraint firstItem="4g1-di-02F" firstAttribute="centerX" secondItem="afb-LO-syr" secondAttribute="centerX" id="Ryx-Bu-ulO"/>
                                                         </constraints>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" distribution="fillProportionally" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fBC-bT-0SY">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fBC-bT-0SY">
                                                         <rect key="frame" x="0.0" y="248" width="343" height="248.66666666666663"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH5-Ji-qkW">
@@ -482,6 +482,38 @@
                                                                     <action selector="autofillFrom1Password:" destination="tn4-N4-BrG" eventType="touchUpInside" id="sG1-U8-RPA"/>
                                                                 </connections>
                                                             </button>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KO2-XO-hM3" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="39.666666666666686" width="343" height="22"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Error" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdR-3o-iVp">
+                                                                        <rect key="frame" x="16" y="11" width="311" height="0.0"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.20000000000000001" colorSpace="deviceWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="YdR-3o-iVp" firstAttribute="top" secondItem="KO2-XO-hM3" secondAttribute="top" constant="11" id="RF9-pB-gJW"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="YdR-3o-iVp" secondAttribute="bottom" constant="11" id="Z6g-yv-yt2"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="YdR-3o-iVp" secondAttribute="trailing" constant="16" id="pJh-Xb-eXL"/>
+                                                                    <constraint firstItem="YdR-3o-iVp" firstAttribute="leading" secondItem="KO2-XO-hM3" secondAttribute="leading" constant="16" id="wUf-h6-HeA"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="10"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                        <real key="value" value="0.20000000000000001"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                        <size key="value" width="0.0" height="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DK6-iG-Yca">
                                                                 <rect key="frame" x="0.0" y="52" width="343" height="58.333333333333343"/>
                                                                 <subviews>
@@ -535,6 +567,7 @@
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="KO2-XO-hM3" firstAttribute="width" secondItem="uew-ky-DRv" secondAttribute="width" id="eTm-qG-VtM"/>
                                                             <constraint firstItem="uew-ky-DRv" firstAttribute="width" secondItem="fBC-bT-0SY" secondAttribute="width" id="ex5-20-QTk"/>
                                                             <constraint firstItem="Lbv-Mr-fbn" firstAttribute="width" secondItem="uew-ky-DRv" secondAttribute="width" id="wHn-Ge-e0f"/>
                                                         </constraints>
@@ -581,6 +614,8 @@
                         <outlet property="activityIndicator" destination="Tz0-Zw-qaY" id="Mtb-YX-FHS"/>
                         <outlet property="contentView" destination="Tiu-2h-uVG" id="A5a-Nf-rOf"/>
                         <outlet property="emailField" destination="uew-ky-DRv" id="JlI-VR-6He"/>
+                        <outlet property="errorLabel" destination="YdR-3o-iVp" id="Fo4-hs-AEh"/>
+                        <outlet property="errorView" destination="KO2-XO-hM3" id="wbl-fU-JqT"/>
                         <outlet property="onePasswordButton" destination="sH5-Ji-qkW" id="FtU-0r-hDg"/>
                         <outlet property="passwordField" destination="Lbv-Mr-fbn" id="wf4-Hq-Eou"/>
                         <outlet property="scrollView" destination="yCW-yo-5C1" id="R8L-vT-D9M"/>

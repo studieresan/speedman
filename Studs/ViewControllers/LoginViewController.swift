@@ -15,12 +15,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var contentView: UIView!
   @IBOutlet weak var onePasswordButton: UIButton!
+  @IBOutlet weak var errorView: RoundedShadowView!
+  @IBOutlet weak var errorLabel: UILabel!
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
   // MARK: Properties
   var activeTextField: UITextField?
+  private var error: String? {
+    didSet {
+      errorLabel.text = error ?? ""
+      errorView.isHidden = error == nil
+    }
+  }
 
   // MARK: Lifecycle
   override func viewDidLoad() {
@@ -92,6 +100,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     guard
       let email = emailField.text, !email.isEmpty,
       let password = passwordField.text, !password.isEmpty else {
+        error = "Email and/or password may not be blank."
         return // TODO: show user error
     }
     activityIndicator.startAnimating()
@@ -99,9 +108,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
       self.activityIndicator.stopAnimating()
       switch result {
       case .success:
+        self.error = nil
         self.performSegue(withIdentifier: "loginSegue", sender: self)
       case .failure(let error):
-        // TODO: Show some error to user
+        self.error = "Login failed. Please check your credentials."
         print(error)
       }
     }
