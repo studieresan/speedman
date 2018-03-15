@@ -11,11 +11,7 @@ import UIKit
 class EventsTableViewController: UITableViewController {
 
   // MARK: - Properties
-  private let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "E dd/MM, HH:mm"
-    return dateFormatter
-  }()
+  private let dateFormatter = RelativeDateFormatter()
   private var events = [Event]() {
     didSet {
       tableView.reloadData()
