@@ -44,7 +44,7 @@ class EventDetailViewController: UIViewController {
         pin.coordinate = coordinate
         pin.title = "\(self.event.companyName ?? ""): \(address)"
         self.mapView.addAnnotation(pin)
-        self.mapView.showAnnotations([pin], animated: true)
+        self.mapView.showAnnotations([pin], animated: false)
       }
     } else {
       mapView.isHidden = true
