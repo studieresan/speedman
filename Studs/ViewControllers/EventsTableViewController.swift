@@ -31,10 +31,23 @@ class EventsTableViewController: UITableViewController {
     title = "Events"
     tableView.rowHeight = UITableViewAutomaticDimension
 
-    fetchEvents()
     // Setup swipe down to refresh action
     refreshControl?.addTarget(self, action: #selector(fetchEvents),
                               for: .valueChanged)
+
+    // Manually pull to refresh once.
+    // For some reason, it doesn't animate down if not done after some delay.
+    // See: https://stackoverflow.com/q/14718850/4915828
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+      self.tableView.setContentOffset(
+        CGPoint(
+          x: 0,
+          y: -self.refreshControl!.frame.size.height - self.view.safeAreaInsets.top
+        ),
+        animated: true)
+      self.refreshControl?.beginRefreshing()
+      self.fetchEvents()
+    }
   }
 
   // MARK: -
@@ -47,9 +60,9 @@ class EventsTableViewController: UITableViewController {
       case .failure(let error):
         print(error)
       }
+      // If triggered by manual refresh, end the animation
+      self.refreshControl?.endRefreshing()
     }
-    // If triggered by manual refresh, end the animation
-    self.refreshControl?.endRefreshing()
   }
 
   private func scheduleEventsNotifications() {
