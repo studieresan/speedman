@@ -13,10 +13,17 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Properties
   private var events = [Event]() {
     didSet {
+      upcomingEvents = events.filter({ $0.date != nil && $0.date! >= Date() })
+        .sorted()
+      pastEvents = events.filter({ $0.date != nil && $0.date! < Date() })
+        .sorted().reversed()
+
       tableView.reloadData()
       scheduleEventsNotifications()
     }
   }
+  private var upcomingEvents = [Event]()
+  private var pastEvents = [Event]()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -36,11 +43,7 @@ class EventsTableViewController: UITableViewController {
     API.getEvents { result in
       switch result {
       case .success(let events):
-        self.events = events.sorted {
-          guard let e1Date = $0.date else { return false }
-          guard let e2Date = $1.date else { return false }
-          return e1Date > e2Date
-        }
+        self.events = events
       case .failure(let error):
         print(error)
       }
@@ -64,12 +67,17 @@ class EventsTableViewController: UITableViewController {
 
   // MARK: - UITableViewDataSource
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    return 2
+  }
+
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
+    -> String? {
+      return section == 0 ? "Upcoming Events" : "Past Events"
   }
 
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
-    return events.count
+    return section == 0 ? upcomingEvents.count : pastEvents.count
   }
 
   override func tableView(_ tableView: UITableView,
@@ -77,6 +85,7 @@ class EventsTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell",
                                              for: indexPath)
 
+    let events = indexPath.section == 0 ? upcomingEvents : pastEvents
     let event = events[indexPath.row]
     if let eventsCell = cell as? EventTableViewCell {
       eventsCell.nameLabel.text = event.companyName

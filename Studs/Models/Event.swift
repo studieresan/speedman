@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Event: Decodable {
+struct Event: Decodable, Comparable {
   let id: String
   let companyName: String?
   let schedule: String?
@@ -42,5 +42,15 @@ struct Event: Decodable {
 
     let dateString = try container.decode(String?.self, forKey: .date)
     date = DateFormatter.iso8601Fractional.date(from: dateString ?? "")
+  }
+
+  static func < (lhs: Event, rhs: Event) -> Bool {
+    let date1 = lhs.date ?? Date.distantPast
+    let date2 = rhs.date ?? Date.distantPast
+    return date1 < date2
+  }
+
+  static func == (lhs: Event, rhs: Event) -> Bool {
+    return lhs.id == rhs.id
   }
 }
