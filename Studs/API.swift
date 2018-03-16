@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 struct API {
-  private static let baseURL = "https://studs18-overlord.herokuapp.com"
+  private static let baseURL = "https://studs-overlord.appspot.com"
   private static let loginURL = baseURL + "/login"
   private static let logoutURL = baseURL + "/logout"
   private static let graphQLURL = baseURL + "/graphql"
