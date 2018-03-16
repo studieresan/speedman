@@ -11,7 +11,6 @@ import UIKit
 class EventsTableViewController: UITableViewController {
 
   // MARK: - Properties
-  private let dateFormatter = RelativeDateFormatter()
   private var events = [Event]() {
     didSet {
       tableView.reloadData()
@@ -23,6 +22,7 @@ class EventsTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Events"
+    tableView.rowHeight = UITableViewAutomaticDimension
 
     fetchEvents()
     // Setup swipe down to refresh action
@@ -80,9 +80,11 @@ class EventsTableViewController: UITableViewController {
     let event = events[indexPath.row]
     if let eventsCell = cell as? EventTableViewCell {
       eventsCell.nameLabel.text = event.companyName
-      eventsCell.dateLabel.text = nil
+      eventsCell.dayLabel.text = nil
+      eventsCell.monthLabel.text = nil
       if let date = event.date {
-        eventsCell.dateLabel?.text = dateFormatter.string(from: date)
+        eventsCell.dayLabel.text = String(date.getDayOfMonth())
+        eventsCell.monthLabel.text = date.getShortMonthName().uppercased()
       }
       eventsCell.locationLabel.text = event.location
     }

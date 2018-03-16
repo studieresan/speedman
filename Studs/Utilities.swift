@@ -16,24 +16,14 @@ extension DateFormatter {
   }()
 }
 
-class RelativeDateFormatter: DateFormatter {
-  override func string(from date: Date) -> String {
-    self.dateFormat = "HH:mm"
-    let calendar = Calendar.current
-    if calendar.isDateInToday(date) {
-      return "Today, \(super.string(from: date))"
-    } else if calendar.isDateInTomorrow(date) {
-      return "Tomorrow, \(super.string(from: date))"
-    } else if calendar.isDateInYesterday(date) {
-      return "Yesterday, \(super.string(from: date))"
-    } else if calendar.isDate(date, equalTo: Date(), toGranularity: .weekOfYear) {
-      // Long weekday names if same week
-      self.dateFormat = "EEEE, HH:mm"
-      return super.string(from: date)
-    } else {
-      // Short weekday names + date else
-      self.dateFormat = "E dd/MM, HH:mm"
-      return super.string(from: date)
-    }
+extension Date {
+  func getDayOfMonth() -> Int {
+    return Calendar.current.component(.day, from: self)
+  }
+
+  func getShortMonthName() -> String {
+    let monthNames = Calendar.current.shortMonthSymbols
+    let day = Calendar.current.component(.month, from: self)
+    return monthNames[day - 1]
   }
 }

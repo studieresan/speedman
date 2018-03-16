@@ -13,8 +13,10 @@ class EventTableViewCell: UITableViewCell {
 
   // MARK: - Outlets
   @IBOutlet weak var bgView: RoundedShadowView?
+  @IBOutlet weak var dateView: UIView!
+  @IBOutlet weak var dayLabel: UILabel!
+  @IBOutlet weak var monthLabel: UILabel!
   @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
 
   // MARK: - Properties
