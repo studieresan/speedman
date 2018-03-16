@@ -57,6 +57,11 @@ class EventsTableViewController: UITableViewController {
     events.forEach(manager.scheduleNotifications)
   }
 
+  private func getEvent(for indexPath: IndexPath) -> Event {
+    let events = indexPath.section == 0 ? upcomingEvents : pastEvents
+    return events[indexPath.row]
+  }
+
   // MARK: - Actions
   @IBAction func logout(_ sender: UIBarButtonItem) {
     API.logout()
@@ -84,9 +89,7 @@ class EventsTableViewController: UITableViewController {
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell",
                                              for: indexPath)
-
-    let events = indexPath.section == 0 ? upcomingEvents : pastEvents
-    let event = events[indexPath.row]
+    let event = getEvent(for: indexPath)
     if let eventsCell = cell as? EventTableViewCell {
       eventsCell.nameLabel.text = event.companyName
       eventsCell.dayLabel.text = nil
@@ -112,7 +115,7 @@ class EventsTableViewController: UITableViewController {
 
     if let selectedCell = tableView.indexPathForSelectedRow {
       if let eventsVC = segue.destination as? EventDetailViewController {
-        eventsVC.event = events[selectedCell.row]
+        eventsVC.event = getEvent(for: selectedCell)
       }
     }
   }
