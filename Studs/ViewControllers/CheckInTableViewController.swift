@@ -24,7 +24,29 @@ class CheckInTableViewController: UITableViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.rowHeight = UITableViewAutomaticDimension
 
+    // Setup swipe down to refresh action
+    refreshControl?.addTarget(self, action: #selector(fetchUsers),
+                              for: .valueChanged)
+    fetchUsers()
+
+    // Stream realtime updates from the checkins-database
+    Firebase.streamCheckins(eventId: event.id) { [weak self] checkins in
+      self?.checkins = checkins
+      self?.tableView.reloadData()
+    }
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    if users.isEmpty {
+      // Manually pull to refresh once
+      self.tableView.triggerRefresh()
+    }
+  }
+
+  @objc func fetchUsers() {
     API.getUsers { result in
       switch result {
       case .success(let users):
@@ -34,11 +56,7 @@ class CheckInTableViewController: UITableViewController {
         self.navigationController?.popViewController(animated: true)
         print(error)
       }
-    }
-    // Stream realtime updates from the checkins-database
-    Firebase.streamCheckins(eventId: event.id) { [weak self] checkins in
-      self?.checkins = checkins
-      self?.tableView.reloadData()
+      self.refreshControl?.endRefreshing()
     }
   }
 

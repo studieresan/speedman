@@ -34,19 +34,13 @@ class EventsTableViewController: UITableViewController {
     // Setup swipe down to refresh action
     refreshControl?.addTarget(self, action: #selector(fetchEvents),
                               for: .valueChanged)
+  }
 
-    // Manually pull to refresh once.
-    // For some reason, it doesn't animate down if not done after some delay.
-    // See: https://stackoverflow.com/q/14718850/4915828
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-      self.tableView.setContentOffset(
-        CGPoint(
-          x: 0,
-          y: -self.refreshControl!.frame.size.height - self.view.safeAreaInsets.top
-        ),
-        animated: true)
-      self.refreshControl?.beginRefreshing()
-      self.fetchEvents()
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    if events.isEmpty {
+      // Manually pull to refresh once
+      self.tableView.triggerRefresh()
     }
   }
 
