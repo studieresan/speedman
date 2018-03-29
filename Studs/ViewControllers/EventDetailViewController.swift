@@ -68,8 +68,8 @@ class EventDetailViewController: UIViewController {
   /// Hides the after survey before the event and hides the before survey
   /// after the event starts.
   func configureSurveyButtons() {
-    beforeSurveyButton.isHidden = (event.beforeSurveys == nil)
-    afterSurveyButton.isHidden = (event.afterSurveys == nil)
+    beforeSurveyButton.isHidden = event.beforeSurveys?.isEmpty ?? true
+    afterSurveyButton.isHidden = event.afterSurveys?.isEmpty ?? true
     if let date = event.date {
       if date.compare(Date()) == .orderedDescending {
         afterSurveyButton.isHidden = true
