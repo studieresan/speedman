@@ -13,42 +13,52 @@ import SafariServices
 class EventDetailViewController: UIViewController {
 
   // MARK: - Outlets
-  @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var companyLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
+  @IBOutlet weak var addressLabel: UILabel!
+  @IBOutlet weak var timeLabel: UILabel!
   @IBOutlet weak var beforeSurveyButton: RoundedShadowView!
   @IBOutlet weak var afterSurveyButton: RoundedShadowView!
+  @IBOutlet weak var descriptionCard: RoundedShadowView!
+  @IBOutlet weak var descriptionLabel: UILabel!
 
   // MARK: - Properties
   var event: Event!
   private let locationManager = CLLocationManager()
+  private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d/M"
+    return formatter
+  }()
+  private let timeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm"
+    return formatter
+  }()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    configureSurveyButtons()
-
-    // Do any additional setup after loading the view.
-    descriptionLabel.numberOfLines = 0
-
-    title = event.companyName
-    descriptionLabel.text = event.privateDescription
-
-    // Lookup coordinates for address and place pin on map
-    if let address = event.location {
-      let geocoder = CLGeocoder()
-      geocoder.geocodeAddressString(address) { placemarks, _ in
-        guard let placemarks = placemarks else { return }
-        guard let coordinate = placemarks[0].location?.coordinate else { return }
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = "\(self.event.companyName ?? ""): \(address)"
-        self.mapView.addAnnotation(pin)
-        self.mapView.showAnnotations([pin], animated: false)
-      }
+    companyLabel.text = event.companyName
+    if let date = event.date {
+      dateLabel.text = dateFormatter.string(from: date)
+      timeLabel.text = timeFormatter.string(from: date)
     } else {
-      mapView.isHidden = true
+      dateLabel.isHidden = true
+      timeLabel.isHidden = true
     }
+    addressLabel.text = event.location
+
+    if let description = event.privateDescription, !description.isEmpty {
+      descriptionLabel.text = event.privateDescription
+    } else {
+      descriptionCard.isHidden = true
+    }
+
+    configureSurveyButtons()
+    configureMapView()
 
     // Try to use location
     if CLLocationManager.locationServicesEnabled() {
@@ -67,7 +77,7 @@ class EventDetailViewController: UIViewController {
   /// Hide the event surveys buttons conditionally.
   /// Hides the after survey before the event and hides the before survey
   /// after the event starts.
-  func configureSurveyButtons() {
+  private func configureSurveyButtons() {
     beforeSurveyButton.isHidden = event.beforeSurveys?.isEmpty ?? true
     afterSurveyButton.isHidden = event.afterSurveys?.isEmpty ?? true
     if let date = event.date {
@@ -77,6 +87,31 @@ class EventDetailViewController: UIViewController {
         beforeSurveyButton.isHidden = true
       }
     }
+  }
+
+  private func configureMapView() {
+    // Lookup coordinates for address and place pin on map
+    if let address = event.location {
+      let geocoder = CLGeocoder()
+      geocoder.geocodeAddressString(address) { placemarks, _ in
+        guard let placemarks = placemarks else { return }
+        guard let coordinate = placemarks[0].location?.coordinate else { return }
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = "\(self.event.companyName ?? ""): \(address)"
+        self.mapView.addAnnotation(pin)
+        self.mapView.showAnnotations([pin], animated: false)
+        // Move up centering a bit since map is partially covered by card view
+        self.mapView.setVisibleMapRect(
+          self.mapView.visibleMapRect,
+          edgePadding: UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0),
+          animated: false
+        )
+      }
+    } else {
+      mapView.isHidden = true
+    }
+    applyMapFadeOut()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +130,7 @@ class EventDetailViewController: UIViewController {
 
   /// Mitigate MKMapView memory leaks
   /// http://www.openradar.me/33400943
-  func applyMapViewMemoryLeakFix() {
+  private func applyMapViewMemoryLeakFix() {
     switch mapView.mapType {
     case .standard, .mutedStandard:
       mapView.mapType = .satellite
@@ -106,6 +141,20 @@ class EventDetailViewController: UIViewController {
     mapView.delegate = nil
     mapView.removeFromSuperview()
     mapView = nil
+  }
+
+  /// Fades out the bottom of the map view by adding a gradient layer mask
+  private func applyMapFadeOut() {
+    let gradientLayer = CAGradientLayer()
+    let mapBounds = mapView.bounds
+    // Don't mask horizontally by making the mask as wide as screen max
+    let screenMax = max(UIScreen.main.bounds.maxX, UIScreen.main.bounds.maxY)
+    gradientLayer.frame = CGRect(x: mapBounds.origin.x, y: mapBounds.origin.y,
+                                 width: screenMax, height: mapBounds.height)
+    gradientLayer.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
+    // Fade out last 10%
+    gradientLayer.locations = [0.9, 1.0]
+    mapView.layer.mask = gradientLayer
   }
 
   // MARK: - Actions
@@ -120,7 +169,7 @@ class EventDetailViewController: UIViewController {
   }
 
   /// Open the given url in a SFSafariViewController
-  func openURL(url: String) {
+  private func openURL(url: String) {
     guard let url = URL(string: url) else { return }
     let safariVC = SFSafariViewController(url: url)
     self.present(safariVC, animated: true)

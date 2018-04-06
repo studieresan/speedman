@@ -93,7 +93,7 @@ struct Firebase {
           print("Error fetching checkins: \(error!)")
           return
         }
-        let checkins = documents.flatMap(createCheckin)
+        let checkins = documents.compactMap(createCheckin)
         handler(checkins)
     }
   }
