@@ -15,6 +15,7 @@
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
 		AB35819D2011307200673D3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819C2011307200673D3F /* User.swift */; };
+		AB4B329D207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */; };
 		AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B06B42022062000752C68 /* CheckInTableViewController.swift */; };
 		AB6DF34C201F6755002D3A71 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34B201F6755002D3A71 /* RoundedShadowView.swift */; };
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
@@ -57,6 +58,7 @@
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AB35819C2011307200673D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventSectionHeaderTableViewCell.swift; path = Views/EventSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AB5B06B42022062000752C68 /* CheckInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTableViewController.swift; sourceTree = "<group>"; };
 		AB6DF34B201F6755002D3A71 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				AB6DF34D20206661002D3A71 /* Views */,
 				AB35819F2011335700673D3F /* ViewControllers */,
 				ABFD7FBB2010EF6200BCA86C /* Main.storyboard */,
+				AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */,
 				AB9B3782202CA5AA002D641D /* Firebase.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
 				AB12A2192031DF280049DF6F /* UserManager.swift */,
@@ -486,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB4B329D207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift in Sources */,
 				AB8A2C44204D2D12001445F1 /* Utilities.swift in Sources */,
 				AB358194201105CA00673D3F /* LoginViewController.swift in Sources */,
 				AB9B3781202C9F50002D641D /* EventCheckin.swift in Sources */,

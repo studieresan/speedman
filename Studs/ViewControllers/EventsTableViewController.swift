@@ -28,8 +28,9 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Events"
     tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+    tableView.estimatedSectionHeaderHeight = 56
 
     // Setup swipe down to refresh action
     refreshControl?.addTarget(self, action: #selector(fetchEvents),
@@ -82,9 +83,14 @@ class EventsTableViewController: UITableViewController {
     return 2
   }
 
-  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
-    -> String? {
-      return section == 0 ? "Upcoming Events" : "Past Events"
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int)
+    -> UIView? {
+    let view = tableView.dequeueReusableCell(withIdentifier: "header")
+    if let sectionHeader = view as? EventSectionHeaderTableViewCell {
+      sectionHeader.sectionTitle.text = section == 0 ? "Upcoming Events" : "Past Events"
+      return sectionHeader
+    }
+    return view
   }
 
   override func tableView(_ tableView: UITableView,
@@ -94,18 +100,13 @@ class EventsTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView,
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell",
-                                             for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
     let event = getEvent(for: indexPath)
     if let eventsCell = cell as? EventTableViewCell {
       eventsCell.nameLabel.text = event.companyName
-      eventsCell.dayLabel.text = nil
-      eventsCell.monthLabel.text = nil
       if let date = event.date {
-        eventsCell.dayLabel.text = String(date.getDayOfMonth())
-        eventsCell.monthLabel.text = date.getShortMonthName().uppercased()
+        eventsCell.dateLabel.text = DateFormatter.dateFormatter.string(from: date)
       }
-      eventsCell.locationLabel.text = event.location
     }
     return cell
   }

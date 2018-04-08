@@ -26,16 +26,6 @@ class EventDetailViewController: UIViewController {
   // MARK: - Properties
   var event: Event!
   private let locationManager = CLLocationManager()
-  private let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "d/M"
-    return formatter
-  }()
-  private let timeFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm"
-    return formatter
-  }()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -43,8 +33,8 @@ class EventDetailViewController: UIViewController {
 
     companyLabel.text = event.companyName
     if let date = event.date {
-      dateLabel.text = dateFormatter.string(from: date)
-      timeLabel.text = timeFormatter.string(from: date)
+      dateLabel.text = DateFormatter.dateFormatter.string(from: date)
+      timeLabel.text = DateFormatter.timeFormatter.string(from: date)
     } else {
       dateLabel.isHidden = true
       timeLabel.isHidden = true
