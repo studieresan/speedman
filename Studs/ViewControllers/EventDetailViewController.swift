@@ -31,16 +31,6 @@ class EventDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    companyLabel.text = event.companyName
-    if let date = event.date {
-      dateLabel.text = DateFormatter.dateFormatter.string(from: date)
-      timeLabel.text = DateFormatter.timeFormatter.string(from: date)
-    } else {
-      dateLabel.isHidden = true
-      timeLabel.isHidden = true
-    }
-    addressLabel.text = event.location
-
     if let description = event.privateDescription, !description.isEmpty {
       descriptionLabel.text = event.privateDescription
     } else {
@@ -176,6 +166,14 @@ class EventDetailViewController: UIViewController {
     case "checkinButtonSetupSegue":
       if let buttonVC = segue.destination as? CheckinButtonViewController {
         buttonVC.event = self.event
+        // Make the container view size itself to the embedded VC
+        buttonVC.view.translatesAutoresizingMaskIntoConstraints = false
+      }
+    case "detailCardSetupSegue":
+      if let cardVC = segue.destination as? EventDetailCardViewController {
+        cardVC.event = self.event
+        // Make the container view size itself to the embedded VC
+        cardVC.view.translatesAutoresizingMaskIntoConstraints = false
       }
     default:
       break

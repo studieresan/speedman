@@ -9,7 +9,6 @@
 import UIKit
 
 class EventsTableViewController: UITableViewController {
-
   // MARK: - Properties
   private var events = [Event]() {
     didSet {
@@ -17,13 +16,22 @@ class EventsTableViewController: UITableViewController {
         .sorted()
       pastEvents = events.filter({ $0.date != nil && $0.date! < Date() })
         .sorted().reversed()
+      nextEvent = upcomingEvents.removeFirst()
 
       tableView.reloadData()
       scheduleEventsNotifications()
     }
   }
+  private var nextEvent: Event? {
+    didSet {
+      // Set up "Next Event" card or hide view if no next event
+      cardVC?.event = nextEvent
+      tableView.tableHeaderView?.isHidden = nextEvent == nil
+    }
+  }
   private var upcomingEvents = [Event]()
   private var pastEvents = [Event]()
+  private var cardVC: EventDetailCardViewController?
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -112,20 +120,36 @@ class EventsTableViewController: UITableViewController {
   }
 
   // MARK: - Navigation
+//  @IBAction func nextEventTapped(_ sender: UITapGestureRecognizer) {
+//    performSegue(withIdentifier: "nextEventSegue", sender: <#T##Any?#>)
+//  }
+
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     performSegue(withIdentifier: "eventDetailSegue", sender: self)
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard segue.identifier == "eventDetailSegue" else {
-      return
-    }
-
-    if let selectedCell = tableView.indexPathForSelectedRow {
-      if let eventsVC = segue.destination as? EventDetailViewController {
-        eventsVC.event = getEvent(for: selectedCell)
-      }
+    guard let identifier = segue.identifier else { return }
+    switch identifier {
+    case "nextEventDetailSegue":
+      guard
+        let event = nextEvent,
+        let eventsVC = segue.destination as? EventDetailViewController
+      else { return }
+      eventsVC.event = event
+    case "eventDetailSegue":
+      guard
+        let selectedCell = tableView.indexPathForSelectedRow,
+        let eventsVC = segue.destination as? EventDetailViewController
+      else { return }
+      eventsVC.event = getEvent(for: selectedCell)
+    case "detailCardSetupSegue":
+      // Save a reference to the Card VC
+      cardVC = segue.destination as? EventDetailCardViewController
+      // Make the container view size itself to the embedded VC
+      cardVC?.view.translatesAutoresizingMaskIntoConstraints = false
+    default:
+      break
     }
   }
-
 }

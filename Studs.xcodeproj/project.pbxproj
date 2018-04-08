@@ -16,6 +16,7 @@
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
 		AB35819D2011307200673D3F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819C2011307200673D3F /* User.swift */; };
 		AB4B329D207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */; };
+		AB4BD902207A8B52006C03FF /* EventDetailCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4BD901207A8B52006C03FF /* EventDetailCardViewController.swift */; };
 		AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B06B42022062000752C68 /* CheckInTableViewController.swift */; };
 		AB6DF34C201F6755002D3A71 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34B201F6755002D3A71 /* CardView.swift */; };
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
@@ -59,6 +60,7 @@
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AB35819C2011307200673D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventSectionHeaderTableViewCell.swift; path = Views/EventSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		AB4BD901207A8B52006C03FF /* EventDetailCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailCardViewController.swift; sourceTree = "<group>"; };
 		AB5B06B42022062000752C68 /* CheckInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTableViewController.swift; sourceTree = "<group>"; };
 		AB6DF34B201F6755002D3A71 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 		AB35819F2011335700673D3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB4BD901207A8B52006C03FF /* EventDetailCardViewController.swift */,
 				AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */,
 				AB5B06B42022062000752C68 /* CheckInTableViewController.swift */,
 				AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */,
@@ -497,6 +500,7 @@
 				AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */,
 				AB35819D2011307200673D3F /* User.swift in Sources */,
 				AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */,
+				AB4BD902207A8B52006C03FF /* EventDetailCardViewController.swift in Sources */,
 				AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */,
 				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
