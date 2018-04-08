@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var contentView: UIView!
   @IBOutlet weak var onePasswordButton: UIButton!
-  @IBOutlet weak var errorView: RoundedShadowView!
+  @IBOutlet weak var errorView: CardView!
   @IBOutlet weak var errorLabel: UILabel!
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!

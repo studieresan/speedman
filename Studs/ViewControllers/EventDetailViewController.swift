@@ -18,9 +18,9 @@ class EventDetailViewController: UIViewController {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
-  @IBOutlet weak var beforeSurveyButton: RoundedShadowView!
-  @IBOutlet weak var afterSurveyButton: RoundedShadowView!
-  @IBOutlet weak var descriptionCard: RoundedShadowView!
+  @IBOutlet weak var beforeSurveyButton: CardView!
+  @IBOutlet weak var afterSurveyButton: CardView!
+  @IBOutlet weak var descriptionCard: CardView!
   @IBOutlet weak var descriptionLabel: UILabel!
 
   // MARK: - Properties

@@ -35,7 +35,7 @@
                                             <color key="textColor" red="0.96862745100000003" green="0.86666666670000003" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSj-DD-Chy" userLabel="Event Detail Card" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSj-DD-Chy" userLabel="Event Detail Card" customClass="CardView" customModule="Studs" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="29.333333333333336" width="359" height="78.666666666666657"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TE3-x7-PdO">
@@ -91,20 +91,6 @@
                                                 <constraint firstAttribute="bottom" secondItem="TE3-x7-PdO" secondAttribute="bottom" constant="16" id="VFj-0O-hEL"/>
                                                 <constraint firstAttribute="trailing" secondItem="TE3-x7-PdO" secondAttribute="trailing" constant="16" id="lOy-0l-HYv"/>
                                             </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                    <size key="value" width="0.0" height="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                    <real key="value" value="2"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="0.20000000000000001"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                 </stackView>
@@ -157,7 +143,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2RA-rh-o0X" customClass="RoundedShadowView" customModule="Studs">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2RA-rh-o0X" customClass="CardView" customModule="Studs">
                                             <rect key="frame" x="8" y="4" width="359" height="54"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vrI-RW-Jqu">
@@ -185,23 +171,6 @@
                                                 <constraint firstItem="vrI-RW-Jqu" firstAttribute="leading" secondItem="2RA-rh-o0X" secondAttribute="leading" constant="16" id="j6E-wR-zH5"/>
                                                 <constraint firstAttribute="trailing" secondItem="vrI-RW-Jqu" secondAttribute="trailing" constant="16" id="pVn-We-yuB"/>
                                             </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                    <real key="value" value="0.0"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                    <real key="value" value="2"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="0.20000000000000001"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                    <size key="value" width="0.0" height="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -267,7 +236,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ev-16N">
                                                 <rect key="frame" x="8" y="250.00000000000003" width="359" height="391.66666666666674"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7n-um-mVo" userLabel="Event Detail Card" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7n-um-mVo" userLabel="Event Detail Card" customClass="CardView" customModule="Studs" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="359" height="114"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wxA-wD-3kG">
@@ -323,20 +292,6 @@
                                                             <constraint firstItem="wxA-wD-3kG" firstAttribute="top" secondItem="a7n-um-mVo" secondAttribute="top" constant="16" id="ayC-HB-Jgq"/>
                                                             <constraint firstAttribute="bottom" secondItem="wxA-wD-3kG" secondAttribute="bottom" constant="16" id="wqD-1r-Dod"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                <size key="value" width="0.0" height="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.20000000000000001"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lse-i8-4kh" userLabel="Checkin Button">
                                                         <rect key="frame" x="0.0" y="122" width="359" height="55"/>
@@ -347,7 +302,7 @@
                                                             <segue destination="pPB-Rc-2AJ" kind="embed" identifier="checkinButtonSetupSegue" id="avx-8A-ylo"/>
                                                         </connections>
                                                     </containerView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-jO-zbh" userLabel="Survey Button" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-jO-zbh" userLabel="Survey Button" customClass="CardView" customModule="Studs" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="185" width="359" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take pre-survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzf-Ui-Rfk">
@@ -365,25 +320,11 @@
                                                             <constraint firstAttribute="bottom" secondItem="uzf-Ui-Rfk" secondAttribute="bottom" constant="16" id="kkT-r0-KAN"/>
                                                             <constraint firstAttribute="trailing" secondItem="uzf-Ui-Rfk" secondAttribute="trailing" constant="16" id="zg9-eX-EPE"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.20000000000000001"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                <size key="value" width="0.0" height="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="Olf-4i-A4S" appends="YES" id="05r-Tn-eAB"/>
                                                         </connections>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlw-jI-59L" userLabel="Survey Button" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tlw-jI-59L" userLabel="Survey Button" customClass="CardView" customModule="Studs" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="243" width="359" height="50"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take post-survey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRQ-39-81d">
@@ -401,25 +342,11 @@
                                                             <constraint firstItem="xRQ-39-81d" firstAttribute="leading" secondItem="Tlw-jI-59L" secondAttribute="leading" constant="16" id="QKl-1J-sRZ"/>
                                                             <constraint firstAttribute="trailing" secondItem="xRQ-39-81d" secondAttribute="trailing" constant="16" id="UMU-95-3NU"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.20000000000000001"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                <size key="value" width="0.0" height="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="vZq-Do-cfv" appends="YES" id="xiI-z3-fSr"/>
                                                         </connections>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxC-Tu-E7p" userLabel="Event Description Card" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxC-Tu-E7p" userLabel="Event Description Card" customClass="CardView" customModule="Studs" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="301" width="359" height="90.666666666666686"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9AC-aP-cOw">
@@ -451,23 +378,6 @@
                                                             <constraint firstAttribute="trailing" secondItem="9AC-aP-cOw" secondAttribute="trailing" constant="16" id="gOq-Sv-HjO"/>
                                                             <constraint firstItem="9AC-aP-cOw" firstAttribute="top" secondItem="ZxC-Tu-E7p" secondAttribute="top" constant="16" id="mIu-1C-3hG"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                                <real key="value" value="0.20000000000000001"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                                <size key="value" width="0.0" height="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -636,7 +546,7 @@
                                                                     <action selector="autofillFrom1Password:" destination="tn4-N4-BrG" eventType="touchUpInside" id="sG1-U8-RPA"/>
                                                                 </connections>
                                                             </button>
-                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KO2-XO-hM3" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KO2-XO-hM3" customClass="CardView" customModule="Studs" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="39.666666666666686" width="343" height="22"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Error" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdR-3o-iVp">
@@ -802,7 +712,7 @@
         <scene sceneID="kh4-DR-uPv">
             <objects>
                 <viewController id="pPB-Rc-2AJ" customClass="CheckinButtonViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OTl-wF-Zfj" customClass="RoundedShadowView" customModule="Studs" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="OTl-wF-Zfj" customClass="CardView" customModule="Studs" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="55"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -834,20 +744,6 @@
                             <constraint firstItem="UB8-3K-Jgb" firstAttribute="leading" secondItem="OTl-wF-Zfj" secondAttribute="leading" constant="8" id="vIJ-EO-wdA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wk4-t0-aQg"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.20000000000000001"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="0.0" height="1"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="upu-nM-bdy" appends="YES" id="f1q-nX-dVf"/>
                         </connections>

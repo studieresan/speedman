@@ -12,7 +12,7 @@ import UIKit
 class EventTableViewCell: UITableViewCell {
 
   // MARK: - Outlets
-  @IBOutlet weak var bgView: RoundedShadowView?
+  @IBOutlet weak var bgView: CardView?
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
 
