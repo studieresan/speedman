@@ -32,12 +32,14 @@ class NotificationsManager {
     let content = UNMutableNotificationContent()
     content.title = "Event reminder"
     content.subtitle = event.companyName ?? "Company"
-    content.body = "\(time) at \(event.location ?? ""). " +
+    content.body = "Tomorrow, \(time) at \(event.location ?? "_"). " +
     "Remember to fill in the before survey and bring your name tag."
     content.sound = UNNotificationSound.default()
 
-    var dateInfo = Calendar.current.dateComponents([.month, .day], from: date)
-    dateInfo.hour = 8; dateInfo.minute = 0
+    var dateInfo = Calendar.current.dateComponents([.month, .day, .hour, .minute],
+                                                   from: date)
+    // The day before at 21:30
+    dateInfo.day? -= 1; dateInfo.hour = 21; dateInfo.minute = 30;
     let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
     let id = "\(event.id)-before"
     let notification = UNNotificationRequest(identifier: id, content: content,
