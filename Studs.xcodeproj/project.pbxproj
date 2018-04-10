@@ -59,7 +59,7 @@
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AB35819C2011307200673D3F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventSectionHeaderTableViewCell.swift; path = Views/EventSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		AB4BD901207A8B52006C03FF /* EventDetailCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailCardViewController.swift; sourceTree = "<group>"; };
 		AB5B06B42022062000752C68 /* CheckInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTableViewController.swift; sourceTree = "<group>"; };
 		AB6DF34B201F6755002D3A71 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 		AB6DF34D20206661002D3A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */,
 				AB6DF34B201F6755002D3A71 /* CardView.swift */,
 				AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */,
 			);
@@ -200,7 +201,6 @@
 				AB6DF34D20206661002D3A71 /* Views */,
 				AB35819F2011335700673D3F /* ViewControllers */,
 				ABFD7FBB2010EF6200BCA86C /* Main.storyboard */,
-				AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */,
 				AB9B3782202CA5AA002D641D /* Firebase.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
 				AB12A2192031DF280049DF6F /* UserManager.swift */,

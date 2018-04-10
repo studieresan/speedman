@@ -12,9 +12,11 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Properties
   private var events = [Event]() {
     didSet {
-      upcomingEvents = events.filter({ $0.date != nil && $0.date! >= Date() })
+      // Split into upcoming and past events
+      let now = Date() - 60 * 60 // - 1h (to not make it switch directly on event start)
+      upcomingEvents = events.filter({ $0.date != nil && $0.date! >= now })
         .sorted()
-      pastEvents = events.filter({ $0.date != nil && $0.date! < Date() })
+      pastEvents = events.filter({ $0.date != nil && $0.date! < now })
         .sorted().reversed()
       nextEvent = upcomingEvents.removeFirst()
 
@@ -120,10 +122,6 @@ class EventsTableViewController: UITableViewController {
   }
 
   // MARK: - Navigation
-//  @IBAction func nextEventTapped(_ sender: UITapGestureRecognizer) {
-//    performSegue(withIdentifier: "nextEventSegue", sender: <#T##Any?#>)
-//  }
-
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     performSegue(withIdentifier: "eventDetailSegue", sender: self)
   }
