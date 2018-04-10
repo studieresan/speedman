@@ -29,7 +29,7 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
     if let checkinStart = checkinStart, checkinStart > Date() { return .wrongTime }
     if let eventLocation = eventLocation {
       if currentLocation == nil ||
-        currentLocation!.distance(from: eventLocation) > 200 {
+        currentLocation!.distance(from: eventLocation) > 100 {
         return .wrongLocation
       }
     }
