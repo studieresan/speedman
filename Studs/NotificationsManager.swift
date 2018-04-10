@@ -15,11 +15,6 @@ class NotificationsManager {
   static let shared = NotificationsManager()
 
   private let center: UNUserNotificationCenter
-  private let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
-    return dateFormatter
-  }()
 
   func scheduleNotifications(for event: Event) {
     scheduleBeforeReminder(for: event)
@@ -28,18 +23,18 @@ class NotificationsManager {
 
   private func scheduleBeforeReminder(for event: Event) {
     guard let date = event.date, date > Date() else { return }
-    let time = dateFormatter.string(from: date)
+    let time = DateFormatter.timeFormatter.string(from: date)
     let content = UNMutableNotificationContent()
     content.title = "Event reminder"
     content.subtitle = event.companyName ?? "Company"
     content.body = "Tomorrow, \(time) at \(event.location ?? "_"). " +
-    "Remember to fill in the before survey and bring your name tag."
+    "Remember to fill in the pre-survey and bring your name tag."
     content.sound = UNNotificationSound.default()
 
     var dateInfo = Calendar.current.dateComponents([.month, .day, .hour, .minute],
                                                    from: date)
     // The day before at 21:30
-    dateInfo.day? -= 1; dateInfo.hour = 21; dateInfo.minute = 30;
+    dateInfo.day? -= 1; dateInfo.hour = 21; dateInfo.minute = 30
     let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
     let id = "\(event.id)-before"
     let notification = UNNotificationRequest(identifier: id, content: content,
@@ -59,7 +54,7 @@ class NotificationsManager {
     let content = UNMutableNotificationContent()
     content.title = "Survey reminder"
     content.subtitle = event.companyName ?? "Company"
-    content.body = "Have you filled in the after survey yet? " +
+    content.body = "Have you filled in the post-survey yet? " +
       "If not, do it now while you remember the event!"
     content.sound = UNNotificationSound.default()
 
