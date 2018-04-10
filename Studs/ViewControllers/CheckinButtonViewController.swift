@@ -38,11 +38,6 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
 
   private let haptic = UISelectionFeedbackGenerator()
   private let locationManager = CLLocationManager()
-  private let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
-    return dateFormatter
-  }()
 
   // Possible states the button can be in
   private enum State {
@@ -114,7 +109,7 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
       titleLabel.alpha = 1.0
       view.alpha = 1.0
     case .checkedIn:
-      let time = dateFormatter.string(from: checkin!.checkedInAt)
+      let time = DateFormatter.timeFormatter.string(from: checkin!.checkedInAt)
       titleLabel.text = "You are checked in!"
       subtitleLabel.text = "Checked in at \(time)"
       view.backgroundColor = #colorLiteral(red: 0.4503, green: 0.7803, blue: 0.0, alpha: 1)
@@ -123,7 +118,7 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
     case .wrongTime:
       titleLabel.text = "Check-in closed"
       if let date = checkinStart, Calendar.current.isDateInToday(date) {
-        let time = dateFormatter.string(from: date)
+        let time = DateFormatter.timeFormatter.string(from: date)
         subtitleLabel.text = "Check-in opens at \(time)"
       } else {
         subtitleLabel.text = "Check-in opens on day of event"
