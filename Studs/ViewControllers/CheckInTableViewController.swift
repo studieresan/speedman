@@ -14,12 +14,13 @@ class CheckInTableViewController: UITableViewController {
   var event: Event!
   private var users = [User]()
   private var checkins = [EventCheckin]()
-  private let dateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
-    return dateFormatter
-  }()
+  private var remainingUsers: [User] {
+    return users.filter { user in
+      return !checkins.contains(where: { $0.userId == user.id })
+    }
+  }
   private let haptic = UISelectionFeedbackGenerator()
+  private var hidesCheckedIn = false { didSet { tableView.reloadData() }}
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -36,6 +37,13 @@ class CheckInTableViewController: UITableViewController {
       self?.checkins = checkins
       self?.tableView.reloadData()
     }
+
+    // Add switch to toggle hiding or showing of checked in people
+    let hideCheckedInSwitch = UISwitch()
+    hideCheckedInSwitch.isOn = false
+    hideCheckedInSwitch.addTarget(self, action: #selector(switchChanged),
+                                  for: .valueChanged)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: hideCheckedInSwitch)
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -46,11 +54,17 @@ class CheckInTableViewController: UITableViewController {
     }
   }
 
+  @objc func switchChanged(sender: UISwitch!) {
+    hidesCheckedIn = sender.isOn
+  }
+
   @objc func fetchUsers() {
     API.getUsers { result in
       switch result {
       case .success(let users):
-        self.users = users
+        self.users = users.sorted { user1, user2 in
+          user1.fullName < user2.fullName
+        }
         self.tableView.reloadData()
       case .failure(let error):
         self.navigationController?.popViewController(animated: true)
@@ -62,7 +76,7 @@ class CheckInTableViewController: UITableViewController {
 
   // MARK: - UITableViewController
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let user = users[indexPath.row]
+    let user = getUser(for: indexPath)
     guard let loggedInUser = UserManager.shared.user else { return }
 
     // Toggle checkin
@@ -80,21 +94,28 @@ class CheckInTableViewController: UITableViewController {
     return 1
   }
 
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
+    -> String? {
+      return hidesCheckedIn
+        ? "Remaining: \(users.count - checkins.count)"
+        : "Checked in: \(checkins.count)/\(users.count)"
+  }
+
   override func tableView(_ tableView: UITableView,
                           numberOfRowsInSection section: Int) -> Int {
-    return users.count
+    return hidesCheckedIn ? remainingUsers.count : users.count
   }
 
   override func tableView(_ tableView: UITableView,
                           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "checkInCell",
                                              for: indexPath)
-    let user = users[indexPath.row]
+    let user = getUser(for: indexPath)
     cell.textLabel?.text = "\(user.fullName)"
 
     // Setup cell depending on checked in or not
     if let checkin = checkins.first(where: { $0.userId == user.id }) {
-      let time = dateFormatter.string(from: checkin.checkedInAt)
+      let time = DateFormatter.timeFormatter.string(from: checkin.checkedInAt)
       cell.detailTextLabel?.text = "\(time)"
       cell.accessoryType = .checkmark
     } else {
@@ -109,7 +130,7 @@ class CheckInTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView,
                           trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
     -> UISwipeActionsConfiguration? {
-      let user = users[indexPath.row]
+      let user = getUser(for: indexPath)
 
       let empty = UISwipeActionsConfiguration()
       guard
@@ -129,4 +150,7 @@ class CheckInTableViewController: UITableViewController {
       return UISwipeActionsConfiguration(actions: [call])
   }
 
+  func getUser(for indexPath: IndexPath) -> User {
+    return hidesCheckedIn ? remainingUsers[indexPath.row] : users[indexPath.row]
+  }
 }
