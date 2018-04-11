@@ -96,9 +96,11 @@ class CheckInTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
     -> String? {
+      let remaining = remainingUsers.count
+      let total = users.count
       return hidesCheckedIn
-        ? "Remaining: \(users.count - checkins.count)"
-        : "Checked in: \(checkins.count)/\(users.count)"
+        ? "Remaining: \(remaining)"
+        : "Checked in: \(total-remaining)/\(total)"
   }
 
   override func tableView(_ tableView: UITableView,
