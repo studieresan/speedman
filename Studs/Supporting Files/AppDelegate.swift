@@ -7,20 +7,30 @@
 //
 
 import UIKit
+import UserNotifications
+import SafariServices
 import FirebaseCore
 import FirebaseFirestore
 
+enum DeepLink {
+  case webView(url: URL)
+}
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
   var window: UIWindow?
   var firestoreDB: Firestore?
 
-  // swiftlint:disable line_length
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // swiftlint:enable line_length
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
+    ) -> Bool {
     // Override point for customization after application launch.
+
+    // Intercept arriving local notifications in
+    // userNotificationCenter(_:didReceive:withCompletionHandler) below
+    UNUserNotificationCenter.current().delegate = self
 
     // Setup Firebase
     FirebaseApp.configure()
@@ -35,6 +45,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = startingVC
     window?.makeKeyAndVisible()
     return true
+  }
+
+  /// Presents the appropriate view for a deep link
+  func handle(deepLink: DeepLink) {
+    let currentVC = window?.rootViewController
+    switch deepLink {
+    case .webView(let url):
+      currentVC?.present(SFSafariViewController(url: url), animated: true)
+    }
+  }
+
+  // Handle opened local notifications
+  func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+    let userInfo = response.notification.request.content.userInfo
+    guard
+      let str = userInfo["deepLink"] as? String,
+      let url = URL(string: str)
+    else { return }
+    handle(deepLink: DeepLink.webView(url: url))
   }
 
   func applicationWillResignActive(_ application: UIApplication) {

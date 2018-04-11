@@ -57,6 +57,9 @@ class NotificationsManager {
     content.body = "Have you filled in the post-survey yet? " +
       "If not, do it now while you remember the event!"
     content.sound = UNNotificationSound.default()
+    if let surveyLink = event.afterSurveys?.first {
+      content.userInfo = ["deepLink": surveyLink]
+    }
 
     let dateInfo = Calendar.current.dateComponents([.month, .day, .hour, .minute],
                                                    from: endDate)
