@@ -82,6 +82,7 @@ class EventDetailViewController: UIViewController {
         self.mapView.addAnnotation(pin)
         self.mapView.showAnnotations([pin], animated: false)
         // Move up centering a bit since map is partially covered by card view
+        // self.mapView.
         self.mapView.setVisibleMapRect(
           self.mapView.visibleMapRect,
           edgePadding: UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0),
@@ -91,7 +92,7 @@ class EventDetailViewController: UIViewController {
     } else {
       mapView.isHidden = true
     }
-    applyMapFadeOut()
+//    applyMapFadeO ut()
   }
 
   override func viewWillAppear(_ animated: Bool) {
