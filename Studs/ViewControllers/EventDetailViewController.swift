@@ -14,14 +14,10 @@ class EventDetailViewController: UIViewController {
 
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var companyLabel: UILabel!
-  @IBOutlet weak var dateLabel: UILabel!
-  @IBOutlet weak var addressLabel: UILabel!
-  @IBOutlet weak var timeLabel: UILabel!
   @IBOutlet weak var beforeSurveyButton: CardView!
   @IBOutlet weak var afterSurveyButton: CardView!
   @IBOutlet weak var descriptionCard: CardView!
-  @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var descriptionTextView: UITextView!
 
   // MARK: - Properties
   var event: Event!
@@ -32,7 +28,9 @@ class EventDetailViewController: UIViewController {
     super.viewDidLoad()
 
     if let description = event.privateDescription, !description.isEmpty {
-      descriptionLabel.text = event.privateDescription
+      descriptionTextView.text = event.privateDescription
+      // Remove stupid padding
+      descriptionTextView.textContainer.lineFragmentPadding = 0
     } else {
       descriptionCard.isHidden = true
     }
