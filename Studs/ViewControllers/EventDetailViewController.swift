@@ -80,17 +80,21 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         pin.title = "\(self.event.companyName ?? ""): \(address)"
         self.mapView.addAnnotation(pin)
         self.mapView.showAnnotations([pin], animated: false)
-        // Move up centering a bit since map is partially covered by card view
-        self.mapView.setVisibleMapRect(
-          self.mapView.visibleMapRect,
-          edgePadding: UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0),
-          animated: false
-        )
+        // Zoom out map a bit
+        self.mapView.setRegion({
+            var region = self.mapView.region
+            var span = region.span
+            span.latitudeDelta *= 3
+            span.longitudeDelta *= 3
+            region.span = span
+            return region
+          }(),
+          animated: false)
       }
     } else {
       mapView.isHidden = true
     }
-    applyMapFadeOut()
+//    applyMapFadeO ut()
   }
 
   override func viewWillAppear(_ animated: Bool) {
