@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import SafariServices
 
-class EventDetailViewController: UIViewController {
+class EventDetailViewController: UIViewController, UITextViewDelegate {
 
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
@@ -26,6 +26,7 @@ class EventDetailViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    descriptionTextView.delegate = self
 
     if let description = event.privateDescription, !description.isEmpty {
       descriptionTextView.text = event.privateDescription
@@ -176,5 +177,13 @@ class EventDetailViewController: UIViewController {
     default:
       break
     }
+  }
+
+  // MARK: - UITextViewDelegate
+  func textView(_ textView: UITextView, shouldInteractWith URL: URL,
+                in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+    // Open URLs from textview in in app browser instead of external
+    openURL(url: URL.absoluteString)
+    return false
   }
 }
