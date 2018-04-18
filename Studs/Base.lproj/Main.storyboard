@@ -20,23 +20,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="TYB-Py-Z4s">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FlowerPattern" translatesAutoresizingMaskIntoConstraints="NO" id="w6z-gG-VWW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ztY-vQ-nmi">
-                                    <rect key="frame" x="8" y="32" width="359" height="108"/>
+                                    <rect key="frame" x="8" y="36" width="359" height="128.33333333333334"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d24-z0-tPO">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Next Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d24-z0-tPO">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="20.333333333333332"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <color key="textColor" red="0.96862745100000003" green="0.86666666670000003" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9uR-yk-M5u" userLabel="Next Event Card">
-                                            <rect key="frame" x="0.0" y="28.333333333333336" width="359" height="79.666666666666657"/>
+                                        <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="9uR-yk-M5u" userLabel="Next Event Card">
+                                            <rect key="frame" x="0.0" y="28.333333333333329" width="359" height="99.999999999999986"/>
                                             <connections>
                                                 <outletCollection property="gestureRecognizers" destination="K3p-Pc-laP" appends="YES" id="Hj2-lm-vLL"/>
                                                 <segue destination="UD9-XR-dvS" kind="embed" identifier="detailCardSetupSegue" id="mJf-wR-yqh"/>
@@ -48,20 +48,19 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="ztY-vQ-nmi" firstAttribute="top" secondItem="TYB-Py-Z4s" secondAttribute="top" constant="32" id="1As-Zl-Ize"/>
                                 <constraint firstItem="w6z-gG-VWW" firstAttribute="top" secondItem="TYB-Py-Z4s" secondAttribute="top" id="5hp-i3-flR"/>
                                 <constraint firstItem="ztY-vQ-nmi" firstAttribute="leading" secondItem="MVV-IH-nWn" secondAttribute="leading" constant="8" id="5vl-s7-zuV"/>
+                                <constraint firstItem="ztY-vQ-nmi" firstAttribute="centerY" secondItem="w6z-gG-VWW" secondAttribute="centerY" id="L11-Ub-UR3"/>
                                 <constraint firstAttribute="bottom" secondItem="w6z-gG-VWW" secondAttribute="bottom" id="MHY-64-XA0"/>
                                 <constraint firstItem="w6z-gG-VWW" firstAttribute="leading" secondItem="TYB-Py-Z4s" secondAttribute="leading" id="SYb-lO-g8f"/>
                                 <constraint firstAttribute="trailing" secondItem="w6z-gG-VWW" secondAttribute="trailing" id="c7u-yr-3O4"/>
-                                <constraint firstAttribute="bottom" secondItem="ztY-vQ-nmi" secondAttribute="bottom" constant="40" id="k2Z-pE-1R6"/>
                                 <constraint firstItem="MVV-IH-nWn" firstAttribute="trailing" secondItem="ztY-vQ-nmi" secondAttribute="trailing" constant="8" id="sov-V1-DT0"/>
                             </constraints>
                             <viewLayoutGuide key="safeArea" id="MVV-IH-nWn"/>
                         </view>
                         <prototypes>
                             <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="header" rowHeight="56" id="Khz-ar-oc4" customClass="EventSectionHeaderTableViewCell" customModule="Studs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="208" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="228" width="375" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Khz-ar-oc4" id="diV-0k-ykX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -88,7 +87,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="62" id="gFy-cm-c09" customClass="EventTableViewCell" customModule="Studs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="264" width="375" height="62"/>
+                                <rect key="frame" x="0.0" y="284" width="375" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gFy-cm-c09" id="c0E-w3-6bO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
@@ -217,8 +216,7 @@
                                                         <color key="backgroundColor" red="0.18823529410000001" green="0.23137254900000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Take pre-survey"/>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="lightText" value="YES"/>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="whiteText" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="lightContent" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="Olf-4i-A4S" appends="YES" id="HiN-th-39j"/>
@@ -229,8 +227,7 @@
                                                         <color key="backgroundColor" red="0.18823529410000001" green="0.23137254900000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Take post-survey"/>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="lightText" value="YES"/>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="whiteText" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="lightContent" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outletCollection property="gestureRecognizers" destination="vZq-Do-cfv" appends="YES" id="nk3-qw-flx"/>
@@ -611,13 +608,16 @@
                     <view key="view" contentMode="scaleToFill" id="OTl-wF-Zfj" customClass="StudsButton" customModule="Studs" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="54"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.18823529410000001" green="0.23137254900000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745100000003" green="0.86666666670000003" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Check in"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="subtitle" value="Not checked in - Tap to check in"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="whiteText" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="lightContent" value="NO"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="upu-nM-bdy" appends="YES" id="dJ8-7Y-azz"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="button" destination="OTl-wF-Zfj" id="GW5-Hh-BpU"/>
@@ -637,11 +637,11 @@
             <objects>
                 <viewController id="UD9-XR-dvS" customClass="EventDetailCardViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ebX-vm-sJC" customClass="CardView" customModule="Studs" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="359" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="359" height="99.999999999999986"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YB9-VO-mp7">
-                                <rect key="frame" x="16" y="16" width="327" height="58"/>
+                                <rect key="frame" x="16" y="16" width="327" height="67.666666666666671"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1Ol-xj-vWO">
                                         <rect key="frame" x="0.0" y="0.0" width="327" height="19.333333333333332"/>
@@ -665,7 +665,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zlv-LK-AJ3">
-                                        <rect key="frame" x="0.0" y="27.333333333333336" width="327" height="30.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="27.333333333333332" width="327" height="40.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVX-Zo-HZm">
                                                 <rect key="frame" x="0.0" y="0.0" width="283" height="19.333333333333332"/>
@@ -701,7 +701,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="YB9-VO-mp7" firstAttribute="top" secondItem="ebX-vm-sJC" secondAttribute="top" constant="16" id="ZDJ-dx-VE3"/>
-                            <constraint firstAttribute="bottom" secondItem="YB9-VO-mp7" secondAttribute="bottom" priority="999" constant="16" id="ZRP-GK-CtF"/>
+                            <constraint firstAttribute="bottom" secondItem="YB9-VO-mp7" secondAttribute="bottom" constant="16" id="ZRP-GK-CtF"/>
                             <constraint firstAttribute="trailing" secondItem="YB9-VO-mp7" secondAttribute="trailing" constant="16" id="h5h-Yc-LvE"/>
                             <constraint firstItem="YB9-VO-mp7" firstAttribute="leading" secondItem="ebX-vm-sJC" secondAttribute="leading" constant="16" id="yOK-Ud-wau"/>
                         </constraints>
@@ -725,7 +725,7 @@
         <image name="onepassword-button-light" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="axd-gD-9DU"/>
+        <segue reference="mJf-wR-yqh"/>
         <segue reference="kSx-Xh-XvX"/>
     </inferredMetricsTieBreakers>
 </document>

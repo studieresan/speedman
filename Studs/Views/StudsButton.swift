@@ -32,11 +32,11 @@ class StudsButton: CardView {
       bottomPadding.constant = newValue == nil ? 16 : 10
     }
   }
-  @IBInspectable var whiteText: Bool {
-    get { return subtitleLabel.textColor == UIColor.white }
+  @IBInspectable var lightContent: Bool {
+    get { return titleLabel?.textColor == UIColor.white }
     set {
-      titleLabel?.textColor = UIColor.white
-      subtitleLabel?.textColor = UIColor.white
+      titleLabel?.textColor = newValue ? UIColor.white : UIColor.black
+      subtitleLabel?.textColor = newValue ? UIColor.white : UIColor.black
     }
   }
   override var backgroundColor: UIColor? {
@@ -69,5 +69,24 @@ class StudsButton: CardView {
     let bundle = Bundle(for: type(of: self))
     let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
     return nib.instantiate(withOwner: self, options: nil).first as? CardView
+  }
+
+  // MARK: - UIResponder
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    contentView.layer.shadowOpacity = 0
+    titleLabel.alpha = 0.5
+    subtitleLabel.alpha = 0.5
+  }
+
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    contentView.layer.shadowOpacity = 0.2
+    titleLabel.alpha = 1.0
+    subtitleLabel.alpha = 1.0
+  }
+
+  override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+    contentView.layer.shadowOpacity = 0.2
+    titleLabel.alpha = 1.0
+    subtitleLabel.alpha = 1.0
   }
 }

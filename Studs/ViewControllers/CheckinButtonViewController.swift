@@ -103,16 +103,20 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
     case .open:
       button.title = "Check in"
       button.subtitle = "Not checked in - Tap to check in"
-      button.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+      button.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.8666666667, blue: 0.7882352941, alpha: 1)
+      button.lightContent = false
       button.titleLabel.alpha = 1.0
       button.alpha = 1.0
+      button.isUserInteractionEnabled = true
     case .checkedIn:
       let time = DateFormatter.timeFormatter.string(from: checkin!.checkedInAt)
       button.title = "You are checked in!"
       button.subtitle = "Checked in at \(time)"
-      view.backgroundColor = #colorLiteral(red: 0.4503, green: 0.7803, blue: 0.0, alpha: 1)
+      button.backgroundColor = #colorLiteral(red: 0.4503, green: 0.7803, blue: 0.0, alpha: 1)
+      button.lightContent = true
       button.titleLabel.alpha = 1.0
       button.alpha = 1.0
+      button.isUserInteractionEnabled = false
     case .wrongTime:
       button.title = "Check-in closed"
       if let date = checkinStart, Calendar.current.isDateInToday(date) {
@@ -122,14 +126,18 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
         button.subtitle = "Check-in opens on day of event"
       }
       button.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+      button.lightContent = true
       button.titleLabel.alpha = 0.5
       button.alpha = 0.5
+      button.isUserInteractionEnabled = false
     case .wrongLocation:
       button.title = "Check in"
       button.subtitle = "Checking in is only possible on location of event"
       button.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+      button.lightContent = true
       button.titleLabel.alpha = 0.5
       button.alpha = 0.5
+      button.isUserInteractionEnabled = false
     }
   }
 }
