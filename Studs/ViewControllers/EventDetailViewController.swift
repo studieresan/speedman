@@ -14,8 +14,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
 
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
-  @IBOutlet weak var beforeSurveyButton: CardView!
-  @IBOutlet weak var afterSurveyButton: CardView!
+  @IBOutlet weak var beforeSurveyButton: StudsButton!
+  @IBOutlet weak var afterSurveyButton: StudsButton!
   @IBOutlet weak var descriptionCard: CardView!
   @IBOutlet weak var descriptionTextView: UITextView!
 

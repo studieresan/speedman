@@ -10,10 +10,8 @@ import UIKit
 import CoreLocation
 
 class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
-
   // MARK: - Outlets
-  @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var subtitleLabel: UILabel!
+  @IBOutlet var button: StudsButton!
 
   // MARK: - Properties
   var event: Event!
@@ -103,35 +101,35 @@ class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
   private func updateUI() {
     switch state {
     case .open:
-      titleLabel.text = "Check in"
-      subtitleLabel.text = "Not checked in - Tap to check in"
-      view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
-      titleLabel.alpha = 1.0
-      view.alpha = 1.0
+      button.title = "Check in"
+      button.subtitle = "Not checked in - Tap to check in"
+      button.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+      button.titleLabel.alpha = 1.0
+      button.alpha = 1.0
     case .checkedIn:
       let time = DateFormatter.timeFormatter.string(from: checkin!.checkedInAt)
-      titleLabel.text = "You are checked in!"
-      subtitleLabel.text = "Checked in at \(time)"
+      button.title = "You are checked in!"
+      button.subtitle = "Checked in at \(time)"
       view.backgroundColor = #colorLiteral(red: 0.4503, green: 0.7803, blue: 0.0, alpha: 1)
-      titleLabel.alpha = 1.0
-      view.alpha = 1.0
+      button.titleLabel.alpha = 1.0
+      button.alpha = 1.0
     case .wrongTime:
-      titleLabel.text = "Check-in closed"
+      button.title = "Check-in closed"
       if let date = checkinStart, Calendar.current.isDateInToday(date) {
         let time = DateFormatter.timeFormatter.string(from: date)
-        subtitleLabel.text = "Check-in opens at \(time)"
+        button.subtitle = "Check-in opens at \(time)"
       } else {
-        subtitleLabel.text = "Check-in opens on day of event"
+        button.subtitle = "Check-in opens on day of event"
       }
-      view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
-      titleLabel.alpha = 0.5
-      view.alpha = 0.5
+      button.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+      button.titleLabel.alpha = 0.5
+      button.alpha = 0.5
     case .wrongLocation:
-      titleLabel.text = "Check in"
-      subtitleLabel.text = "Checking in is only possible on location of event"
-      view.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
-      titleLabel.alpha = 0.5
-      view.alpha = 0.5
+      button.title = "Check in"
+      button.subtitle = "Checking in is only possible on location of event"
+      button.backgroundColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+      button.titleLabel.alpha = 0.5
+      button.alpha = 0.5
     }
   }
 }

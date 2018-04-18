@@ -27,6 +27,8 @@
 		ABBCA9DF2034966000353E8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABBCA9DE2034966000353E8E /* MapKit.framework */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
 		ABE7619F2035D0900098D838 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7619E2035D0900098D838 /* SafariServices.framework */; };
+		ABFC76F7208750DC002534AE /* StudsButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFC76F6208750DC002534AE /* StudsButton.xib */; };
+		ABFC76F9208751F9002534AE /* StudsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFC76F8208751F9002534AE /* StudsButton.swift */; };
 		ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */; };
 		ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBB2010EF6200BCA86C /* Main.storyboard */; };
 		ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		ABBCA9DE2034966000353E8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABE7619E2035D0900098D838 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		ABFC76F6208750DC002534AE /* StudsButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudsButton.xib; sourceTree = "<group>"; };
+		ABFC76F8208751F9002534AE /* StudsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudsButton.swift; sourceTree = "<group>"; };
 		ABFD7FB42010EF6200BCA86C /* Studs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Studs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABFD7FBC2010EF6200BCA86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 		AB6DF34D20206661002D3A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ABFC76F6208750DC002534AE /* StudsButton.xib */,
+				ABFC76F8208751F9002534AE /* StudsButton.swift */,
 				AB4B329C207A2DC200887A51 /* EventSectionHeaderTableViewCell.swift */,
 				AB6DF34B201F6755002D3A71 /* CardView.swift */,
 				AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */,
@@ -321,6 +327,7 @@
 				ABFD7FC22010EF6200BCA86C /* LaunchScreen.storyboard in Resources */,
 				ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */,
 				AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */,
+				ABFC76F7208750DC002534AE /* StudsButton.xib in Resources */,
 				ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */,
 				ABFD7FBD2010EF6200BCA86C /* Main.storyboard in Resources */,
 			);
@@ -500,6 +507,7 @@
 				AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */,
 				AB35819D2011307200673D3F /* User.swift in Sources */,
 				AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */,
+				ABFC76F9208751F9002534AE /* StudsButton.swift in Sources */,
 				AB4BD902207A8B52006C03FF /* EventDetailCardViewController.swift in Sources */,
 				AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */,
 				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
