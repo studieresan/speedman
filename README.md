@@ -39,6 +39,5 @@ Drop it into the `Studs/ ` directory.
 
 ## Built With
 * [Alamofire](https://github.com/Alamofire/Alamofire) - HTTP Networking
-* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Parsing networking responses
 * [1Password App Extension](https://github.com/AgileBits/onepassword-app-extension) - Credentials autofilling for 1Password users
 * [Firebase Cloud Firestore](https://firebase.google.com/docs/firestore/) - Realtime database

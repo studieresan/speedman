@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 struct API {
   private static let baseURL = "https://studs-overlord.appspot.com"
@@ -67,10 +66,18 @@ struct API {
       .responseJSON { response in
         let result = Result<T> {
           switch response.result {
-          case .success(let value):
-            let json = JSON(value)
-            let queryJson = json["data"][queryName]
-            return try jsonDecoder.decode(T.self, from: queryJson.rawData())
+          case .success(let json):
+            // Extract the result from the keys "data" -> <queryName> from the json
+            guard
+              let json = json as? [String: Any],
+              let dataJson = json["data"] as? [String: Any],
+              let resultJson = dataJson[queryName]
+            else { throw "Failed to extract result from query response" }
+            // Convert the result into Data again
+            let resultData = try JSONSerialization.data(withJSONObject: resultJson,
+                                                        options: [])
+            // Decode the Data to our model
+            return try jsonDecoder.decode(T.self, from: resultData)
           case .failure(let error):
             throw error
           }

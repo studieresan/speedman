@@ -52,14 +52,12 @@ PODS:
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
   - SwiftLint (0.24.2)
-  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - 1PasswordExtension (~> 1.8.5)
   - Alamofire (~> 4.5)
   - FirebaseFirestore (~> 0.10)
   - SwiftLint
-  - SwiftyJSON (~> 4.0)
 
 SPEC CHECKSUMS:
   1PasswordExtension: 0e95bdea64ec8ff2f4f693be5467a09fac42a83d
@@ -78,8 +76,7 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 80fbd857d6907441d46fbbaee54388b044ce7df4
+PODFILE CHECKSUM: bb3adbb4aec5727100b6342a85d82287f1bb61c0
 
 COCOAPODS: 1.4.0

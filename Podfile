@@ -9,7 +9,6 @@ target 'Studs' do
 
   # Pods for Studs
   pod 'Alamofire', '~> 4.5'
-  pod 'SwiftyJSON', '~> 4.0'
   pod '1PasswordExtension', '~> 1.8.5'
   pod 'FirebaseFirestore', '~> 0.10'
 

@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+extension String: Error {}
+
 extension DateFormatter {
   static let iso8601Fractional: DateFormatter = {
     let formatter = DateFormatter()
