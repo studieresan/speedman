@@ -83,7 +83,7 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Actions
   @IBAction func logout(_ sender: UIBarButtonItem) {
     API.logout()
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let storyboard = UIStoryboard(name: "Events", bundle: nil)
     let logInCtrl = storyboard.instantiateViewController(withIdentifier: "loginVC")
     self.present(logInCtrl, animated: true) {}
   }
@@ -96,7 +96,7 @@ class EventsTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int)
     -> UIView? {
     let view = tableView.dequeueReusableCell(withIdentifier: "header")
-    if let sectionHeader = view as? EventSectionHeaderTableViewCell {
+    if let sectionHeader = view as? EventTableViewSectionHeader {
       sectionHeader.sectionTitle.text = section == 0 ? "Upcoming Events" : "Past Events"
       return sectionHeader
     }

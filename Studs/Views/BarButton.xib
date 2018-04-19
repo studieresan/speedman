@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StudsButton" customModule="Studs" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BarButton" customModule="Studs" customModuleProvider="target">
             <connections>
                 <outlet property="bottomPadding" destination="031-cz-rKg" id="vkC-Y9-tjG"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="WYa-yV-zEY"/>

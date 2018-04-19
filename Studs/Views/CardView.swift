@@ -5,8 +5,8 @@
 //  Created by Jonathan Berglind on 2018-01-29.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
-// A view that with rounded edges and shadows that looks like a card.
-// The default values can be overridden in the Interface Builder.
+//  A view that with rounded edges and shadows that looks like a card.
+//  The default values can be overridden in the Interface Builder.
 
 import UIKit
 

@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     firestoreDB = Firestore.firestore()
 
     // Pick initial view controller depending on if logged in or not
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let storyboard = UIStoryboard(name: "Events", bundle: nil)
     let startingVC = UserManager.shared.isLoggedIn
       ? storyboard.instantiateInitialViewController()
       : storyboard.instantiateViewController(withIdentifier: "loginVC")

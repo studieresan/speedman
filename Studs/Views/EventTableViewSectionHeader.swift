@@ -1,5 +1,5 @@
 //
-//  EventSectionHeaderTableViewCell.swift
+//  EventTableViewSectionHeader.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-04-08.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class EventSectionHeaderTableViewCell: UITableViewCell {
+class EventTableViewSectionHeader: UITableViewCell {
   @IBOutlet weak var sectionTitle: UILabel!
 }

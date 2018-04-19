@@ -11,7 +11,7 @@ import CoreLocation
 
 class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
   // MARK: - Outlets
-  @IBOutlet var button: StudsButton!
+  @IBOutlet var button: BarButton!
 
   // MARK: - Properties
   var event: Event!

@@ -1,5 +1,5 @@
 //
-//  StudsButton.swift
+//  BarButton.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-04-18.
@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class StudsButton: CardView {
+class BarButton: CardView {
   // MARK: - Outlets
   @IBOutlet var contentView: CardView!
   @IBOutlet weak var titleLabel: UILabel!
