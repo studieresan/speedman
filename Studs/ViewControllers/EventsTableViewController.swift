@@ -9,6 +9,9 @@
 import UIKit
 
 class EventsTableViewController: UITableViewController {
+  // MARK: - Outlets
+  @IBOutlet weak var nextEventCard: EventInfoCard!
+
   // MARK: - Properties
   private var events = [Event]() {
     didSet {
@@ -26,14 +29,13 @@ class EventsTableViewController: UITableViewController {
   }
   private var nextEvent: Event? {
     didSet {
-      // Set up "Next Event" card or hide view if no next event
-      cardVC?.event = nextEvent
       tableView.tableHeaderView?.isHidden = nextEvent == nil
+      guard let event = nextEvent else { return }
+      nextEventCard.setup(for: event)
     }
   }
   private var upcomingEvents = [Event]()
   private var pastEvents = [Event]()
-  private var cardVC: EventDetailCardViewController?
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -141,11 +143,6 @@ class EventsTableViewController: UITableViewController {
         let eventsVC = segue.destination as? EventDetailViewController
       else { return }
       eventsVC.event = getEvent(for: selectedCell)
-    case "detailCardSetupSegue":
-      // Save a reference to the Card VC
-      cardVC = segue.destination as? EventDetailCardViewController
-      // Make the container view size itself to the embedded VC
-      cardVC?.view.translatesAutoresizingMaskIntoConstraints = false
     default:
       break
     }

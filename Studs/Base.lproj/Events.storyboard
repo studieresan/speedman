@@ -27,7 +27,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ztY-vQ-nmi">
-                                    <rect key="frame" x="8" y="36" width="359" height="128.33333333333334"/>
+                                    <rect key="frame" x="8" y="45.999999999999993" width="359" height="108.33333333333331"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Next Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d24-z0-tPO">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="20.333333333333332"/>
@@ -35,13 +35,13 @@
                                             <color key="textColor" red="0.96862745100000003" green="0.86666666670000003" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="9uR-yk-M5u" userLabel="Next Event Card">
-                                            <rect key="frame" x="0.0" y="28.333333333333329" width="359" height="99.999999999999986"/>
+                                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="nQR-Vz-Jdu" customClass="EventInfoCard" customModule="Studs" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="28.333333333333329" width="359" height="80"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <outletCollection property="gestureRecognizers" destination="K3p-Pc-laP" appends="YES" id="Hj2-lm-vLL"/>
-                                                <segue destination="UD9-XR-dvS" kind="embed" identifier="detailCardSetupSegue" id="mJf-wR-yqh"/>
+                                                <outletCollection property="gestureRecognizers" destination="K3p-Pc-laP" appends="YES" id="3HI-6t-rXP"/>
                                             </connections>
-                                        </containerView>
+                                        </view>
                                     </subviews>
                                     <gestureRecognizers/>
                                 </stackView>
@@ -86,18 +86,18 @@
                                     <outlet property="sectionTitle" destination="rEm-uu-FzZ" id="eTu-5e-drX"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="62" id="gFy-cm-c09" customClass="EventTableViewCell" customModule="Studs" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="284" width="375" height="62"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" rowHeight="48" id="gFy-cm-c09" customClass="EventTableViewCell" customModule="Studs" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="284" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gFy-cm-c09" id="c0E-w3-6bO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2RA-rh-o0X" customClass="CardView" customModule="Studs">
-                                            <rect key="frame" x="8" y="4" width="359" height="54"/>
+                                            <rect key="frame" x="8" y="4" width="359" height="40"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="vrI-RW-Jqu">
-                                                    <rect key="frame" x="16" y="10" width="327" height="34"/>
+                                                    <rect key="frame" x="16" y="10" width="327" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Company name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6v-Ya-dvw">
                                                             <rect key="frame" x="0.0" y="0.0" width="163.66666666666666" height="19.333333333333332"/>
@@ -156,13 +156,13 @@
                         <attributedString key="attributedTitle"/>
                     </refreshControl>
                     <connections>
+                        <outlet property="nextEventCard" destination="nQR-Vz-Jdu" id="gIg-vR-mYR"/>
                         <segue destination="VxP-ZX-Htj" kind="show" identifier="eventDetailSegue" id="kSx-Xh-XvX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3as-Cc-Dsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="K3p-Pc-laP">
                     <connections>
-                        <action selector="nextEventTapped:" destination="Khd-gE-RfT" id="Swe-CE-IrI"/>
                         <segue destination="VxP-ZX-Htj" kind="show" identifier="nextEventDetailSegue" id="eC8-ui-pro"/>
                     </connections>
                 </tapGestureRecognizer>
@@ -197,22 +197,20 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WR0-ev-16N">
-                                                <rect key="frame" x="8" y="200.00000000000003" width="359" height="451.66666666666674"/>
+                                                <rect key="frame" x="8" y="200.00000000000003" width="359" height="441.66666666666674"/>
                                                 <subviews>
-                                                    <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="90" translatesAutoresizingMaskIntoConstraints="NO" id="zTW-ZV-uHl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="90"/>
-                                                        <connections>
-                                                            <segue destination="UD9-XR-dvS" kind="embed" identifier="detailCardSetupSegue" id="axd-gD-9DU"/>
-                                                        </connections>
-                                                    </containerView>
+                                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="80" translatesAutoresizingMaskIntoConstraints="NO" id="4k4-22-udn" customClass="EventInfoCard" customModule="Studs" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="80"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="54" translatesAutoresizingMaskIntoConstraints="NO" id="lse-i8-4kh" userLabel="Checkin Button">
-                                                        <rect key="frame" x="0.0" y="98" width="359" height="54"/>
+                                                        <rect key="frame" x="0.0" y="88" width="359" height="54"/>
                                                         <connections>
                                                             <segue destination="pPB-Rc-2AJ" kind="embed" identifier="checkinButtonSetupSegue" id="avx-8A-ylo"/>
                                                         </connections>
                                                     </containerView>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="vu4-lD-kFh" customClass="BarButton" customModule="Studs" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="160" width="359" height="50"/>
+                                                        <rect key="frame" x="0.0" y="150" width="359" height="50"/>
                                                         <color key="backgroundColor" red="0.18823529410000001" green="0.23137254900000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Take pre-survey"/>
@@ -223,7 +221,7 @@
                                                         </connections>
                                                     </view>
                                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="359" placeholderIntrinsicHeight="50" translatesAutoresizingMaskIntoConstraints="NO" id="w44-D8-qOz" customClass="BarButton" customModule="Studs" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="218" width="359" height="50"/>
+                                                        <rect key="frame" x="0.0" y="208" width="359" height="50"/>
                                                         <color key="backgroundColor" red="0.18823529410000001" green="0.23137254900000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Take post-survey"/>
@@ -234,7 +232,7 @@
                                                         </connections>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxC-Tu-E7p" userLabel="Event Description Card" customClass="CardView" customModule="Studs" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="276" width="359" height="175.66666666666663"/>
+                                                        <rect key="frame" x="0.0" y="266" width="359" height="175.66666666666663"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9AC-aP-cOw">
                                                                 <rect key="frame" x="16" y="16" width="327" height="143.66666666666666"/>
@@ -246,7 +244,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" contentInsetAdjustmentBehavior="never" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KdT-uI-sYl">
-                                                                        <rect key="frame" x="0.0" y="27.333333333333364" width="327" height="116.33333333333331"/>
+                                                                        <rect key="frame" x="0.0" y="27.333333333333307" width="327" height="116.33333333333331"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -324,6 +322,7 @@
                         <outlet property="beforeSurveyButton" destination="vu4-lD-kFh" id="iLl-mu-X7B"/>
                         <outlet property="descriptionCard" destination="ZxC-Tu-E7p" id="vUj-EQ-vB7"/>
                         <outlet property="descriptionTextView" destination="KdT-uI-sYl" id="KWo-pm-iNd"/>
+                        <outlet property="infoCard" destination="4k4-22-udn" id="hcU-Nk-jyX"/>
                         <outlet property="mapView" destination="tIK-cV-AZp" id="pE5-nv-w19"/>
                     </connections>
                 </viewController>
@@ -633,92 +632,6 @@
             </objects>
             <point key="canvasLocation" x="1201" y="532"/>
         </scene>
-        <!--Event Detail Card View Controller-->
-        <scene sceneID="zVD-kh-r4I">
-            <objects>
-                <viewController id="UD9-XR-dvS" customClass="EventDetailCardViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ebX-vm-sJC" customClass="CardView" customModule="Studs" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="359" height="99.999999999999986"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YB9-VO-mp7">
-                                <rect key="frame" x="16" y="16" width="327" height="67.666666666666671"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1Ol-xj-vWO">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="19.333333333333332"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Company" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30f-cy-w3c">
-                                                <rect key="frame" x="0.0" y="0.0" width="284.66666666666669" height="19.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmn-pb-Ojf">
-                                                <rect key="frame" x="292.66666666666669" y="0.0" width="34.333333333333314" height="19.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" red="0.59607843140000005" green="0.58431372550000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="30f-cy-w3c" firstAttribute="top" secondItem="1Ol-xj-vWO" secondAttribute="top" id="BjU-zS-2vv"/>
-                                            <constraint firstAttribute="bottom" secondItem="30f-cy-w3c" secondAttribute="bottom" id="imc-uf-wnl"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zlv-LK-AJ3">
-                                        <rect key="frame" x="0.0" y="27.333333333333332" width="327" height="40.333333333333343"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" text="Address" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVX-Zo-HZm">
-                                                <rect key="frame" x="0.0" y="0.0" width="283" height="19.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" red="0.59607843140000005" green="0.58431372550000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OD7-lx-EN2">
-                                                <rect key="frame" x="291" y="0.0" width="36" height="19.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <color key="textColor" red="0.59607843140000005" green="0.58431372550000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓ Survey" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XZ-Ga-cxU">
-                                        <rect key="frame" x="0.0" y="50.666666666666671" width="327" height="17.333333333333329"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.59607843140000005" green="0.58431372550000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                </subviews>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="5XZ-Ga-cxU"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="YB9-VO-mp7" firstAttribute="top" secondItem="ebX-vm-sJC" secondAttribute="top" constant="16" id="ZDJ-dx-VE3"/>
-                            <constraint firstAttribute="bottom" secondItem="YB9-VO-mp7" secondAttribute="bottom" constant="16" id="ZRP-GK-CtF"/>
-                            <constraint firstAttribute="trailing" secondItem="YB9-VO-mp7" secondAttribute="trailing" constant="16" id="h5h-Yc-LvE"/>
-                            <constraint firstItem="YB9-VO-mp7" firstAttribute="leading" secondItem="ebX-vm-sJC" secondAttribute="leading" constant="16" id="yOK-Ud-wau"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="CAR-XG-ED6"/>
-                    </view>
-                    <connections>
-                        <outlet property="addressLabel" destination="PVX-Zo-HZm" id="3eb-5r-Bd3"/>
-                        <outlet property="companyLabel" destination="30f-cy-w3c" id="Vgo-FA-ibS"/>
-                        <outlet property="dateLabel" destination="pmn-pb-Ojf" id="FKq-Pg-KKf"/>
-                        <outlet property="timeLabel" destination="OD7-lx-EN2" id="aUX-50-YMn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c2u-Po-WqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="810" y="-399"/>
-        </scene>
     </scenes>
     <resources>
         <image name="FlowerPattern" width="2000" height="2000"/>
@@ -726,7 +639,6 @@
         <image name="onepassword-button-light" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mJf-wR-yqh"/>
-        <segue reference="eC8-ui-pro"/>
+        <segue reference="kSx-Xh-XvX"/>
     </inferredMetricsTieBreakers>
 </document>

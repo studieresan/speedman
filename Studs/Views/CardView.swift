@@ -31,6 +31,10 @@ class CardView: UIView {
     layer.shadowOpacity = 0.2
     layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
     layer.shadowColor = UIColor.black.cgColor
+    // Rasterize card view by default.
+    // Turn off if animating contents of view.
+    layer.shouldRasterize = true
+    layer.rasterizationScale = UIScreen.main.scale
   }
 
   @IBInspectable

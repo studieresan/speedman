@@ -48,16 +48,17 @@ class BarButton: CardView {
   // MARK: - Initialization
   override init(frame: CGRect) {
     super.init(frame: frame)
-    xibSetup()
+    setup()
   }
 
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    xibSetup()
+    setup()
   }
 
-  func xibSetup() {
+  func setup() {
     contentView = loadViewFromNib()
+    isMultipleTouchEnabled = false
     subtitle = nil
     contentView.backgroundColor = backgroundColor
     contentView.frame = bounds

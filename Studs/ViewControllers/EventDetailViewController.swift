@@ -14,6 +14,7 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
 
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var infoCard: EventInfoCard!
   @IBOutlet weak var beforeSurveyButton: BarButton!
   @IBOutlet weak var afterSurveyButton: BarButton!
   @IBOutlet weak var descriptionCard: CardView!
@@ -27,6 +28,8 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     descriptionTextView.delegate = self
+
+    infoCard.setup(for: event)
 
     if let description = event.privateDescription, !description.isEmpty {
       descriptionTextView.text = event.privateDescription
@@ -171,12 +174,6 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
         buttonVC.event = self.event
         // Make the container view size itself to the embedded VC
         buttonVC.view.translatesAutoresizingMaskIntoConstraints = false
-      }
-    case "detailCardSetupSegue":
-      if let cardVC = segue.destination as? EventDetailCardViewController {
-        cardVC.event = self.event
-        // Make the container view size itself to the embedded VC
-        cardVC.view.translatesAutoresizingMaskIntoConstraints = false
       }
     default:
       break
