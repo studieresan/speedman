@@ -47,6 +47,9 @@ class CheckInTableViewController: UITableViewController {
   }
 
   override func viewDidAppear(_ animated: Bool) {
+    if let navbar = navigationController?.navigationBar as? CustomNavigationBar {
+      navbar.style = .translucent
+    }
     super.viewDidAppear(animated)
     if users.isEmpty {
       // Manually pull to refresh once

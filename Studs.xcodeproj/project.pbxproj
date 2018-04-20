@@ -11,6 +11,7 @@
 		AB02D4AD204057B4007D7808 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB02D4AC204057B4007D7808 /* NotificationsManager.swift */; };
 		AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12A2192031DF280049DF6F /* UserManager.swift */; };
 		AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */; };
+		AB2577F82088C918004E6C80 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */; };
 		AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB265668202C8FA200131CE6 /* 1Password.xcassets */; };
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
 		AB35819620110AC900673D3F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35819520110AC900673D3F /* API.swift */; };
@@ -58,6 +59,7 @@
 		AB02D4AC204057B4007D7808 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		AB12A2192031DF280049DF6F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinButtonViewController.swift; sourceTree = "<group>"; };
+		AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB265668202C8FA200131CE6 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Pods/1PasswordExtension/1Password.xcassets; sourceTree = SOURCE_ROOT; };
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				AB6DF34D20206661002D3A71 /* Views */,
 				AB35819F2011335700673D3F /* ViewControllers */,
 				ABFD7FBB2010EF6200BCA86C /* Events.storyboard */,
+				AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */,
 				AB9B3782202CA5AA002D641D /* Firebase.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
 				AB12A2192031DF280049DF6F /* UserManager.swift */,
@@ -505,6 +508,7 @@
 				AB8A2C44204D2D12001445F1 /* Utilities.swift in Sources */,
 				AB358194201105CA00673D3F /* LoginViewController.swift in Sources */,
 				AB9B3781202C9F50002D641D /* EventCheckin.swift in Sources */,
+				AB2577F82088C918004E6C80 /* CustomNavigationBar.swift in Sources */,
 				ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */,
 				AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */,
 				ABFC38272088A8E50075C056 /* EventInfoCard.swift in Sources */,

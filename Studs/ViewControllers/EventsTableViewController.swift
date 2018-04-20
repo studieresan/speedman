@@ -50,6 +50,9 @@ class EventsTableViewController: UITableViewController {
   }
 
   override func viewDidAppear(_ animated: Bool) {
+    if let navbar = navigationController?.navigationBar as? CustomNavigationBar {
+      navbar.style = .translucent
+    }
     super.viewDidAppear(animated)
     if events.isEmpty {
       // Manually pull to refresh once

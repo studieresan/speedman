@@ -324,6 +324,7 @@
                         <outlet property="descriptionTextView" destination="KdT-uI-sYl" id="KWo-pm-iNd"/>
                         <outlet property="infoCard" destination="4k4-22-udn" id="hcU-Nk-jyX"/>
                         <outlet property="mapView" destination="tIK-cV-AZp" id="pE5-nv-w19"/>
+                        <outlet property="scrollView" destination="76a-M3-0SV" id="260-yy-gk8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="beP-uR-5mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -587,7 +588,7 @@
             <objects>
                 <navigationController storyboardIdentifier="navigationVC" automaticallyAdjustsScrollViewInsets="NO" id="q5s-6F-4pX" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bjz-wM-7TV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bjz-wM-7TV" customClass="CustomNavigationBar" customModule="Studs" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -641,4 +642,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="kSx-Xh-XvX"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.18823529410000001" green="0.23137254900000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

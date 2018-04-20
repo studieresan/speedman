@@ -10,9 +10,11 @@ import UIKit
 import MapKit
 import SafariServices
 
-class EventDetailViewController: UIViewController, UITextViewDelegate {
+class EventDetailViewController: UIViewController, UIScrollViewDelegate,
+UITextViewDelegate {
 
   // MARK: - Outlets
+  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var infoCard: EventInfoCard!
   @IBOutlet weak var beforeSurveyButton: BarButton!
@@ -23,10 +25,19 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
   // MARK: - Properties
   var event: Event!
   private let locationManager = CLLocationManager()
+  private lazy var navbar = navigationController?.navigationBar as? CustomNavigationBar
+  private var navbarStyle: CustomNavigationBar.Style {
+    if scrollView.contentOffset.y + scrollView.adjustedContentInset.top > 190 {
+      return .translucent
+    } else {
+      return .faded
+    }
+  }
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    scrollView.delegate = self
     descriptionTextView.delegate = self
 
     infoCard.setup(for: event)
@@ -103,6 +114,11 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
   override func viewWillAppear(_ animated: Bool) {
     locationManager.startUpdatingLocation()
     super.viewWillAppear(animated)
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    navbar?.style = navbarStyle
+    super.viewDidAppear(animated)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -186,5 +202,11 @@ class EventDetailViewController: UIViewController, UITextViewDelegate {
     // Open URLs from textview in in app browser instead of external
     openURL(url: URL.absoluteString)
     return false
+  }
+
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if navbar?.style != navbarStyle {
+      navbar?.style = navbarStyle
+    }
   }
 }
