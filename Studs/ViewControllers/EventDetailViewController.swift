@@ -25,14 +25,6 @@ UITextViewDelegate {
   // MARK: - Properties
   var event: Event!
   private let locationManager = CLLocationManager()
-  private lazy var navbar = navigationController?.navigationBar as? CustomNavigationBar
-  private var navbarStyle: CustomNavigationBar.Style {
-    if scrollView.contentOffset.y + scrollView.adjustedContentInset.top > 190 {
-      return .translucent
-    } else {
-      return .faded
-    }
-  }
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -62,11 +54,45 @@ UITextViewDelegate {
     // Hide button to check-in manager if insufficient permissions
     if let user = UserManager.shared.user,
       !user.permissions.contains(.checkins) {
-      // TODO: Separate permission for checkins
       navigationItem.rightBarButtonItem = nil
     }
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    locationManager.startUpdatingLocation()
+    super.viewWillAppear(animated)
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    updateNavbar()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    locationManager.stopUpdatingLocation()
+    super.viewWillDisappear(animated)
+  }
+
+  deinit {
+    applyMapViewMemoryLeakFix()
+  }
+
+  /// Mitigate MKMapView memory leaks
+  /// http://www.openradar.me/33400943
+  private func applyMapViewMemoryLeakFix() {
+    switch mapView.mapType {
+    case .standard, .mutedStandard:
+      mapView.mapType = .satellite
+    default:
+      mapView.mapType = .standard
+    }
+    mapView.showsUserLocation = false
+    mapView.delegate = nil
+    mapView.removeFromSuperview()
+    mapView = nil
+  }
+
+  // MARK: -
   /// Hide the event surveys buttons conditionally.
   /// Hides the after survey before the event and hides the before survey
   /// after the event starts.
@@ -111,40 +137,6 @@ UITextViewDelegate {
 //    applyMapFadeO ut()
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    locationManager.startUpdatingLocation()
-    super.viewWillAppear(animated)
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    navbar?.style = navbarStyle
-    super.viewDidAppear(animated)
-  }
-
-  override func viewWillDisappear(_ animated: Bool) {
-    locationManager.stopUpdatingLocation()
-    super.viewWillDisappear(animated)
-  }
-
-  deinit {
-    applyMapViewMemoryLeakFix()
-  }
-
-  /// Mitigate MKMapView memory leaks
-  /// http://www.openradar.me/33400943
-  private func applyMapViewMemoryLeakFix() {
-    switch mapView.mapType {
-    case .standard, .mutedStandard:
-      mapView.mapType = .satellite
-    default:
-      mapView.mapType = .standard
-    }
-    mapView.showsUserLocation = false
-    mapView.delegate = nil
-    mapView.removeFromSuperview()
-    mapView = nil
-  }
-
   /// Fades out the bottom of the map view by adding a gradient layer mask
   private func applyMapFadeOut() {
     let gradientLayer = CAGradientLayer()
@@ -157,6 +149,16 @@ UITextViewDelegate {
     // Fade out last 10%
     gradientLayer.locations = [0.9, 1.0]
     mapView.layer.mask = gradientLayer
+  }
+
+  // MARK: - Custom navbar management
+  private lazy var navbar = navigationController?.navigationBar as? CustomNavigationBar
+  func updateNavbar() {
+    if scrollView.contentOffset.y + scrollView.adjustedContentInset.top > 190 {
+      navbar?.style = .translucent
+    } else {
+      navbar?.style = .faded
+    }
   }
 
   // MARK: - Actions
@@ -205,8 +207,6 @@ UITextViewDelegate {
   }
 
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    if navbar?.style != navbarStyle {
-      navbar?.style = navbarStyle
-    }
+    updateNavbar()
   }
 }

@@ -40,6 +40,9 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupStretchyHeader()
+
+    // Use autolayout for determining the height of cells and section headers
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.sectionHeaderHeight = UITableViewAutomaticDimension
     tableView.estimatedSectionHeaderHeight = 56
@@ -50,14 +53,69 @@ class EventsTableViewController: UITableViewController {
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    if let navbar = navigationController?.navigationBar as? CustomNavigationBar {
-      navbar.style = .translucent
-    }
     super.viewDidAppear(animated)
+    updateNavbar()
     if events.isEmpty {
       // Manually pull to refresh once
       self.tableView.triggerRefresh()
     }
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navbar?.tintColor = #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
+  }
+
+  // MARK: - Stretchy header
+  private lazy var tableHeaderHeight = tableView.tableHeaderView?.frame.height ?? 200
+  private var stretchyHeaderView: UIView!
+
+  /// Moves the header view to a property and replaces it with a fake view of the
+  /// same size
+  func setupStretchyHeader() {
+    stretchyHeaderView = tableView.tableHeaderView
+    tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0,
+                                                     width: 0, height: tableHeaderHeight))
+    // Add the actual header view to the table
+    tableView.addSubview(stretchyHeaderView)
+
+    // Place refresh control on top of header view
+    if let refreshControl = tableView.refreshControl {
+      refreshControl.frame.origin.y -= tableHeaderHeight
+      tableView.bringSubview(toFront: refreshControl)
+    }
+    updateHeaderView()
+  }
+
+  /// Updates the size of the header view as we scroll down to make it look like it
+  /// stretches
+  func updateHeaderView() {
+    var headerRect = CGRect(x: 0, y: 0,
+                            width: tableView.bounds.width, height: tableHeaderHeight)
+    if tableView.contentOffset.y < 0 {
+      headerRect.origin.y = tableView.contentOffset.y
+      headerRect.size.height = -tableView.contentOffset.y + tableHeaderHeight
+    } else {
+      headerRect.origin.y = 0;
+      headerRect.size.height = tableHeaderHeight;
+    }
+    stretchyHeaderView.frame = headerRect
+  }
+
+  // MARK: - Custom navbar management
+  private lazy var navbar = navigationController?.navigationBar as? CustomNavigationBar
+  private var navbarShouldBeClear: Bool {
+    return tableView.contentOffset.y + tableView.adjustedContentInset.top < 10
+  }
+  override var prefersStatusBarHidden: Bool {
+    return navbarShouldBeClear
+  }
+  func updateNavbar() {
+    UIView.animate(withDuration: 0.2, animations: {
+      self.setNeedsStatusBarAppearanceUpdate()
+    })
+    navbar?.style = navbarShouldBeClear ? .clear : .translucent
+    navbar?.tintColor = navbarShouldBeClear ? #colorLiteral(red: 0.968627451, green: 0.8666666667, blue: 0.7882352941, alpha: 1) : #colorLiteral(red: 0.2451893389, green: 0.2986541092, blue: 0.3666122556, alpha: 1)
   }
 
   // MARK: -
@@ -91,6 +149,12 @@ class EventsTableViewController: UITableViewController {
     let storyboard = UIStoryboard(name: "Events", bundle: nil)
     let logInCtrl = storyboard.instantiateViewController(withIdentifier: "loginVC")
     self.present(logInCtrl, animated: true) {}
+  }
+
+  // MARK: - UIScrollViewDelegate
+  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    updateHeaderView()
+    updateNavbar()
   }
 
   // MARK: - UITableViewDataSource

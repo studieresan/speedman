@@ -50,9 +50,9 @@
                             <constraints>
                                 <constraint firstItem="w6z-gG-VWW" firstAttribute="top" secondItem="TYB-Py-Z4s" secondAttribute="top" id="5hp-i3-flR"/>
                                 <constraint firstItem="ztY-vQ-nmi" firstAttribute="leading" secondItem="MVV-IH-nWn" secondAttribute="leading" constant="8" id="5vl-s7-zuV"/>
-                                <constraint firstItem="ztY-vQ-nmi" firstAttribute="centerY" secondItem="w6z-gG-VWW" secondAttribute="centerY" id="L11-Ub-UR3"/>
                                 <constraint firstAttribute="bottom" secondItem="w6z-gG-VWW" secondAttribute="bottom" id="MHY-64-XA0"/>
                                 <constraint firstItem="w6z-gG-VWW" firstAttribute="leading" secondItem="TYB-Py-Z4s" secondAttribute="leading" id="SYb-lO-g8f"/>
+                                <constraint firstItem="MVV-IH-nWn" firstAttribute="bottom" secondItem="ztY-vQ-nmi" secondAttribute="bottom" constant="45.666666666666686" id="ZPK-rA-D7Z"/>
                                 <constraint firstAttribute="trailing" secondItem="w6z-gG-VWW" secondAttribute="trailing" id="c7u-yr-3O4"/>
                                 <constraint firstItem="MVV-IH-nWn" firstAttribute="trailing" secondItem="ztY-vQ-nmi" secondAttribute="trailing" constant="8" id="sov-V1-DT0"/>
                             </constraints>
@@ -154,6 +154,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
+                        <color key="tintColor" red="0.96862745100000003" green="0.86666666670000003" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </refreshControl>
                     <connections>
                         <outlet property="nextEventCard" destination="nQR-Vz-Jdu" id="gIg-vR-mYR"/>
@@ -583,10 +584,10 @@
             </objects>
             <point key="canvasLocation" x="-1591.2" y="31.773399014778327"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller With Adaptive Status Bar-->
         <scene sceneID="c93-jz-QfX">
             <objects>
-                <navigationController storyboardIdentifier="navigationVC" automaticallyAdjustsScrollViewInsets="NO" id="q5s-6F-4pX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationVC" automaticallyAdjustsScrollViewInsets="NO" id="q5s-6F-4pX" customClass="UINavigationControllerWithAdaptiveStatusBar" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="bjz-wM-7TV" customClass="CustomNavigationBar" customModule="Studs" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>

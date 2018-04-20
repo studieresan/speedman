@@ -20,6 +20,7 @@ class CustomNavigationBar: UINavigationBar {
   // MARK: - Properties
   var style = Style.translucent {
     didSet {
+      guard style != oldValue else { return }
       // Animate the change
       // The animation layer gets consumed so we'll readd it each time
       let animation = CATransition()
