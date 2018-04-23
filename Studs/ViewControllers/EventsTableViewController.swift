@@ -105,7 +105,7 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Custom navbar management
   private lazy var navbar = navigationController?.navigationBar as? CustomNavigationBar
   private var navbarShouldBeClear: Bool {
-    return tableView.contentOffset.y + tableView.adjustedContentInset.top < 10
+    return tableView.contentOffset.y + tableView.adjustedContentInset.top < 30
   }
   override var prefersStatusBarHidden: Bool {
     return navbarShouldBeClear
@@ -193,6 +193,15 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Navigation
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     performSegue(withIdentifier: "eventDetailSegue", sender: self)
+  }
+
+  override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    switch identifier {
+    case "nextEventDetailSegue":
+      return nextEvent != nil
+    default:
+      return true
+    }
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
