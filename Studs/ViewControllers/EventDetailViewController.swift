@@ -134,21 +134,6 @@ UITextViewDelegate {
     } else {
       mapView.isHidden = true
     }
-//    applyMapFadeO ut()
-  }
-
-  /// Fades out the bottom of the map view by adding a gradient layer mask
-  private func applyMapFadeOut() {
-    let gradientLayer = CAGradientLayer()
-    let mapBounds = mapView.bounds
-    // Don't mask horizontally by making the mask as wide as screen max
-    let screenMax = max(UIScreen.main.bounds.maxX, UIScreen.main.bounds.maxY)
-    gradientLayer.frame = CGRect(x: mapBounds.origin.x, y: mapBounds.origin.y,
-                                 width: screenMax, height: mapBounds.height)
-    gradientLayer.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
-    // Fade out last 10%
-    gradientLayer.locations = [0.9, 1.0]
-    mapView.layer.mask = gradientLayer
   }
 
   // MARK: - Custom navbar management
