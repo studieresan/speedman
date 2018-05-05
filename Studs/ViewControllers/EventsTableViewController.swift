@@ -96,8 +96,8 @@ class EventsTableViewController: UITableViewController {
       headerRect.origin.y = tableView.contentOffset.y
       headerRect.size.height = -tableView.contentOffset.y + tableHeaderHeight
     } else {
-      headerRect.origin.y = 0;
-      headerRect.size.height = tableHeaderHeight;
+      headerRect.origin.y = 0
+      headerRect.size.height = tableHeaderHeight
     }
     stretchyHeaderView.frame = headerRect
   }
@@ -146,9 +146,10 @@ class EventsTableViewController: UITableViewController {
   // MARK: - Actions
   @IBAction func logout(_ sender: UIBarButtonItem) {
     API.logout()
-    let storyboard = UIStoryboard(name: "Events", bundle: nil)
-    let logInCtrl = storyboard.instantiateViewController(withIdentifier: "loginVC")
-    self.present(logInCtrl, animated: true) {}
+    let storyboard = UIStoryboard(name: "Login", bundle: nil)
+    if let logInCtrl = storyboard.instantiateInitialViewController() {
+        self.present(logInCtrl, animated: true)
+    }
   }
 
   // MARK: - UIScrollViewDelegate
@@ -195,13 +196,14 @@ class EventsTableViewController: UITableViewController {
     performSegue(withIdentifier: "eventDetailSegue", sender: self)
   }
 
-  override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-    switch identifier {
-    case "nextEventDetailSegue":
-      return nextEvent != nil
-    default:
-      return true
-    }
+  override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?)
+    -> Bool {
+      switch identifier {
+      case "nextEventDetailSegue":
+        return nextEvent != nil
+      default:
+        return true
+      }
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

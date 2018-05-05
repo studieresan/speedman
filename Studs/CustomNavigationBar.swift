@@ -25,7 +25,8 @@ class CustomNavigationBar: UINavigationBar {
       // The animation layer gets consumed so we'll readd it each time
       let animation = CATransition()
       animation.duration = 0.2
-      animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+      animation.timingFunction =
+        CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
       animation.type = kCATransitionFade
       self.layer.add(animation, forKey: nil)
 

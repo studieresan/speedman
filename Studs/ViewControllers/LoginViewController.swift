@@ -109,7 +109,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
       switch result {
       case .success:
         self.error = nil
-        self.performSegue(withIdentifier: "loginSegue", sender: self)
+        // Get main storyboard from Info.plist
+        guard let sbName =
+            Bundle.main.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String
+        else { return }
+        let startingSB = UIStoryboard(name: sbName, bundle: nil)
+        if let startingVC = startingSB.instantiateInitialViewController() {
+            self.present(startingVC, animated: true)
+        }
       case .failure(let error):
         self.error = "Login failed. Please check your credentials."
         print(error)

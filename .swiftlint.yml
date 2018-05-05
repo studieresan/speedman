@@ -1,5 +1,6 @@
 disabled_rules:
   - todo # Allow todos and fixme's
+  - type_name # Allow long names of types
 
 identifier_name:
   excluded:

@@ -37,10 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     firestoreDB = Firestore.firestore()
 
     // Pick initial view controller depending on if logged in or not
-    let storyboard = UIStoryboard(name: "Events", bundle: nil)
+    let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+
+    // Get main storyboard from Info.plist
+    guard let sbName =
+      Bundle.main.object(forInfoDictionaryKey: "UIMainStoryboardFile") as? String
+    else { return false }
+    let mainStoryboard = UIStoryboard(name: sbName, bundle: nil)
+
     let startingVC = UserManager.shared.isLoggedIn
-      ? storyboard.instantiateInitialViewController()
-      : storyboard.instantiateViewController(withIdentifier: "loginVC")
+      ? mainStoryboard.instantiateInitialViewController()
+      : loginStoryboard.instantiateInitialViewController()
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = startingVC
     window?.makeKeyAndVisible()

@@ -74,7 +74,7 @@ extension UIImage {
 
 /// A UINavigationController that asks currently displaying VC for how to style the
 /// statusbar
-class UINavigationControllerWithAdaptiveStatusBar : UINavigationController {
+class UINavigationControllerWithAdaptiveStatusBar: UINavigationController {
   override var childViewControllerForStatusBarStyle: UIViewController? {
     return topViewController
   }

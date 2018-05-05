@@ -26,6 +26,7 @@
 		AB9B3781202C9F50002D641D /* EventCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3780202C9F50002D641D /* EventCheckin.swift */; };
 		AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3782202CA5AA002D641D /* Firebase.swift */; };
 		ABBCA9DF2034966000353E8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABBCA9DE2034966000353E8E /* MapKit.framework */; };
+		ABC87C6C209DFA750023D776 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC87C6A209DFA750023D776 /* Login.storyboard */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
 		ABE7619F2035D0900098D838 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7619E2035D0900098D838 /* SafariServices.framework */; };
 		ABFC38252088A5C40075C056 /* EventInfoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFC38242088A5C40075C056 /* EventInfoCard.xib */; };
@@ -60,7 +61,7 @@
 		AB02D4AC204057B4007D7808 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		AB12A2192031DF280049DF6F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinButtonViewController.swift; sourceTree = "<group>"; };
-		AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB265668202C8FA200131CE6 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Pods/1PasswordExtension/1Password.xcassets; sourceTree = SOURCE_ROOT; };
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AB35819520110AC900673D3F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		AB9B3780202C9F50002D641D /* EventCheckin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckin.swift; sourceTree = "<group>"; };
 		AB9B3782202CA5AA002D641D /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Firebase.swift; path = Studs/Firebase.swift; sourceTree = SOURCE_ROOT; };
 		ABBCA9DE2034966000353E8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ABC87C6B209DFA750023D776 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABE7619E2035D0900098D838 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		ABFC38242088A5C40075C056 /* EventInfoCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventInfoCard.xib; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				AB6DF34D20206661002D3A71 /* Views */,
 				AB35819F2011335700673D3F /* ViewControllers */,
 				ABFD7FBB2010EF6200BCA86C /* Events.storyboard */,
+				ABC87C6A209DFA750023D776 /* Login.storyboard */,
 				AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */,
 				AB9B3782202CA5AA002D641D /* Firebase.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
@@ -333,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC87C6C209DFA750023D776 /* Login.storyboard in Resources */,
 				ABFC38252088A5C40075C056 /* EventInfoCard.xib in Resources */,
 				ABFD7FC22010EF6200BCA86C /* LaunchScreen.storyboard in Resources */,
 				ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */,
@@ -550,6 +554,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		ABC87C6A209DFA750023D776 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABC87C6B209DFA750023D776 /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
 		ABFD7FBB2010EF6200BCA86C /* Events.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
