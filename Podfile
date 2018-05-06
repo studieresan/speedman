@@ -11,6 +11,7 @@ target 'Studs' do
   pod 'Alamofire', '~> 4.5'
   pod '1PasswordExtension', '~> 1.8.5'
   pod 'FirebaseFirestore', '~> 0.10'
+  pod 'Pulley', '~> 2.4'
 
   # Dev dependencies
   pod 'SwiftLint'

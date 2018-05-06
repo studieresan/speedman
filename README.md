@@ -41,3 +41,4 @@ Drop it into the `Studs/ ` directory.
 * [Alamofire](https://github.com/Alamofire/Alamofire) - HTTP Networking
 * [1Password App Extension](https://github.com/AgileBits/onepassword-app-extension) - Credentials autofilling for 1Password users
 * [Firebase Cloud Firestore](https://firebase.google.com/docs/firestore/) - Realtime database
+* [Pulley](https://github.com/52inc/Pulley) - Drawer UI used in trip mode
