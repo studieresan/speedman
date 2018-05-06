@@ -114,37 +114,7 @@
             </objects>
             <point key="canvasLocation" x="836" y="-386"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="ynz-NX-Q2B">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1fu-Aj-l0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="7qw-n4-9k4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dl2-2G-agm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEj-98-JqK">
-                                <rect key="frame" x="166" y="0.0" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="cL6-3l-jcZ" firstAttribute="trailing" secondItem="cEj-98-JqK" secondAttribute="trailing" constant="167" id="52P-Rw-w5r"/>
-                            <constraint firstItem="cEj-98-JqK" firstAttribute="top" secondItem="cL6-3l-jcZ" secondAttribute="top" id="cAW-dZ-OzH"/>
-                            <constraint firstItem="cEj-98-JqK" firstAttribute="leading" secondItem="cL6-3l-jcZ" secondAttribute="leading" constant="166" id="cuM-bD-von"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="cL6-3l-jcZ"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" image="onepassword-button" id="Ww8-Dy-Wkh"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1204" y="947"/>
-        </scene>
-        <!--Item 1-->
+        <!--Activity-->
         <scene sceneID="Brb-Pq-l46">
             <objects>
                 <viewController id="Cu0-cA-g6H" sceneMemberID="viewController">
@@ -166,11 +136,43 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RLg-XA-TIq"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="mQw-MD-lWm"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="Zap" selectedImage="Zap" id="mQw-MD-lWm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEN-Ad-VhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="442" y="946"/>
+        </scene>
+        <!--Info-->
+        <scene sceneID="nbZ-Ci-bnT">
+            <objects>
+                <viewController id="Nbp-xk-uI7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yaR-x5-Lu3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Bgk-oG-j3b"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Info" image="Info" selectedImage="Info" id="67I-cd-1wM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="URk-WQ-YLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="836" y="1336"/>
+        </scene>
+        <!--Upcoming-->
+        <scene sceneID="pry-x8-Rbe">
+            <objects>
+                <viewController id="Ghd-0s-JbY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3p2-H6-PKT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RYS-P2-J9S"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Upcoming" image="Calendar" selectedImage="Calendar" id="Giu-fU-eI0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cne-LL-YTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="945"/>
         </scene>
         <!--Pulley Compatible Tab Bar Controller-->
         <scene sceneID="ym2-4T-AJB">
@@ -185,7 +187,8 @@
                         <outlet property="gripper" destination="NMC-4s-6IR" id="kzB-o4-3Az"/>
                         <outlet property="gripperContainer" destination="8uw-2J-qx6" id="5pT-B8-QMw"/>
                         <segue destination="Cu0-cA-g6H" kind="relationship" relationship="viewControllers" id="drj-6w-fUQ"/>
-                        <segue destination="7qw-n4-9k4" kind="relationship" relationship="viewControllers" id="XWl-7l-UJt"/>
+                        <segue destination="Nbp-xk-uI7" kind="relationship" relationship="viewControllers" id="nWy-cw-Zk2"/>
+                        <segue destination="Ghd-0s-JbY" kind="relationship" relationship="viewControllers" id="zpg-Do-sjg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9K-N5-gBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -223,6 +226,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="onepassword-button" width="27" height="27"/>
+        <image name="Calendar" width="25" height="27"/>
+        <image name="Info" width="27" height="27"/>
+        <image name="Zap" width="25" height="27"/>
     </resources>
 </document>
