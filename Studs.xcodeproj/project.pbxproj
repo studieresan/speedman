@@ -27,6 +27,9 @@
 		AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3782202CA5AA002D641D /* Firebase.swift */; };
 		ABBCA9DF2034966000353E8E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABBCA9DE2034966000353E8E /* MapKit.framework */; };
 		ABC87C6C209DFA750023D776 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC87C6A209DFA750023D776 /* Login.storyboard */; };
+		ABC87C71209DFD120023D776 /* Trip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC87C6F209DFD120023D776 /* Trip.storyboard */; };
+		ABC87C74209E18C40023D776 /* PulleyCompatibleTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */; };
+		ABC87C76209F8A990023D776 /* UIViewController+PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87C75209F8A990023D776 /* UIViewController+PulleyViewController.swift */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
 		ABE7619F2035D0900098D838 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7619E2035D0900098D838 /* SafariServices.framework */; };
 		ABFC38252088A5C40075C056 /* EventInfoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFC38242088A5C40075C056 /* EventInfoCard.xib */; };
@@ -77,6 +80,9 @@
 		AB9B3782202CA5AA002D641D /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Firebase.swift; path = Studs/Firebase.swift; sourceTree = SOURCE_ROOT; };
 		ABBCA9DE2034966000353E8E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		ABC87C6B209DFA750023D776 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		ABC87C70209DFD120023D776 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trip.storyboard; sourceTree = "<group>"; };
+		ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulleyCompatibleTabBarController.swift; sourceTree = "<group>"; };
+		ABC87C75209F8A990023D776 /* UIViewController+PulleyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PulleyViewController.swift"; sourceTree = "<group>"; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABE7619E2035D0900098D838 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		ABFC38242088A5C40075C056 /* EventInfoCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventInfoCard.xib; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 		AB0499E32010F78D00810E31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ABC87C75209F8A990023D776 /* UIViewController+PulleyViewController.swift */,
 				AB265668202C8FA200131CE6 /* 1Password.xcassets */,
 				ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */,
 				ABFD7FC02010EF6200BCA86C /* LaunchScreen.storyboard */,
@@ -165,6 +172,7 @@
 		AB35819F2011335700673D3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */,
 				AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */,
 				AB5B06B42022062000752C68 /* CheckInTableViewController.swift */,
 				AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */,
@@ -218,6 +226,7 @@
 				AB35819F2011335700673D3F /* ViewControllers */,
 				ABFD7FBB2010EF6200BCA86C /* Events.storyboard */,
 				ABC87C6A209DFA750023D776 /* Login.storyboard */,
+				ABC87C6F209DFD120023D776 /* Trip.storyboard */,
 				AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */,
 				AB9B3782202CA5AA002D641D /* Firebase.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
@@ -339,6 +348,7 @@
 				ABC87C6C209DFA750023D776 /* Login.storyboard in Resources */,
 				ABFC38252088A5C40075C056 /* EventInfoCard.xib in Resources */,
 				ABFD7FC22010EF6200BCA86C /* LaunchScreen.storyboard in Resources */,
+				ABC87C71209DFD120023D776 /* Trip.storyboard in Resources */,
 				ABFD7FBF2010EF6200BCA86C /* Assets.xcassets in Resources */,
 				AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */,
 				ABFC76F7208750DC002534AE /* BarButton.xib in Resources */,
@@ -529,6 +539,8 @@
 				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
 				AB6DF34C201F6755002D3A71 /* CardView.swift in Sources */,
+				ABC87C76209F8A990023D776 /* UIViewController+PulleyViewController.swift in Sources */,
+				ABC87C74209E18C40023D776 /* PulleyCompatibleTabBarController.swift in Sources */,
 				AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */,
 				AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */,
 				AB02D4AD204057B4007D7808 /* NotificationsManager.swift in Sources */,
@@ -562,6 +574,14 @@
 				ABC87C6B209DFA750023D776 /* Base */,
 			);
 			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		ABC87C6F209DFD120023D776 /* Trip.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABC87C70209DFD120023D776 /* Base */,
+			);
+			name = Trip.storyboard;
 			sourceTree = "<group>";
 		};
 		ABFD7FBB2010EF6200BCA86C /* Events.storyboard */ = {
