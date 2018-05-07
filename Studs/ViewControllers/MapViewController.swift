@@ -7,29 +7,68 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
+  // MARK: - Outlets
+  @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var buttonsView: UIView!
+  @IBOutlet weak var userLocationButton: UIButton!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  // MARK: - Properties
+  private let locationManager = CLLocationManager()
 
-        // Do any additional setup after loading the view.
+  // MARK: - Lifecycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    mapView.delegate = self
+
+    // Try to use location
+    if CLLocationManager.locationServicesEnabled() {
+      locationManager.requestWhenInUseAuthorization()
+      locationManager.distanceFilter = 10
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    addCompass()
+  }
+
+  /// Adds a compass and positions it to be right under the buttons view
+  private func addCompass() {
+    let compassButton = MKCompassButton(mapView: mapView)
+    compassButton.compassVisibility = .adaptive
+    compassButton.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(compassButton)
+    view.addConstraints([
+      compassButton.topAnchor.constraint(equalTo: buttonsView.bottomAnchor, constant: 11),
+      compassButton.centerXAnchor.constraint(equalTo: buttonsView.centerXAnchor),
+    ])
+  }
+
+  /// Toggles the location tracking mode
+  @IBAction func toggleLocationMode(_ sender: UIButton) {
+    switch mapView.userTrackingMode {
+    case .none:
+      mapView.setUserTrackingMode(.follow, animated: true)
+    case .follow:
+      mapView.setUserTrackingMode(.followWithHeading, animated: true)
+    case .followWithHeading:
+      mapView.setUserTrackingMode(.none, animated: true)
     }
-    
+  }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+// MARK: - MKMapViewDelegate
+extension MapViewController: MKMapViewDelegate {
+  // Updates the location button with the correct image for the current mode
+  func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
+    switch mode {
+    case .none:
+      userLocationButton.setImage(#imageLiteral(resourceName: "Navigation"), for: .normal)
+    case .follow:
+      userLocationButton.setImage(#imageLiteral(resourceName: "Navigation+Active"), for: .normal)
+    case .followWithHeading:
+      userLocationButton.setImage(#imageLiteral(resourceName: "Navigation+Direction"), for: .normal)
     }
-    */
-
+  }
 }
