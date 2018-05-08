@@ -24,6 +24,7 @@
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
 		AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */; };
 		AB89FDBD20A0935F00EE1EDC /* TripActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */; };
+		AB89FDBF20A1E66B00EE1EDC /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */; };
 		AB8A2C44204D2D12001445F1 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8A2C43204D2D12001445F1 /* Utilities.swift */; };
 		AB9B3781202C9F50002D641D /* EventCheckin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3780202C9F50002D641D /* EventCheckin.swift */; };
 		AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B3782202CA5AA002D641D /* Firebase.swift */; };
@@ -79,6 +80,7 @@
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivity.swift; sourceTree = "<group>"; };
+		AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleViewController.swift; sourceTree = "<group>"; };
 		AB8A2C43204D2D12001445F1 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		AB9B3780202C9F50002D641D /* EventCheckin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckin.swift; sourceTree = "<group>"; };
 		AB9B3782202CA5AA002D641D /* Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Firebase.swift; path = Studs/Firebase.swift; sourceTree = SOURCE_ROOT; };
@@ -177,6 +179,7 @@
 		AB35819F2011335700673D3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */,
 				AB2AEE6320A05A18002A5A01 /* MapViewController.swift */,
 				ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */,
 				AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */,
@@ -549,6 +552,7 @@
 				ABC87C76209F8A990023D776 /* UIViewController+PulleyViewController.swift in Sources */,
 				ABC87C74209E18C40023D776 /* PulleyCompatibleTabBarController.swift in Sources */,
 				AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */,
+				AB89FDBF20A1E66B00EE1EDC /* TripScheduleViewController.swift in Sources */,
 				AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */,
 				AB02D4AD204057B4007D7808 /* NotificationsManager.swift in Sources */,
 				AB89FDBD20A0935F00EE1EDC /* TripActivity.swift in Sources */,
