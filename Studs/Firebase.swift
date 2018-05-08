@@ -12,10 +12,12 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 import FirebaseFirestore
 
 struct Firebase {
 
+  // MARK: - Event checkins
   /// Add a check-in for a user at a specific event.
   /// The current timestamp is used as checkin time.
   /// `byUserId` is the acting user checking in someone.
@@ -116,5 +118,55 @@ struct Firebase {
         checkedInById: checkedInById,
         checkedInAt: date ?? Date()
       )
+  }
+
+  // MARK: - Trip
+  static func streamActivities(handler: @escaping ([TripActivity]) -> Void) {
+    guard
+      let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+      let db = appDelegate.firestoreDB
+      else { return }
+
+    db.collection("activities")
+      .addSnapshotListener { querySnapshot, error in
+        guard let documents = querySnapshot?.documents else {
+          print("Error fetching activities: \(error!)")
+          return
+        }
+        let activities = documents.compactMap(TripActivity.init)
+        handler(activities)
+    }
+  }
+}
+
+extension TripActivity {
+  // Creates a TripActivity from a firebase document
+  init?(from document: QueryDocumentSnapshot) {
+    guard
+      let title = document["title"] as? String,
+      let category = Category(rawValue: document["category"] as? String ?? ""),
+      let city = City(rawValue: document["city"] as? String ?? ""),
+      let createdDate = document["createdDate"] as? Date,
+      let startDate = document["startDate"] as? Date,
+      let endDate = document["endDate"] as? Date,
+      let locationObj = document["location"] as? [String: Any],
+      let coordinate = locationObj["coordinate"] as? GeoPoint
+    else { return nil }
+    let location = Location(
+      address: document["address"] as? String ?? "",
+      coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude,
+                                         longitude: coordinate.longitude)
+    )
+
+    self.id = document.documentID
+    self.city = city
+    self.category = category
+    self.title = title
+    self.description = document["desription"] as? String ?? "No description"
+    self.price = document["price"] as? String ?? "?"
+    self.location = location
+    self.createdDate = createdDate
+    self.startDate = startDate
+    self.endDate = endDate
   }
 }
