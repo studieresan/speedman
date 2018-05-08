@@ -17,6 +17,12 @@ class MapViewController: UIViewController {
 
   // MARK: - Properties
   private let locationManager = CLLocationManager()
+  private var shouldZoomToPins = true
+  var activities = [TripActivity]() {
+    didSet {
+      updateActivityPins()
+    }
+  }
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -31,8 +37,35 @@ class MapViewController: UIViewController {
     }
 
     addCompass()
+    Firebase.streamActivities { self.activities = $0 }
   }
 
+  // MARK: - UI Refresh
+  /// Updates the pin annotations of the map to match the current list of activities
+  private func updateActivityPins() {
+    // Convert the activities to pins
+    let newPins = activities.map { activity -> MKPointAnnotation in
+      let pin = MKPointAnnotation()
+      pin.coordinate = activity.location.coordinate
+      pin.title = activity.title
+      pin.subtitle = activity.location.address
+      return pin
+    }
+    // Get the diffs and only update those
+    // Se MKPointAnnotation extension below
+    let pinsOnMap = mapView.annotations.compactMap({ $0 as? MKPointAnnotation })
+    let annotationsToRemove = pinsOnMap.filter({ !newPins.contains($0) })
+    let annotationsToAdd = newPins.filter({ !pinsOnMap.contains($0) })
+    mapView.removeAnnotations(annotationsToRemove)
+    mapView.addAnnotations(annotationsToAdd)
+
+    if shouldZoomToPins {
+      mapView.showAnnotations(annotationsToAdd, animated: true)
+      shouldZoomToPins = false
+    }
+  }
+
+  // MARK: - Misc
   /// Adds a compass and positions it to be right under the buttons view
   private func addCompass() {
     let compassButton = MKCompassButton(mapView: mapView)
@@ -69,6 +102,24 @@ extension MapViewController: MKMapViewDelegate {
       userLocationButton.setImage(#imageLiteral(resourceName: "Navigation+Active"), for: .normal)
     case .followWithHeading:
       userLocationButton.setImage(#imageLiteral(resourceName: "Navigation+Direction"), for: .normal)
+    }
+  }
+}
+
+// MARK: - MKPointAnnotation
+// We override the equality and hashvalue function in order to easily
+// diff which pins have changed and only update those
+extension MKPointAnnotation {
+  override open var hashValue: Int {
+    return self.coordinate.latitude.hashValue ^ self.coordinate.longitude.hashValue
+  }
+  override open func isEqual(_ object: Any?) -> Bool {
+    if let other = object as? MKPointAnnotation {
+      return self.coordinate.latitude == other.coordinate.latitude &&
+        self.coordinate.longitude == other.coordinate.longitude &&
+        self.title == other.title
+    } else {
+      return false
     }
   }
 }

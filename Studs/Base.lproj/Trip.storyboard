@@ -280,9 +280,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Calendar" width="23" height="25"/>
-        <image name="Flag" width="21" height="25"/>
-        <image name="Info" width="25" height="25"/>
+        <image name="Calendar" width="19" height="21"/>
+        <image name="Flag" width="18" height="21"/>
+        <image name="Info" width="21" height="21"/>
         <image name="Navigation" width="21" height="21"/>
         <image name="Plus" width="21" height="21"/>
     </resources>
