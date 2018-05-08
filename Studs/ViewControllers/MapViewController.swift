@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 
+protocol MapViewControllerDelegate: class {
+  func mapViewController(_ mapVC: MapViewController,
+                         didSelectTripActivity activity: TripActivity)
+}
+
 class MapViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
@@ -16,13 +21,25 @@ class MapViewController: UIViewController {
   @IBOutlet weak var userLocationButton: UIButton!
 
   // MARK: - Properties
+  weak var delegate: MapViewControllerDelegate?
   private let locationManager = CLLocationManager()
   private var shouldZoomToPins = true
   var activities = [TripActivity]() {
     didSet {
+      pinsToActivities.removeAll()
+      activities.forEach { activity in
+        let pin = MKPointAnnotation()
+        pin.coordinate = activity.location.coordinate
+        pin.title = activity.title
+        pin.subtitle = activity.location.address
+        pinsToActivities[pin] = activity
+      }
       updateActivityPins()
     }
   }
+  // TODO: Replace with bidirectional dict
+  private var pinsToActivities = [MKPointAnnotation: TripActivity]()
+  private var activitiesToPins = [TripActivity: MKPointAnnotation]()
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -43,14 +60,7 @@ class MapViewController: UIViewController {
   // MARK: - UI Refresh
   /// Updates the pin annotations of the map to match the current list of activities
   private func updateActivityPins() {
-    // Convert the activities to pins
-    let newPins = activities.map { activity -> MKPointAnnotation in
-      let pin = MKPointAnnotation()
-      pin.coordinate = activity.location.coordinate
-      pin.title = activity.title
-      pin.subtitle = activity.location.address
-      return pin
-    }
+    let newPins = pinsToActivities.keys
     // Get the diffs and only update those
     // Se MKPointAnnotation extension below
     let pinsOnMap = mapView.annotations.compactMap({ $0 as? MKPointAnnotation })
@@ -102,6 +112,14 @@ extension MapViewController: MKMapViewDelegate {
       userLocationButton.setImage(#imageLiteral(resourceName: "Navigation+Active"), for: .normal)
     case .followWithHeading:
       userLocationButton.setImage(#imageLiteral(resourceName: "Navigation+Direction"), for: .normal)
+    }
+  }
+
+  // When an annotation is selected we'll pass on the actual TripActivity to the delegate
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    if let pin = view.annotation as? MKPointAnnotation,
+      let activity = pinsToActivities[pin] {
+      delegate?.mapViewController(self, didSelectTripActivity: activity)
     }
   }
 }

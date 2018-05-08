@@ -40,3 +40,13 @@ struct TripActivity {
     let coordinate: CLLocationCoordinate2D
   }
 }
+
+extension TripActivity: Hashable {
+  var hashValue: Int {
+    return id.hashValue
+  }
+
+  static func == (lhs: TripActivity, rhs: TripActivity) -> Bool {
+    return lhs.id == rhs.id
+  }
+}
