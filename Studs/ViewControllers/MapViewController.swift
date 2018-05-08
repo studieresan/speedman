@@ -33,6 +33,7 @@ class MapViewController: UIViewController {
         pin.title = activity.title
         pin.subtitle = activity.location.address
         pinsToActivities[pin] = activity
+        activitiesToPins[activity] = pin
       }
       updateActivityPins()
     }
@@ -55,6 +56,16 @@ class MapViewController: UIViewController {
 
     addCompass()
     Firebase.streamActivities { self.activities = $0 }
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    // TODO: Move this up to pulley controller.
+    if let tripTabVC =
+      pulleyViewController?.drawerContentViewController as? TripTabBarController {
+      tripTabVC.tripScheduleDelegate = self
+    }
   }
 
   // MARK: - UI Refresh
@@ -120,6 +131,18 @@ extension MapViewController: MKMapViewDelegate {
     if let pin = view.annotation as? MKPointAnnotation,
       let activity = pinsToActivities[pin] {
       delegate?.mapViewController(self, didSelectTripActivity: activity)
+    }
+  }
+}
+
+// MARK: - TripScheduleViewControllerDelegate
+extension MapViewController: TripScheduleViewControllerDelegate {
+  // Select and zoom to pin in map when selected in schedule
+  func tripScheduleViewController(_ tripScheduleVC: TripScheduleViewController,
+                                  didSelectTripActivity activity: TripActivity) {
+    if let pin = activitiesToPins[activity] {
+      mapView.selectAnnotation(pin, animated: true)
+      mapView.showAnnotations([pin], animated: true)
     }
   }
 }

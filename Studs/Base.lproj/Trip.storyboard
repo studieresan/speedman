@@ -268,10 +268,10 @@
             </objects>
             <point key="canvasLocation" x="1257" y="945"/>
         </scene>
-        <!--Pulley Compatible Tab Bar Controller-->
+        <!--Trip Tab Bar Controller-->
         <scene sceneID="ym2-4T-AJB">
             <objects>
-                <tabBarController id="GmC-OR-a6u" customClass="PulleyCompatibleTabBarController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="GmC-OR-a6u" customClass="TripTabBarController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b2K-ic-c2F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
