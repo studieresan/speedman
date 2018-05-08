@@ -153,7 +153,7 @@ extension TripActivity {
       let coordinate = locationObj["coordinate"] as? GeoPoint
     else { return nil }
     let location = Location(
-      address: document["address"] as? String ?? "",
+      address: locationObj["address"] as? String ?? "",
       coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude,
                                          longitude: coordinate.longitude)
     )
