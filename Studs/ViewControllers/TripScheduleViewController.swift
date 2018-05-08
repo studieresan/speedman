@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol TripScheduleViewControllerDelegate: class {
+  func tripScheduleViewController(_ tripScheduleVC: TripScheduleViewController,
+                                  didSelectTripActivity activity: TripActivity)
+}
+
 class TripScheduleViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak var tableView: UITableView!
 
   // MARK: - Properties
+  weak var delegate: TripScheduleViewControllerDelegate?
   private var activities = [TripActivity]() {
     didSet {
       tableView.reloadData()
@@ -32,6 +38,11 @@ class TripScheduleViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 extension TripScheduleViewController: UITableViewDelegate {
+  // Forward the activity of the cell to the delegate
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let activity = activities[indexPath.row]
+    delegate?.tripScheduleViewController(self, didSelectTripActivity: activity)
+  }
 }
 
 // MARK: - UITableViewDataSource
