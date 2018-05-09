@@ -10,11 +10,15 @@ import UIKit
 import MapKit
 
 protocol MapViewControllerDelegate: MapViewControllerActivitiesDelegate {}
+/// Delegation protocol for the activity related actions of the map view
 protocol MapViewControllerActivitiesDelegate: MapViewControllerCommonDelegate {
+  /// Tells the delegate that the user selected a pin for a trip activity in the map view
   func mapViewController(_ mapVC: MapViewController,
                          didSelectTripActivity activity: TripActivity)
 }
+/// Delegation protocol for common actions related to the map view
 protocol MapViewControllerCommonDelegate: class {
+  /// Tells the delegate that the user deselected annotations in the map view
   func mapViewControllerDidDeselectAnnotations(_ mapVC: MapViewController)
 }
 

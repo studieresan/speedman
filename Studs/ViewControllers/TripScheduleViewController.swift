@@ -9,6 +9,7 @@
 import UIKit
 
 protocol TripScheduleViewControllerDelegate: class {
+  /// Tells the delegate that the user selected a specific trip activity in the list
   func tripScheduleViewController(_ tripScheduleVC: TripScheduleViewController,
                                   didSelectTripActivity activity: TripActivity)
 }
