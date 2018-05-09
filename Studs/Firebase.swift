@@ -17,54 +17,48 @@ import FirebaseFirestore
 
 struct Firebase {
 
+  private enum Collections: String {
+    case activities
+    case checkins
+  }
+
+  static var db: Firestore? {
+    // TODO: Look into a way to do this better
+    return (UIApplication.shared.delegate as? AppDelegate)?.firestoreDB
+  }
+
   // MARK: - Event checkins
   /// Add a check-in for a user at a specific event.
   /// The current timestamp is used as checkin time.
   /// `byUserId` is the acting user checking in someone.
   static func addCheckin(userId: String, byUserId: String, eventId: String) {
-    // TODO: Look into a way to do this better
-    guard
-      let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-      let db = appDelegate.firestoreDB
-    else { return }
-
-    db.collection("checkins").addDocument(data: [
-      "eventId": eventId,
-      "userId": userId,
-      "checkedInById": byUserId,
-      "checkedInAt": DateFormatter.iso8601Fractional.string(from: Date()),
-      ]) { err in
-        if let err = err {
-          print("Error adding document: \(err)")
-        }
+    db?.collection(Collections.checkins.rawValue)
+      .addDocument(data: [
+        "eventId": eventId,
+        "userId": userId,
+        "checkedInById": byUserId,
+        "checkedInAt": DateFormatter.iso8601Fractional.string(from: Date()),
+        ]) { err in
+          if let err = err {
+            print("Error adding document: \(err)")
+          }
     }
   }
 
   /// Remove the check-in with a specific id from an event
   static func removeCheckin(checkinId: String) {
-    // TODO: Look into a way to do this better
-    guard
-      let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-      let db = appDelegate.firestoreDB
-    else { return }
-
-    db.collection("checkins").document(checkinId).delete { err in
-      if let err = err {
-        print("Error removing checkin: \(err)")
-      }
+    db?.collection(Collections.checkins.rawValue)
+      .document(checkinId).delete { err in
+        if let err = err {
+          print("Error removing checkin: \(err)")
+        }
     }
   }
 
   /// Stream updates for a specific checkin
   static func streamCheckin(eventId: String, userId: String,
                             handler: @escaping (EventCheckin?) -> Void) {
-    // TODO: Look into a way to do this better
-    guard
-      let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-      let db = appDelegate.firestoreDB
-    else { return }
-
-    db.collection("checkins")
+    db?.collection(Collections.checkins.rawValue)
       .whereField("eventId", isEqualTo: eventId)
       .whereField("userId", isEqualTo: userId)
       .limit(to: 1)
@@ -83,13 +77,8 @@ struct Firebase {
   /// Stream updates to checkins for a specific event
   static func streamCheckins(eventId: String,
                              handler: @escaping ([EventCheckin]) -> Void) {
-    // TODO: Look into a way to do this better
-    guard
-      let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-      let db = appDelegate.firestoreDB
-    else { return }
-
-    db.collection("checkins").whereField("eventId", isEqualTo: eventId)
+    db?.collection(Collections.checkins.rawValue)
+      .whereField("eventId", isEqualTo: eventId)
       .addSnapshotListener { querySnapshot, error in
         guard let documents = querySnapshot?.documents else {
           print("Error fetching checkins: \(error!)")
@@ -121,13 +110,9 @@ struct Firebase {
   }
 
   // MARK: - Trip
+  /// Streams updates for all trip activities not having passed
   static func streamActivities(handler: @escaping ([TripActivity]) -> Void) {
-    guard
-      let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-      let db = appDelegate.firestoreDB
-      else { return }
-
-    db.collection("activities")
+    db?.collection(Collections.activities.rawValue)
       .whereField("endDate", isGreaterThanOrEqualTo: Date())
       .addSnapshotListener { querySnapshot, error in
         guard let documents = querySnapshot?.documents else {
@@ -136,6 +121,28 @@ struct Firebase {
         }
         let activities = documents.compactMap(TripActivity.init)
         handler(activities)
+    }
+  }
+
+  /// Adds or updates a specific trip activity
+  static func addOrUpdateActivity(_ activity: TripActivity,
+                                  completion: ((Error?) -> ())? = nil) {
+    db?.collection(Collections.activities.rawValue)
+      .document(activity.id)
+      .setData(activity.data) { error in
+        if let error = error { print(error) }
+        completion?(error)
+    }
+  }
+
+  /// Deletes a specific trip activity
+  static func deleteActivity(_ activity: TripActivity,
+                             completion: ((Error?) -> ())? = nil) {
+    db?.collection(Collections.activities.rawValue)
+      .document(activity.id)
+      .delete { error in
+        if let error = error { print(error) }
+        completion?(error)
     }
   }
 }
@@ -169,5 +176,24 @@ extension TripActivity {
     self.createdDate = createdDate
     self.startDate = startDate
     self.endDate = endDate
+  }
+
+  // A firebase data represenation of the activity
+  var data: [String: Any] {
+    return [
+      "title": self.title,
+      "category": self.category.rawValue,
+      "city": self.city.rawValue,
+      "description": self.description,
+      "price": self.price,
+      "location": [
+        "address": self.location.address,
+        "coordinate": GeoPoint(latitude: self.location.coordinate.latitude,
+                               longitude: self.location.coordinate.longitude)
+      ],
+      "createdDate": self.createdDate,
+      "startDate": self.startDate,
+      "endDate": self.endDate,
+    ]
   }
 }
