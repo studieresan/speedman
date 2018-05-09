@@ -9,9 +9,13 @@
 import UIKit
 import MapKit
 
-protocol MapViewControllerDelegate: class {
+protocol MapViewControllerDelegate: MapViewControllerActivitiesDelegate {}
+protocol MapViewControllerActivitiesDelegate: MapViewControllerCommonDelegate {
   func mapViewController(_ mapVC: MapViewController,
                          didSelectTripActivity activity: TripActivity)
+}
+protocol MapViewControllerCommonDelegate: class {
+  func mapViewControllerDidDeselectAnnotations(_ mapVC: MapViewController)
 }
 
 class MapViewController: UIViewController {
@@ -132,6 +136,10 @@ extension MapViewController: MKMapViewDelegate {
       let activity = pinsToActivities[pin] {
       delegate?.mapViewController(self, didSelectTripActivity: activity)
     }
+  }
+
+  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+    delegate?.mapViewControllerDidDeselectAnnotations(self)
   }
 }
 

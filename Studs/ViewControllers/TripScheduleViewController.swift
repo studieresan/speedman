@@ -36,6 +36,26 @@ class TripScheduleViewController: UIViewController {
   }
 }
 
+// MARK: - MapViewControllerDelegate
+extension TripScheduleViewController: MapViewControllerActivitiesDelegate {
+  // Select and scroll to the cell when user selects activity pin in map
+  func mapViewController(_ mapVC: MapViewController,
+                         didSelectTripActivity activity: TripActivity) {
+    guard let row = activities.index(of: activity) else { return }
+    let indexPath = IndexPath(row: row, section: 0)
+    tableView.selectRow(at: indexPath,
+                        animated: true,
+                        scrollPosition: .top)
+  }
+
+  // Deselect selected cell when a pin is deselected in the map
+  func mapViewControllerDidDeselectAnnotations(_ mapVC: MapViewController) {
+    if let indexpath = tableView.indexPathForSelectedRow {
+      tableView.deselectRow(at: indexpath, animated: true)
+    }
+  }
+}
+
 // MARK: - UITableViewDelegate
 extension TripScheduleViewController: UITableViewDelegate {
   // Forward the activity of the cell to the delegate
