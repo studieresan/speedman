@@ -128,6 +128,7 @@ struct Firebase {
       else { return }
 
     db.collection("activities")
+      .whereField("endDate", isGreaterThanOrEqualTo: Date())
       .addSnapshotListener { querySnapshot, error in
         guard let documents = querySnapshot?.documents else {
           print("Error fetching activities: \(error!)")
