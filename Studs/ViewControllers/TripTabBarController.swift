@@ -7,77 +7,63 @@
 //
 
 import UIKit
+import Pulley
 
 class TripTabBarController: PulleyCompatibleTabBarController {
   // MARK: - Properties
-  weak var tripScheduleDelegate: TripScheduleViewControllerDelegate?
-  private weak var tripScheduleVC: TripScheduleViewController?
+  private lazy var store: Store! = (UIApplication.shared.delegate as? AppDelegate)?.store
+  private var unsubsribeFromStore: Disposable?
 
-  private var isVerticallyCompact: Bool {
-    return self.traitCollection.verticalSizeClass == .compact
-  }
-
-  // MARK: - Lifecycle
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupDelegates()
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    // TODO: Move this up to pulley controller.
-    if let mapVC =
-      pulleyViewController?.primaryContentViewController as? MapViewController {
-      mapVC.delegate = self
-    }
-  }
-
-  /// Setup ourself as the delegate viewcontrollers of each tab and grab a hold of
-  /// a reference to each vc.
-  /// This is done to intercept delegate events to change the drawer height.
-  /// The delegate action is then passed on.
-  private func setupDelegates() {
-    guard let viewControllers = viewControllers else { return }
-    for vc in viewControllers {
-      switch vc {
-      case let scheduleVC as TripScheduleViewController:
-        scheduleVC.delegate = self
-        tripScheduleVC = scheduleVC
-      default:
-        return
+  private var drawerPosition: DrawerPosition = .partiallyRevealed {
+    didSet {
+      if drawerPosition != oldValue {
+        pulleyViewController?.setDrawerPosition(
+          position: drawerPosition.pulleyPosition,
+          animated: true
+        )
       }
     }
   }
-}
 
-// MARK: - TripScheduleViewControllerDelegate
-extension TripTabBarController: TripScheduleViewControllerDelegate {
-  // Passes on the delegate action and changes drawer position
-  func tripScheduleViewController(_ tripScheduleVC: TripScheduleViewController,
-                                  didSelectTripActivity activity: TripActivity) {
-    tripScheduleDelegate?.tripScheduleViewController(tripScheduleVC,
-                                                     didSelectTripActivity: activity)
-    pulleyViewController?.setDrawerPosition(
-      position: isVerticallyCompact ? .collapsed : .partiallyRevealed,
-      animated: true
-    )
+  // MARK: - Lifecycle
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    unsubsribeFromStore = store?.subscribe { [weak self] state in
+      self?.drawerPosition = state.drawerPosition
+    }
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    unsubsribeFromStore?()
   }
 }
 
-extension TripTabBarController: MapViewControllerDelegate {
-  func mapViewController(_ mapVC: MapViewController,
-                         didSelectTripActivity activity: TripActivity) {
-    tripScheduleVC?.mapViewController(mapVC,
-                                      didSelectTripActivity: activity)
-    pulleyViewController?.setDrawerPosition(
-      position: isVerticallyCompact ? .open : .partiallyRevealed,
-      animated: true
-    )
+// MARK: - PulleyDrawerViewControllerDelegate
+extension TripTabBarController {
+  func drawerPositionDidChange(drawer: PulleyViewController, bottomSafeArea: CGFloat) {
+    store.setDrawerPosition(drawer.drawerPosition.drawerPosition)
   }
+}
 
-  func mapViewControllerDidDeselectAnnotations(_ mapVC: MapViewController) {
-    if let currentVC = selectedViewController as? MapViewControllerCommonDelegate {
-      currentVC.mapViewControllerDidDeselectAnnotations(mapVC)
+// MARK: - Convenience Extensions
+extension DrawerPosition {
+  var pulleyPosition: PulleyPosition {
+    return PulleyPosition.positionFor(string: self.rawValue)
+  }
+}
+
+extension PulleyPosition {
+  var drawerPosition: DrawerPosition {
+    switch self {
+    case .open:
+      return .open
+    case .collapsed:
+      return .collapsed
+    case .partiallyRevealed:
+      return .partiallyRevealed
+    default:
+      return .collapsed
     }
   }
 }

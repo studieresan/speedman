@@ -9,19 +9,6 @@
 import UIKit
 import MapKit
 
-protocol MapViewControllerDelegate: MapViewControllerActivitiesDelegate {}
-/// Delegation protocol for the activity related actions of the map view
-protocol MapViewControllerActivitiesDelegate: MapViewControllerCommonDelegate {
-  /// Tells the delegate that the user selected a pin for a trip activity in the map view
-  func mapViewController(_ mapVC: MapViewController,
-                         didSelectTripActivity activity: TripActivity)
-}
-/// Delegation protocol for common actions related to the map view
-protocol MapViewControllerCommonDelegate: class {
-  /// Tells the delegate that the user deselected annotations in the map view
-  func mapViewControllerDidDeselectAnnotations(_ mapVC: MapViewController)
-}
-
 class MapViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
@@ -29,19 +16,22 @@ class MapViewController: UIViewController {
   @IBOutlet weak var userLocationButton: UIButton!
 
   // MARK: - Properties
-  weak var delegate: MapViewControllerDelegate?
+  private lazy var store: Store! = (UIApplication.shared.delegate as? AppDelegate)?.store
+  private var unsubsribeFromStore: Disposable?
+
   private let locationManager = CLLocationManager()
   private var shouldZoomToPins = true
   var activities = [TripActivity]() {
     didSet {
-      pinsToActivities.removeAll()
       activities.forEach { activity in
         let pin = MKPointAnnotation()
         pin.coordinate = activity.location.coordinate
         pin.title = activity.title
         pin.subtitle = activity.location.address
         pinsToActivities[pin] = activity
-        activitiesToPins[activity] = pin
+        if !activitiesToPins.keys.contains(activity) {
+          activitiesToPins[activity] = pin
+        }
       }
       updateActivityPins()
     }
@@ -49,6 +39,15 @@ class MapViewController: UIViewController {
   // TODO: Replace with bidirectional dict
   private var pinsToActivities = [MKPointAnnotation: TripActivity]()
   private var activitiesToPins = [TripActivity: MKPointAnnotation]()
+  private var selectedActivity: TripActivity? {
+    didSet {
+      guard let activity = selectedActivity, activity != oldValue else { return }
+      if let pin = activitiesToPins[activity] {
+        mapView.selectAnnotation(pin, animated: true)
+        mapView.showAnnotations([pin], animated: true)
+      }
+    }
+  }
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -63,17 +62,21 @@ class MapViewController: UIViewController {
     }
 
     addCompass()
-    Firebase.streamActivities { self.activities = $0 }
   }
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
-    // TODO: Move this up to pulley controller.
-    if let tripTabVC =
-      pulleyViewController?.drawerContentViewController as? TripTabBarController {
-      tripTabVC.tripScheduleDelegate = self
+    activities = store.state.activities
+    unsubsribeFromStore = store.subscribe { [weak self] state in
+      self?.activities = state.activities
+      self?.selectedActivity = state.selectedActivity
     }
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    unsubsribeFromStore?()
   }
 
   // MARK: - UI Refresh
@@ -81,7 +84,7 @@ class MapViewController: UIViewController {
   private func updateActivityPins() {
     let newPins = pinsToActivities.keys
     // Get the diffs and only update those
-    // Se MKPointAnnotation extension below
+    // See MKPointAnnotation extension below
     let pinsOnMap = mapView.annotations.compactMap({ $0 as? MKPointAnnotation })
     let annotationsToRemove = pinsOnMap.filter({ !newPins.contains($0) })
     let annotationsToAdd = newPins.filter({ !pinsOnMap.contains($0) })
@@ -138,24 +141,13 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     if let pin = view.annotation as? MKPointAnnotation,
       let activity = pinsToActivities[pin] {
-      delegate?.mapViewController(self, didSelectTripActivity: activity)
+      store.activitySelected(activity)
+      store.setDrawerPosition(isVerticallyCompact ? .open : .partiallyRevealed)
     }
   }
 
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    delegate?.mapViewControllerDidDeselectAnnotations(self)
-  }
-}
-
-// MARK: - TripScheduleViewControllerDelegate
-extension MapViewController: TripScheduleViewControllerDelegate {
-  // Select and zoom to pin in map when selected in schedule
-  func tripScheduleViewController(_ tripScheduleVC: TripScheduleViewController,
-                                  didSelectTripActivity activity: TripActivity) {
-    if let pin = activitiesToPins[activity] {
-      mapView.selectAnnotation(pin, animated: true)
-      mapView.showAnnotations([pin], animated: true)
-    }
+    store.activityDeselected()
   }
 }
 

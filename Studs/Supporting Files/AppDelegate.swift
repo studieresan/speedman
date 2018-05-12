@@ -20,7 +20,12 @@ enum DeepLink {
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
   var window: UIWindow?
-  var firestoreDB: Firestore?
+  lazy var firestoreDB: Firestore = {
+    // Setup Firebase
+    FirebaseApp.configure()
+    return Firestore.firestore()
+  }()
+  lazy var store: Store = StoreImpl()
 
   func application(
     _ application: UIApplication,
@@ -31,10 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // Intercept arriving local notifications in
     // userNotificationCenter(_:didReceive:withCompletionHandler) below
     UNUserNotificationCenter.current().delegate = self
-
-    // Setup Firebase
-    FirebaseApp.configure()
-    firestoreDB = Firestore.firestore()
 
     // Pick initial view controller depending on if logged in or not
     let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)

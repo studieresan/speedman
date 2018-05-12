@@ -126,7 +126,7 @@ struct Firebase {
 
   /// Adds or updates a specific trip activity
   static func addOrUpdateActivity(_ activity: TripActivity,
-                                  completion: ((Error?) -> ())? = nil) {
+                                  completion: ((Error?) -> Void)? = nil) {
     db?.collection(Collections.activities.rawValue)
       .document(activity.id)
       .setData(activity.data) { error in
@@ -137,7 +137,7 @@ struct Firebase {
 
   /// Deletes a specific trip activity
   static func deleteActivity(_ activity: TripActivity,
-                             completion: ((Error?) -> ())? = nil) {
+                             completion: ((Error?) -> Void)? = nil) {
     db?.collection(Collections.activities.rawValue)
       .document(activity.id)
       .delete { error in
@@ -189,7 +189,7 @@ extension TripActivity {
       "location": [
         "address": self.location.address,
         "coordinate": GeoPoint(latitude: self.location.coordinate.latitude,
-                               longitude: self.location.coordinate.longitude)
+                               longitude: self.location.coordinate.longitude),
       ],
       "createdDate": self.createdDate,
       "startDate": self.startDate,

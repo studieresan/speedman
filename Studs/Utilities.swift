@@ -83,3 +83,9 @@ class UINavigationControllerWithAdaptiveStatusBar: UINavigationController {
     return topViewController
   }
 }
+
+extension UIViewController {
+  var isVerticallyCompact: Bool {
+    return self.traitCollection.verticalSizeClass == .compact
+  }
+}
