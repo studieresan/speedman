@@ -1,72 +1,43 @@
 //
-//  Observable.swift
+//  Store.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-05-10.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  Redux inspired store doing and tracking state updates
 
 import Foundation
 
-protocol TripActions {
-  func activitySelected(_ activity: TripActivity)
-  func activityDeselected()
-  func setDrawerPosition(_ position: DrawerPosition)
-}
+typealias Reducer<State, Action> = (State, Action) -> State
 
-typealias Disposable = () -> Void
-
-protocol Store: TripActions {
-  var state: State { get }
-  func subscribe(handler: @escaping (State) -> Void) -> Disposable
-}
-
-func synchronized(_ lock: Any, closure: () -> Void) {
-  objc_sync_enter(lock)
-  closure()
-  objc_sync_exit(lock)
-}
-
-class StoreImpl: Store {
-  private var observers = [UUID: ((State) -> Void)]()
-
-  private(set) var state = State.defaultState {
+class Store<State, Action> {
+  private var state: State {
     didSet {
-      synchronized(observers) {
-        observers.values.forEach({ $0(state) })
-      }
+      observers.values.forEach({ $0(state) })
     }
   }
+  private var observers = [UUID: (State) -> Void]()
+  private var reduce: Reducer<State, Action>
 
-  init() {
-    fetchActivities()
+  init(state: State, reduce: @escaping Reducer<State, Action>) {
+    self.state = state
+    self.reduce = reduce
   }
 
-  func subscribe(handler: @escaping (State) -> Void) -> Disposable {
+  /// Subscribes a handler that will get updates each time the state changes
+  func subscribe(handler: @escaping (State) -> Void) -> Subscription<State> {
     let uuid = UUID()
-    synchronized(observers) {
-      observers[uuid] = handler
-    }
-    return { [unowned self] in
-      synchronized(self.observers) {
-        self.observers.removeValue(forKey: uuid)
-      }
+    observers[uuid] = handler
+    handler(state)
+    // Returns a function for unsubscribing handler
+    return Subscription { [unowned self] in
+      self.observers.removeValue(forKey: uuid)
     }
   }
 
-  private func fetchActivities() {
-    Firebase.streamActivities { self.state.activities = $0 }
-  }
-
-  func activitySelected(_ activity: TripActivity) {
-    state.selectedActivity = activity
-  }
-
-  func activityDeselected() {
-    state.selectedActivity = nil
-  }
-
-  func setDrawerPosition(_ position: DrawerPosition) {
-    state.drawerPosition = position
+  /// Dispatches an action trhough the reducer which updates the state
+  func dispatch(action: Action) {
+    state = reduce(state, action)
   }
 }

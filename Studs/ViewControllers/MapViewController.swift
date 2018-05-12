@@ -16,21 +16,22 @@ class MapViewController: UIViewController {
   @IBOutlet weak var userLocationButton: UIButton!
 
   // MARK: - Properties
-  private lazy var store: Store! = (UIApplication.shared.delegate as? AppDelegate)?.store
-  private var unsubsribeFromStore: Disposable?
+  private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
+  private var stateSubscription: Subscription<TripState>?
 
   private let locationManager = CLLocationManager()
   private var shouldZoomToPins = true
-  var activities = [TripActivity]() {
+  private var activities = [TripActivity]() {
     didSet {
+      guard oldValue != activities else { return }
       activities.forEach { activity in
         let pin = MKPointAnnotation()
         pin.coordinate = activity.location.coordinate
         pin.title = activity.title
         pin.subtitle = activity.location.address
-        pinsToActivities[pin] = activity
         if !activitiesToPins.keys.contains(activity) {
           activitiesToPins[activity] = pin
+          pinsToActivities[pin] = activity
         }
       }
       updateActivityPins()
@@ -41,10 +42,11 @@ class MapViewController: UIViewController {
   private var activitiesToPins = [TripActivity: MKPointAnnotation]()
   private var selectedActivity: TripActivity? {
     didSet {
-      guard let activity = selectedActivity, activity != oldValue else { return }
-      if let pin = activitiesToPins[activity] {
-        mapView.selectAnnotation(pin, animated: true)
-        mapView.showAnnotations([pin], animated: true)
+      guard oldValue != selectedActivity else { return }
+      if let activity = selectedActivity {
+        self.selectActivityInMap(activity)
+      } else {
+        self.deselectAllAnnotations()
       }
     }
   }
@@ -67,8 +69,7 @@ class MapViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
-    activities = store.state.activities
-    unsubsribeFromStore = store.subscribe { [weak self] state in
+    stateSubscription = store.subscribe { [weak self] state in
       self?.activities = state.activities
       self?.selectedActivity = state.selectedActivity
     }
@@ -76,10 +77,24 @@ class MapViewController: UIViewController {
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    unsubsribeFromStore?()
+    stateSubscription?.unsubscribe()
   }
 
-  // MARK: - UI Refresh
+  // MARK: - UI Updates
+  /// Selects the pin of an activity in the map
+  private func selectActivityInMap(_ activity: TripActivity) {
+    guard let pin = activitiesToPins[activity] else { return }
+    mapView.selectAnnotation(pin, animated: true)
+    mapView.showAnnotations([pin], animated: true)
+  }
+
+  /// Deselects all selected annotations in the map
+  private func deselectAllAnnotations() {
+    mapView.annotations.forEach {
+      mapView.deselectAnnotation($0, animated: true)
+    }
+  }
+
   /// Updates the pin annotations of the map to match the current list of activities
   private func updateActivityPins() {
     let newPins = pinsToActivities.keys
@@ -137,17 +152,18 @@ extension MapViewController: MKMapViewDelegate {
     }
   }
 
-  // When an annotation is selected we'll pass on the actual TripActivity to the delegate
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     if let pin = view.annotation as? MKPointAnnotation,
       let activity = pinsToActivities[pin] {
-      store.activitySelected(activity)
-      store.setDrawerPosition(isVerticallyCompact ? .open : .partiallyRevealed)
+      store.dispatch(action: .selectActivity(activity))
+      store.dispatch(action: .changeDrawerPosition(
+        isVerticallyCompact ? .open : .partiallyRevealed
+      ))
     }
   }
 
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    store.activityDeselected()
+    store.dispatch(action: .selectActivity(nil))
   }
 }
 

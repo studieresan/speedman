@@ -89,3 +89,9 @@ extension UIViewController {
     return self.traitCollection.verticalSizeClass == .compact
   }
 }
+
+/// Simple struct that represents a subscription to something and
+/// a way to unsubscribe.
+struct Subscription<T> {
+  let unsubscribe: () -> Void
+}

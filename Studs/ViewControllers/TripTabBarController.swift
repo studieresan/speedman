@@ -11,38 +11,38 @@ import Pulley
 
 class TripTabBarController: PulleyCompatibleTabBarController {
   // MARK: - Properties
-  private lazy var store: Store! = (UIApplication.shared.delegate as? AppDelegate)?.store
-  private var unsubsribeFromStore: Disposable?
+  private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
+  private var stateSubscription: Subscription<TripState>?
 
-  private var drawerPosition: DrawerPosition = .partiallyRevealed {
+  private var drawerPosition = DrawerPosition.partiallyRevealed {
     didSet {
-      if drawerPosition != oldValue {
-        pulleyViewController?.setDrawerPosition(
-          position: drawerPosition.pulleyPosition,
-          animated: true
-        )
-      }
+      guard oldValue != drawerPosition else { return }
+      self.pulleyViewController?.setDrawerPosition(
+        position: drawerPosition.pulleyPosition,
+        animated: true
+      )
     }
   }
 
   // MARK: - Lifecycle
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    unsubsribeFromStore = store?.subscribe { [weak self] state in
+
+    stateSubscription = store.subscribe { [weak self] state in
       self?.drawerPosition = state.drawerPosition
     }
   }
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    unsubsribeFromStore?()
+    stateSubscription?.unsubscribe()
   }
 }
 
 // MARK: - PulleyDrawerViewControllerDelegate
 extension TripTabBarController {
   func drawerPositionDidChange(drawer: PulleyViewController, bottomSafeArea: CGFloat) {
-    store.setDrawerPosition(drawer.drawerPosition.drawerPosition)
+    store.dispatch(action: .changeDrawerPosition(drawer.drawerPosition.drawerPosition))
   }
 }
 

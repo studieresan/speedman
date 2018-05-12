@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     FirebaseApp.configure()
     return Firestore.firestore()
   }()
-  lazy var store: Store = StoreImpl()
+  lazy var tripStore = TripStore()
 
   func application(
     _ application: UIApplication,

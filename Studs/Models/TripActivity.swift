@@ -25,7 +25,7 @@ struct TripActivity {
   }
 
   let id: String
-  let city: City
+  let city: City?
   let category: Category
   let title: String
   let description: String

@@ -111,17 +111,19 @@ struct Firebase {
 
   // MARK: - Trip
   /// Streams updates for all trip activities not having passed
-  static func streamActivities(handler: @escaping ([TripActivity]) -> Void) {
-    db?.collection(Collections.activities.rawValue)
-      .whereField("endDate", isGreaterThanOrEqualTo: Date())
-      .addSnapshotListener { querySnapshot, error in
-        guard let documents = querySnapshot?.documents else {
-          print("Error fetching activities: \(error!)")
-          return
-        }
-        let activities = documents.compactMap(TripActivity.init)
-        handler(activities)
-    }
+  static func streamActivities(handler: @escaping ([TripActivity]) -> Void)
+    -> Subscription<[TripActivity]> {
+      let listener = db?.collection(Collections.activities.rawValue)
+        .whereField("endDate", isGreaterThanOrEqualTo: Date())
+        .addSnapshotListener { querySnapshot, error in
+          guard let documents = querySnapshot?.documents else {
+            print("Error fetching activities: \(error!)")
+            return
+          }
+          let activities = documents.compactMap(TripActivity.init)
+          handler(activities)
+      }
+      return Subscription { listener?.remove() }
   }
 
   /// Adds or updates a specific trip activity
@@ -153,7 +155,6 @@ extension TripActivity {
     guard
       let title = document["title"] as? String,
       let category = Category(rawValue: document["category"] as? String ?? ""),
-      let city = City(rawValue: document["city"] as? String ?? ""),
       let createdDate = document["createdDate"] as? Date,
       let startDate = document["startDate"] as? Date,
       let endDate = document["endDate"] as? Date,
@@ -167,7 +168,7 @@ extension TripActivity {
     )
 
     self.id = document.documentID
-    self.city = city
+    self.city = City(rawValue: document["city"] as? String ?? "")
     self.category = category
     self.title = title
     self.description = document["desription"] as? String ?? "No description"
@@ -183,7 +184,7 @@ extension TripActivity {
     return [
       "title": self.title,
       "category": self.category.rawValue,
-      "city": self.city.rawValue,
+      "city": self.city?.rawValue ?? "",
       "description": self.description,
       "price": self.price,
       "location": [

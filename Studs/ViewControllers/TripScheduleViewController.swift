@@ -13,27 +13,20 @@ class TripScheduleViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
 
   // MARK: - Properties
-  private lazy var store: Store! = (UIApplication.shared.delegate as? AppDelegate)?.store
-  private var unsubsribeFromStore: Disposable?
+  private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
+  private var stateSubscription: Subscription<TripState>?
+
   private var activities = [TripActivity]() {
     didSet {
-      guard activities != oldValue else { return }
+      guard oldValue != activities else { return }
       tableView.reloadData()
+      highlightSelectedActivity()
     }
   }
   private var selectedActivity: TripActivity? {
     didSet {
-      guard selectedActivity != oldValue else { return }
-      if let activity = selectedActivity {
-        guard let row = activities.index(of: activity) else { return }
-        let indexPath = IndexPath(row: row, section: 0)
-        tableView.selectRow(at: indexPath,
-                            animated: true,
-                            scrollPosition: .top)
-      } else {
-        guard let indexpath = tableView.indexPathForSelectedRow else { return }
-        tableView.deselectRow(at: indexpath, animated: true)
-      }
+      guard oldValue != selectedActivity else { return }
+      highlightSelectedActivity()
     }
   }
 
@@ -47,8 +40,8 @@ class TripScheduleViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    activities = store.state.activities
-    unsubsribeFromStore = store?.subscribe { [weak self] state in
+
+    stateSubscription = store.subscribe { [weak self] state in
       self?.activities = state.activities
       self?.selectedActivity = state.selectedActivity
     }
@@ -56,7 +49,32 @@ class TripScheduleViewController: UIViewController {
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    unsubsribeFromStore?()
+    stateSubscription?.unsubscribe()
+  }
+
+  /// Selects the currently selected activity in the table, or deselects all cells if none
+  private func highlightSelectedActivity() {
+    if let activity = selectedActivity {
+      self.selectActivityInTable(activity)
+    } else {
+      self.deselectAllSelections()
+    }
+  }
+
+  /// Selects (highlights) an activity in the table
+  private func selectActivityInTable(_ activity: TripActivity) {
+    guard let row = activities.index(of: activity) else { return }
+    let indexPath = IndexPath(row: row, section: 0)
+    tableView.selectRow(at: indexPath,
+                        animated: true,
+                        scrollPosition: .top)
+  }
+
+  /// Deselects all selected cells of the table
+  private func deselectAllSelections() {
+    tableView.indexPathsForSelectedRows?.forEach {
+      tableView.deselectRow(at: $0, animated: true)
+    }
   }
 }
 
@@ -64,8 +82,10 @@ class TripScheduleViewController: UIViewController {
 extension TripScheduleViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let activity = activities[indexPath.row]
-    store.activitySelected(activity)
-    store.setDrawerPosition(isVerticallyCompact ? .collapsed : .partiallyRevealed)
+    store.dispatch(action: .selectActivity(activity))
+    store.dispatch(action: .changeDrawerPosition(
+      isVerticallyCompact ? .collapsed : .partiallyRevealed
+    ))
   }
 }
 
