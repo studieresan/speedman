@@ -27,6 +27,11 @@ extension DateFormatter {
     formatter.dateFormat = "HH:mm"
     return formatter
   }()
+  static let dateAndTimeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "d/M HH:mm"
+    return formatter
+  }()
 }
 
 extension Date {

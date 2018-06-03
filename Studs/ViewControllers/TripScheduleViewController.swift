@@ -93,10 +93,15 @@ extension TripScheduleViewController: UITableViewDelegate {
 extension TripScheduleViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
     -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+      let cell = tableView.dequeueReusableCell(withIdentifier: "tripActivityCell",
+                                               for: indexPath)
       let activity = activities[indexPath.row]
-      cell.textLabel?.text = activity.title
-      cell.detailTextLabel?.text = activity.location.address
+      if let tripCell = cell as? TripActivityTableViewCell {
+        tripCell.titleLabel.text = activity.title
+        tripCell.dateLabel.text =
+          DateFormatter.dateAndTimeFormatter.string(from: activity.startDate)
+        tripCell.locationLabel.text = activity.location.address
+      }
       return cell
   }
 

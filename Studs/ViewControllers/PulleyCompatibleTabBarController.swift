@@ -67,7 +67,7 @@ class PulleyCompatibleTabBarController: UITabBarController {
   // MARK: - View setup
   /// Sets up the gripper view on top of the drawer
   private func setupGripper() {
-    gripper.layer.cornerRadius = 2.5
+    gripper.layer.cornerRadius = 2.0
     view.addSubview(gripperContainer)
     gripperContainer.translatesAutoresizingMaskIntoConstraints = false
     view.addConstraints([
