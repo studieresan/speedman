@@ -20,13 +20,15 @@ class TripScheduleViewController: UIViewController {
     didSet {
       guard oldValue != activities else { return }
       tableView.reloadData()
-      highlightSelectedActivity()
     }
   }
   private var selectedActivity: TripActivity? {
     didSet {
       guard oldValue != selectedActivity else { return }
-      highlightSelectedActivity()
+      guard selectedActivity != nil else { return }
+      let detailVC = UIStoryboard(name: "Trip", bundle: nil)
+        .instantiateViewController(withIdentifier: "tripActivityDetailVC")
+      navigationController?.pushViewController(detailVC, animated: false)
     }
   }
 
@@ -50,31 +52,6 @@ class TripScheduleViewController: UIViewController {
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     stateSubscription?.unsubscribe()
-  }
-
-  /// Selects the currently selected activity in the table, or deselects all cells if none
-  private func highlightSelectedActivity() {
-    if let activity = selectedActivity {
-      self.selectActivityInTable(activity)
-    } else {
-      self.deselectAllSelections()
-    }
-  }
-
-  /// Selects (highlights) an activity in the table
-  private func selectActivityInTable(_ activity: TripActivity) {
-    guard let row = activities.index(of: activity) else { return }
-    let indexPath = IndexPath(row: row, section: 0)
-    tableView.selectRow(at: indexPath,
-                        animated: true,
-                        scrollPosition: .top)
-  }
-
-  /// Deselects all selected cells of the table
-  private func deselectAllSelections() {
-    tableView.indexPathsForSelectedRows?.forEach {
-      tableView.deselectRow(at: $0, animated: true)
-    }
   }
 }
 

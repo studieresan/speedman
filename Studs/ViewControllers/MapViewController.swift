@@ -163,7 +163,17 @@ extension MapViewController: MKMapViewDelegate {
   }
 
   func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-    store.dispatch(action: .selectActivity(nil))
+    // Dispatch the deselection async to deal with this method firing before the
+    // selection one when picking a new annotation without actually deselecting first.
+    DispatchQueue.main.async { [weak self] in
+      self?.maybeDispatchDeselection()
+    }
+  }
+
+  func maybeDispatchDeselection() {
+    if mapView.selectedAnnotations.isEmpty {
+      store.dispatch(action: .selectActivity(nil))
+    }
   }
 }
 

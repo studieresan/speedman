@@ -11,6 +11,7 @@
 		AB02D4AD204057B4007D7808 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB02D4AC204057B4007D7808 /* NotificationsManager.swift */; };
 		AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12A2192031DF280049DF6F /* UserManager.swift */; };
 		AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */; };
+		AB235B7820C64D9D00D8C6C0 /* TripActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */; };
 		AB2577F82088C918004E6C80 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */; };
 		AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB265668202C8FA200131CE6 /* 1Password.xcassets */; };
 		AB2AEE6420A05A18002A5A01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2AEE6320A05A18002A5A01 /* MapViewController.swift */; };
@@ -72,6 +73,7 @@
 		AB02D4AC204057B4007D7808 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		AB12A2192031DF280049DF6F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinButtonViewController.swift; sourceTree = "<group>"; };
+		AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityDetailViewController.swift; sourceTree = "<group>"; };
 		AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB265668202C8FA200131CE6 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Pods/1PasswordExtension/1Password.xcassets; sourceTree = SOURCE_ROOT; };
 		AB2AEE6320A05A18002A5A01 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		AB35819F2011335700673D3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */,
 				AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */,
 				AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */,
 				AB2AEE6320A05A18002A5A01 /* MapViewController.swift */,
@@ -578,6 +581,7 @@
 				ABFD7FDA2010F1F600BCA86C /* EventsTableViewController.swift in Sources */,
 				AB35819620110AC900673D3F /* API.swift in Sources */,
 				AB319E9320A4901300741B3C /* TripStore.swift in Sources */,
+				AB235B7820C64D9D00D8C6C0 /* TripActivityDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
