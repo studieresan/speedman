@@ -46,6 +46,7 @@ class TripScheduleViewController: UIViewController {
     stateSubscription = store.subscribe { [weak self] state in
       self?.activities = state.activities
       self?.selectedActivity = state.selectedActivity
+      self?.tableView.isScrollEnabled = state.drawerPosition == .open
     }
   }
 
