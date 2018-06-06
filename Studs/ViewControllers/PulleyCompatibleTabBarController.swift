@@ -44,6 +44,12 @@ class PulleyCompatibleTabBarController: UITabBarController {
     setupGripper()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    // Haptic feedback on devices that support it:
+    self.pulleyViewController?.feedbackGenerator = UISelectionFeedbackGenerator()
+  }
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     // To trigger the drawer delegate methods
