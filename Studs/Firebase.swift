@@ -224,6 +224,7 @@ extension TripActivity {
     self.createdDate = createdDate
     self.startDate = startDate
     self.endDate = endDate
+    self.peopleCount = document["peopleCount"] as? Int ?? 0
   }
 
   // A firebase data represenation of the activity

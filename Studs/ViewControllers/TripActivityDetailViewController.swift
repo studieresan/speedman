@@ -30,6 +30,7 @@ class TripActivityDetailViewController: UIViewController {
         dateLabel.text =
           DateFormatter.dateAndTimeFormatter.string(from: activity.startDate)
         locationLabel.text = activity.location.address
+        peopleLabel.text = "\(activity.peopleCount) people going"
         priceLabel.text = activity.price
         descriptionTextView.text = activity.description
       } else {
@@ -48,7 +49,10 @@ class TripActivityDetailViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     stateSubscription = store.subscribe { [weak self] state in
-      self?.activity = state.selectedActivity
+      // Get the activity from the list of activites instead to make sure it's updated
+      self?.activity = state.activities.first {
+        $0.id == state.selectedActivity?.id ?? ""
+      }
     }
   }
 
