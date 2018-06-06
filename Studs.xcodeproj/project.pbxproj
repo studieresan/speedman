@@ -288,7 +288,6 @@
 				ABFD7FB12010EF6200BCA86C /* Frameworks */,
 				ABFD7FB22010EF6200BCA86C /* Resources */,
 				5E87291FE45DACDBE95F25F4 /* [CP] Embed Pods Frameworks */,
-				68BAB899FEBE27CEC4B24606 /* [CP] Copy Pods Resources */,
 				ABDB1FC5203DC5BD000EA024 /* SwiftLint */,
 				ABDB1FC6203DFF6F000EA024 /* Increment Build Number */,
 			);
@@ -309,8 +308,6 @@
 				ABFD7FC42010EF6200BCA86C /* Sources */,
 				ABFD7FC52010EF6200BCA86C /* Frameworks */,
 				ABFD7FC62010EF6200BCA86C /* Resources */,
-				A76BD869BD86219E4D9D8582 /* [CP] Embed Pods Frameworks */,
-				32DBE7819DC44AAF106560AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -394,21 +391,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		32DBE7819DC44AAF106560AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudsTests/Pods-StudsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5E87291FE45DACDBE95F25F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -447,36 +429,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Studs/Pods-Studs-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		68BAB899FEBE27CEC4B24606 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Studs/Pods-Studs-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A76BD869BD86219E4D9D8582 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StudsTests/Pods-StudsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ABDB1FC5203DC5BD000EA024 /* SwiftLint */ = {
