@@ -147,6 +147,53 @@ struct Firebase {
         completion?(error)
     }
   }
+
+  static func streamActivityRegistrations(
+    activityId: String,
+    handler: @escaping ([TripActivityRegistration]) -> Void
+  ) -> Subscription<[TripActivityRegistration]> {
+    let listener = db?
+      .collection(Collections.activities.rawValue)
+      .document(activityId)
+      .collection("people")
+      .addSnapshotListener { querySnapshot, error in
+        guard let documents = querySnapshot?.documents else {
+          print("Error fetching registrations: \(error!)")
+          return
+        }
+        let registrations = documents.compactMap(TripActivityRegistration.init)
+        handler(registrations)
+    }
+    return Subscription { listener?.remove() }
+  }
+
+  static func addActivityRegistration(userId: String,
+                                      byUserId: String,
+                                      activityId: String) {
+    db?.collection(Collections.activities.rawValue)
+      .document(activityId)
+      .collection("people")
+      .addDocument(data: [
+        "registeredAt": Date(),
+        "userId": userId,
+        "registeredById": byUserId,
+        ]) { err in
+          if let err = err {
+            print("Error adding registration: \(err)")
+          }
+    }
+  }
+
+  static func removeActivityRegistration(registrationId: String, activityId: String) {
+    db?.collection(Collections.activities.rawValue)
+      .document(activityId)
+      .collection("people")
+      .document(registrationId).delete { err in
+        if let err = err {
+          print("Error removing registration: \(err)")
+        }
+    }
+  }
 }
 
 extension TripActivity {
@@ -196,5 +243,19 @@ extension TripActivity {
       "startDate": self.startDate,
       "endDate": self.endDate,
     ]
+  }
+}
+
+extension TripActivityRegistration {
+  init?(from document: QueryDocumentSnapshot) {
+    guard
+      let registeredAt = document["registeredAt"] as? Date,
+      let registeredById = document["registeredById"] as? String,
+      let userId = document["userId"] as? String
+    else { return nil }
+    self.id = document.documentID
+    self.registeredAt = registeredAt
+    self.registeredById = registeredById
+    self.userId = userId
   }
 }

@@ -12,7 +12,7 @@ import Foundation
 typealias Reducer<State, Action> = (State, Action) -> State
 
 class Store<State, Action> {
-  private var state: State {
+  private(set) var state: State {
     didSet {
       observers.values.forEach({ $0(state) })
     }
