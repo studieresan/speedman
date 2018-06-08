@@ -40,6 +40,9 @@ class TripStore: Store<TripState, TripAction> {
         state.drawerPosition = position
       case .updateActivities(let activities):
         state.activities = activities
+        if let selectedActivity = state.selectedActivity {
+          state.selectedActivity = activities.first { selectedActivity.id == $0.id }
+        }
       }
       return state
     })

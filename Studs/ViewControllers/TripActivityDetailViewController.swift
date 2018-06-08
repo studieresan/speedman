@@ -49,10 +49,7 @@ class TripActivityDetailViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     stateSubscription = store.subscribe { [weak self] state in
-      // Get the activity from the list of activites instead to make sure it's updated
-      self?.activity = state.activities.first {
-        $0.id == state.selectedActivity?.id ?? ""
-      }
+      self?.activity = state.selectedActivity
     }
   }
 
