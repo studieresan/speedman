@@ -23,26 +23,22 @@ class MapViewController: UIViewController {
   private var shouldZoomToPins = true
   private var activities = [TripActivity]() {
     didSet {
-      guard oldValue != activities else { return }
+      pinsToActivities.removeAll()
       activities.forEach { activity in
-        let pin = MKPointAnnotation()
+        let pin = activitiesToPins[activity] ?? MKPointAnnotation()
         pin.coordinate = activity.location.coordinate
         pin.title = activity.title
         pin.subtitle = activity.location.address
-        if !activitiesToPins.keys.contains(activity) {
-          activitiesToPins[activity] = pin
-          pinsToActivities[pin] = activity
-        }
+        activitiesToPins[activity] = pin
+        pinsToActivities[pin] = activity
       }
       updateActivityPins()
     }
   }
-  // TODO: Replace with bidirectional dict
   private var pinsToActivities = [MKPointAnnotation: TripActivity]()
   private var activitiesToPins = [TripActivity: MKPointAnnotation]()
   private var selectedActivity: TripActivity? {
     didSet {
-      guard oldValue != selectedActivity else { return }
       if let activity = selectedActivity {
         self.selectActivityInMap(activity)
       } else {
@@ -106,7 +102,7 @@ class MapViewController: UIViewController {
     mapView.removeAnnotations(annotationsToRemove)
     mapView.addAnnotations(annotationsToAdd)
 
-    if shouldZoomToPins {
+    if shouldZoomToPins && !mapView.annotations.isEmpty {
       mapView.showAnnotations(annotationsToAdd, animated: true)
       shouldZoomToPins = false
     }
@@ -188,7 +184,7 @@ extension MKPointAnnotation {
     if let other = object as? MKPointAnnotation {
       return self.coordinate.latitude == other.coordinate.latitude &&
         self.coordinate.longitude == other.coordinate.longitude &&
-        self.title == other.title
+        self.title == other.title && self.subtitle == other.subtitle
     } else {
       return false
     }

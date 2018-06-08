@@ -36,15 +36,9 @@ struct TripActivity {
   let endDate: Date
   let peopleCount: Int
 
-  struct Location: Equatable {
+  struct Location {
     let address: String
     let coordinate: CLLocationCoordinate2D
-
-    static func == (lhs: Location, rhs: Location) -> Bool {
-      return lhs.address == rhs.address &&
-        lhs.coordinate.latitude == rhs.coordinate.latitude &&
-        lhs.coordinate.longitude == rhs.coordinate.longitude
-    }
   }
 }
 
@@ -54,14 +48,6 @@ extension TripActivity: Hashable {
   }
 
   static func == (lhs: TripActivity, rhs: TripActivity) -> Bool {
-    return lhs.id == rhs.id &&
-      lhs.city == rhs.city &&
-      lhs.category == rhs.category &&
-      lhs.title == rhs.title &&
-      lhs.description == rhs.description &&
-      lhs.price == rhs.price &&
-      lhs.location == rhs.location &&
-      lhs.startDate == rhs.startDate &&
-      lhs.peopleCount == rhs.peopleCount
+    return lhs.id == rhs.id
   }
 }

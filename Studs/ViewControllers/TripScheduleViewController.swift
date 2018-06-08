@@ -17,14 +17,10 @@ class TripScheduleViewController: UIViewController {
   private var stateSubscription: Subscription<TripState>?
 
   private var activities = [TripActivity]() {
-    didSet {
-      guard oldValue != activities else { return }
-      tableView.reloadData()
-    }
+    didSet { tableView.reloadData() }
   }
   private var selectedActivity: TripActivity? {
     didSet {
-      guard oldValue != selectedActivity else { return }
       guard selectedActivity != nil else { return }
       let detailVC = UIStoryboard(name: "Trip", bundle: nil)
         .instantiateViewController(withIdentifier: "tripActivityDetailVC")
