@@ -218,7 +218,7 @@ extension TripActivity {
     self.city = City(rawValue: document["city"] as? String ?? "")
     self.category = category
     self.title = title
-    self.description = document["desription"] as? String ?? "No description"
+    self.description = document["description"] as? String ?? "No description"
     self.price = document["price"] as? String ?? "?"
     self.location = location
     self.createdDate = createdDate
