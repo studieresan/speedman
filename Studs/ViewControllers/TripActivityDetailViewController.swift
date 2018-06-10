@@ -33,7 +33,14 @@ class TripActivityDetailViewController: UIViewController {
         locationLabel.text = activity.location.address
         peopleLabel.text = "\(activity.peopleCount) people going"
         priceLabel.text = activity.price
-        descriptionTextView.text = activity.description
+
+        let attributedDescription = NSAttributedString(
+          html: activity.description,
+          font: descriptionTextView.font ??
+            UIFont.systemFont(ofSize: UIFont.systemFontSize),
+          color: descriptionTextView.textColor ?? .black
+        )
+        descriptionTextView.attributedText = attributedDescription
         cardView.colorStripColor = activity.category.color
       } else {
         // TODO: Create a nice animation when dismissing
