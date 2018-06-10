@@ -102,14 +102,21 @@ class CreateTripActivityTableViewController: UITableViewController {
   }
   var activityCategory: TripActivity.Category = .attraction {
     didSet {
-      attractionButton.tintColor = activityCategory == .attraction ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-      attractionButtonLabel.textColor = activityCategory == .attraction ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-      foodButton.tintColor = activityCategory == .food ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-      foodButtonLabel.textColor = activityCategory == .food ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-      drinkButton.tintColor = activityCategory == .drink ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-      drinkButtonLabel.textColor = activityCategory == .drink ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-      otherButton.tintColor = activityCategory == .other ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-      otherButtonLabel.textColor = activityCategory == .other ? #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+      let attractionColor = TripActivity.Category.attraction.color
+      let foodColor = TripActivity.Category.food.color
+      let drinkColor = TripActivity.Category.drink.color
+      let otherColor = TripActivity.Category.other.color
+      let gray = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+      attractionButton.tintColor =
+        activityCategory == .attraction ? attractionColor : gray
+      attractionButtonLabel.textColor =
+        activityCategory == .attraction ? attractionColor : gray
+      foodButton.tintColor = activityCategory == .food ? foodColor : gray
+      foodButtonLabel.textColor = activityCategory == .food ? foodColor : gray
+      drinkButton.tintColor = activityCategory == .drink ? drinkColor : gray
+      drinkButtonLabel.textColor = activityCategory == .drink ? drinkColor : gray
+      otherButton.tintColor = activityCategory == .other ? otherColor : gray
+      otherButtonLabel.textColor = activityCategory == .other ? otherColor : gray
     }
   }
 

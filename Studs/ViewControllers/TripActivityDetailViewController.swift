@@ -10,6 +10,7 @@ import UIKit
 
 class TripActivityDetailViewController: UIViewController {
   // MARK: - Outlets
+  @IBOutlet weak var cardView: CardViewWithColorStrip!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
@@ -33,6 +34,7 @@ class TripActivityDetailViewController: UIViewController {
         peopleLabel.text = "\(activity.peopleCount) people going"
         priceLabel.text = activity.price
         descriptionTextView.text = activity.description
+        cardView.colorStripColor = activity.category.color
       } else {
         // TODO: Create a nice animation when dismissing
         navigationController?.popViewController(animated: false)

@@ -75,11 +75,27 @@ extension TripScheduleViewController: UITableViewDataSource {
         tripCell.dateLabel.text =
           DateFormatter.dateAndTimeFormatter.string(from: activity.startDate)
         tripCell.locationLabel.text = activity.location.address
+        tripCell.edgeColor = activity.category.color
       }
       return cell
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return activities.count
+  }
+}
+
+extension TripActivity.Category {
+  var color: UIColor {
+    switch self {
+    case .attraction:
+      return UIColor(named: "AttractionOrange") ?? .orange
+    case .food:
+      return UIColor(named: "FoodGreen") ?? .green
+    case .drink:
+      return UIColor(named: "DrinkPink") ?? .purple
+    case .other:
+      return UIColor(named: "OtherBlue") ?? .blue
+    }
   }
 }

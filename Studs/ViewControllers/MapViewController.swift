@@ -136,6 +136,17 @@ class MapViewController: UIViewController {
 
 // MARK: - MKMapViewDelegate
 extension MapViewController: MKMapViewDelegate {
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation)
+    -> MKAnnotationView? {
+      guard let pin = annotation as? MKPointAnnotation else { return nil }
+      guard let activity = pinsToActivities[pin] else { return nil }
+      let marker = MKMarkerAnnotationView()
+      marker.markerTintColor = activity.category.color
+      marker.glyphImage = activity.category.icon?.addingImagePadding(x: 12, y: 12)
+      marker.displayPriority = .required
+      return marker
+  }
+
   // Updates the location button with the correct image for the current mode
   func mapView(_ mapView: MKMapView, didChange mode: MKUserTrackingMode, animated: Bool) {
     switch mode {
@@ -187,6 +198,21 @@ extension MKPointAnnotation {
         self.title == other.title && self.subtitle == other.subtitle
     } else {
       return false
+    }
+  }
+}
+
+extension TripActivity.Category {
+  var icon: UIImage? {
+    switch self {
+    case .drink:
+      return UIImage(named: "Cocktail")
+    case .food:
+      return UIImage(named: "Circle")
+    case .attraction:
+      return UIImage(named: "Camera")
+    case .other:
+      return UIImage(named: "MoreHorizontal")
     }
   }
 }

@@ -5,8 +5,11 @@ disabled_rules:
 identifier_name:
   excluded:
     - id # Allow 'id' as variable name
-    - db # Allow 'db' as variable name
-    - vc # Allow 'vc' as variable name
+    - db
+    - vc
+    - x
+    - y
+    - z
 
 # Mandatory trailing comma to avoid unnecessary diff
 trailing_comma:
