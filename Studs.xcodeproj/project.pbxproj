@@ -29,6 +29,8 @@
 		AB6DF34C201F6755002D3A71 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34B201F6755002D3A71 /* CardView.swift */; };
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
 		AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */; };
+		AB80EA1120CA943B0064673D /* CreateTripActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80EA1020CA943B0064673D /* CreateTripActivityViewController.swift */; };
+		AB80EA1320CAA5E10064673D /* CreateTripActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80EA1220CAA5E10064673D /* CreateTripActivityTableViewController.swift */; };
 		AB89FDBD20A0935F00EE1EDC /* TripActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */; };
 		AB89FDBF20A1E66B00EE1EDC /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */; };
 		AB89FDC120A1EC8D00EE1EDC /* TripTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */; };
@@ -93,6 +95,8 @@
 		AB6DF34B201F6755002D3A71 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		AB80EA1020CA943B0064673D /* CreateTripActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripActivityViewController.swift; sourceTree = "<group>"; };
+		AB80EA1220CAA5E10064673D /* CreateTripActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripActivityTableViewController.swift; sourceTree = "<group>"; };
 		AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivity.swift; sourceTree = "<group>"; };
 		AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleViewController.swift; sourceTree = "<group>"; };
 		AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTabBarController.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		AB35819F2011335700673D3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB80EA1020CA943B0064673D /* CreateTripActivityViewController.swift */,
+				AB80EA1220CAA5E10064673D /* CreateTripActivityTableViewController.swift */,
 				AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */,
 				AB235B7920C836B700D8C6C0 /* RegistrationTableViewController.swift */,
 				AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */,
@@ -521,6 +527,7 @@
 				AB35819D2011307200673D3F /* User.swift in Sources */,
 				AB235B7A20C836B700D8C6C0 /* RegistrationTableViewController.swift in Sources */,
 				AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */,
+				AB80EA1320CAA5E10064673D /* CreateTripActivityTableViewController.swift in Sources */,
 				AB38FD0F20C40879004567FB /* TripActivityTableViewCell.swift in Sources */,
 				ABFC76F9208751F9002534AE /* BarButton.swift in Sources */,
 				AB36D842208DFBB1002494E3 /* FadedMapView.swift in Sources */,
@@ -542,6 +549,7 @@
 				AB35819620110AC900673D3F /* API.swift in Sources */,
 				AB319E9320A4901300741B3C /* TripStore.swift in Sources */,
 				AB235B7820C64D9D00D8C6C0 /* TripActivityDetailViewController.swift in Sources */,
+				AB80EA1120CA943B0064673D /* CreateTripActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
