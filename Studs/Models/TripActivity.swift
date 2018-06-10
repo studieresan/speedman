@@ -27,14 +27,15 @@ struct TripActivity {
   let id: String
   let city: City?
   let category: Category
-  let title: String
+  let title: String?
   let description: String
-  let price: String
+  let price: String?
   let location: Location
   let createdDate: Date
   let startDate: Date
   let endDate: Date
   let peopleCount: Int
+  let isUserActivity: Bool
 
   struct Location {
     let address: String

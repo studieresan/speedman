@@ -200,7 +200,6 @@ extension TripActivity {
   // Creates a TripActivity from a firebase document
   init?(from document: QueryDocumentSnapshot) {
     guard
-      let title = document["title"] as? String,
       let category = Category(rawValue: document["category"] as? String ?? ""),
       let createdDate = document["createdDate"] as? Date,
       let startDate = document["startDate"] as? Date,
@@ -217,24 +216,25 @@ extension TripActivity {
     self.id = document.documentID
     self.city = City(rawValue: document["city"] as? String ?? "")
     self.category = category
-    self.title = title
+    self.title = document["title"] as? String
     self.description = document["description"] as? String ?? "No description"
-    self.price = document["price"] as? String ?? "?"
+    self.price = document["price"] as? String
     self.location = location
     self.createdDate = createdDate
     self.startDate = startDate
     self.endDate = endDate
     self.peopleCount = document["peopleCount"] as? Int ?? 0
+    self.isUserActivity = document["isUserActivity"] as? Bool ?? false
   }
 
   // A firebase data represenation of the activity
   var data: [String: Any] {
     return [
-      "title": self.title,
+      "title": self.title ?? "",
       "category": self.category.rawValue,
       "city": self.city?.rawValue ?? "",
       "description": self.description,
-      "price": self.price,
+      "price": self.price ?? "",
       "location": [
         "address": self.location.address,
         "coordinate": GeoPoint(latitude: self.location.coordinate.latitude,
@@ -243,6 +243,7 @@ extension TripActivity {
       "createdDate": self.createdDate,
       "startDate": self.startDate,
       "endDate": self.endDate,
+      "isUserActivity": self.isUserActivity,
     ]
   }
 }

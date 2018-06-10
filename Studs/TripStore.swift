@@ -13,6 +13,13 @@ struct TripState {
   var activities = [TripActivity]()
   var selectedActivity: TripActivity?
   var drawerPosition = DrawerPosition.partiallyRevealed
+  var drawerPage = DrawerPage.schedule
+}
+
+enum DrawerPage {
+  case schedule
+  case plans
+  case information
 }
 
 enum DrawerPosition: String {
@@ -25,6 +32,7 @@ enum TripAction {
   case selectActivity(TripActivity?)
   case changeDrawerPosition(DrawerPosition)
   case updateActivities([TripActivity])
+  case changeDrawerPage(DrawerPage)
 }
 
 class TripStore: Store<TripState, TripAction> {
@@ -43,6 +51,8 @@ class TripStore: Store<TripState, TripAction> {
         if let selectedActivity = state.selectedActivity {
           state.selectedActivity = activities.first { selectedActivity.id == $0.id }
         }
+      case .changeDrawerPage(let page):
+        state.drawerPage = page
       }
       return state
     })

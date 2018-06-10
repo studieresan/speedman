@@ -66,7 +66,9 @@ class MapViewController: UIViewController {
     super.viewDidAppear(animated)
 
     stateSubscription = store.subscribe { [weak self] state in
-      self?.activities = state.activities
+      self?.activities = state.activities.filter {
+        $0.isUserActivity == (state.drawerPage == .plans)
+      }
       self?.selectedActivity = state.selectedActivity
     }
   }

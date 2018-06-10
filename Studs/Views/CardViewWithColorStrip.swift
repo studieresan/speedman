@@ -45,7 +45,7 @@ class CardViewWithColorStrip: CardView {
       leftAnchor.constraint(equalTo: colorStripView.leftAnchor),
       topAnchor.constraint(equalTo: colorStripView.topAnchor),
       bottomAnchor.constraint(equalTo: colorStripView.bottomAnchor),
-      colorStripView.widthAnchor.constraint(equalToConstant: 8.0),
+      colorStripView.widthAnchor.constraint(equalToConstant: 10.0),
     ])
   }
 
