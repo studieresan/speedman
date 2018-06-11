@@ -20,20 +20,20 @@ class PulleyCompatibleTabBarController: UITabBarController {
   // MARK: - Properties
   var visibleDrawerHeight: CGFloat = 0.0
   // Capture default tab bar height
-  private lazy var tabBarHeight: CGFloat = {
+  lazy var tabBarHeight: CGFloat = {
     return tabBar.frame.height
   }()
   // A view covering the safe area between the tab bar and the bottom of the screen
   // Since we reposition the tab bar we don't get the extended background of the bar
   // like usual. So we cover it up manually.
   private lazy var safeAreaCoveringView: UIVisualEffectView = {
-    let coveringView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
-    view.addSubview(coveringView)
+    let coveringView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+    view.insertSubview(coveringView, belowSubview: tabBar)
     coveringView.translatesAutoresizingMaskIntoConstraints = false
     view.addConstraints([
       coveringView.leftAnchor.constraint(equalTo: view.leftAnchor),
       coveringView.rightAnchor.constraint(equalTo: view.rightAnchor),
-      coveringView.heightAnchor.constraint(equalToConstant: 80),
+      coveringView.heightAnchor.constraint(equalToConstant: 120),
     ])
     return coveringView
   }()
@@ -42,6 +42,7 @@ class PulleyCompatibleTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupGripper()
+    tabBar.backgroundImage = UIImage()
   }
 
   private var setupDone = false
@@ -110,7 +111,7 @@ class PulleyCompatibleTabBarController: UITabBarController {
     var frame = safeAreaCoveringView.frame
     let bottomSafeArea = pulleyViewController?.bottomSafeSpace ?? 0.0
     frame.origin.y =
-      view.frame.origin.y + visibleDrawerHeight - bottomSafeArea
+      view.frame.origin.y + visibleDrawerHeight - bottomSafeArea - tabBarHeight
     safeAreaCoveringView.frame = frame
   }
 }
