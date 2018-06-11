@@ -24,23 +24,23 @@ struct TripActivity {
     case other
   }
 
-  let id: String
-  let city: City?
-  let category: Category
-  let title: String?
-  let description: String
-  let price: String?
-  let location: Location
-  let createdDate: Date
-  let startDate: Date
-  let endDate: Date
-  let peopleCount: Int
-  let isUserActivity: Bool
-  let author: String?
+  var id: String
+  var city: City?
+  var category: Category
+  var title: String?
+  var description: String
+  var price: String?
+  var location: Location
+  var createdDate: Date
+  var startDate: Date
+  var endDate: Date
+  var peopleCount: Int
+  var isUserActivity: Bool
+  var author: String?
 
   struct Location {
-    let address: String
-    let coordinate: CLLocationCoordinate2D
+    var address: String
+    var coordinate: CLLocationCoordinate2D
   }
 }
 

@@ -7,10 +7,26 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CreateTripActivityViewController: UIViewController {
   // MARK: - Properties
   private var createActivityTable: CreateTripActivityTableViewController!
+  var editingActivity: TripActivity?
+  private var isCreating: Bool {
+    return editingActivity == nil
+  }
+  private lazy var user = UserManager.shared.user
+  private var defaultNewActivity: TripActivity {
+    let location = TripActivity.Location(
+      address: "",
+      coordinate: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
+    )
+    return TripActivity(id: UUID().uuidString, city: nil, category: .attraction,
+                        title: nil, description: "", price: nil, location: location,
+                        createdDate: Date(), startDate: Date(), endDate: Date(),
+                        peopleCount: 0, isUserActivity: true, author: user?.id)
+  }
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -38,29 +54,23 @@ class CreateTripActivityViewController: UIViewController {
     guard let clLocation = createActivityTable.location else {
       return showErrorPopup(message: "No coordinates available for address. Rewrite it!")
     }
-    guard createActivityTable.startDate > createActivityTable.endDate else {
+    let startDate = createActivityTable.startDate
+    let endDate = createActivityTable.endDate
+    guard startDate < endDate else {
       return showErrorPopup(message: "Activity has to start before it ends!")
     }
-    guard let user = UserManager.shared.user else {
-      return showErrorPopup(message: "You are not even logged in!")
-    }
+    let category = createActivityTable.activityCategory
     let location = TripActivity.Location(address: address,
                                          coordinate: clLocation.coordinate)
-    let trimmedTitle = title.replacingOccurrences(of: " ", with: "-")
-    let id = String(format: "\(trimmedTitle)-%08X", arguments: [arc4random()])
-    let activity = TripActivity(id: id,
-                                city: nil,
-                                category: createActivityTable.activityCategory,
-                                title: nil,
-                                description: title,
-                                price: nil,
-                                location: location,
-                                createdDate: Date(),
-                                startDate: createActivityTable.startDate,
-                                endDate: createActivityTable.endDate,
-                                peopleCount: 0,
-                                isUserActivity: true,
-                                author: user.id)
+
+    var activity = editingActivity ?? defaultNewActivity
+    activity.description = title
+    activity.location.address = address
+    activity.location = location
+    activity.startDate = startDate
+    activity.endDate = endDate
+    activity.category = category
+
     Firebase.addOrUpdateActivity(activity)
     self.dismiss(animated: true)
   }
@@ -76,5 +86,15 @@ class CreateTripActivityViewController: UIViewController {
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     createActivityTable = segue.destination as? CreateTripActivityTableViewController
+    if let activity = editingActivity {
+      createActivityTable.activityCategory = activity.category
+      createActivityTable.activityTitle = activity.description
+      createActivityTable.address = activity.location.address
+      let coordinate = activity.location.coordinate
+      createActivityTable.location = CLLocation(latitude: coordinate.latitude,
+                                                longitude: coordinate.longitude)
+      createActivityTable.startDate = activity.startDate
+      createActivityTable.endDate = activity.endDate
+    }
   }
 }

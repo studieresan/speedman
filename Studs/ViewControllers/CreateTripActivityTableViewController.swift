@@ -45,80 +45,12 @@ class CreateTripActivityTableViewController: UITableViewController {
   private let locationManager = CLLocationManager()
   private let geocoder = CLGeocoder()
 
-  var activityTitle = "" {
-    didSet {
-      titleTextView.text = activityTitle
-    }
-  }
-  var location: CLLocation? {
-    didSet {
-      guard let location = location else { return }
-      if address == nil {
-        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ in
-          self?.locationSpinner.isHidden = true
-          if let placemark = placemarks?.first {
-            var str = placemark.name ?? ""
-            if let thoroughfare = placemark.thoroughfare {
-              str.append(", \(thoroughfare)")
-              if let subThoroughfare = placemark.subThoroughfare {
-                str.append(" \(subThoroughfare)")
-              }
-            }
-            if let locality = placemark.locality {
-              str.append(", \(locality)")
-            }
-            self?.address = str
-          }
-        }
-      }
-    }
-  }
-  var address: String? {
-    didSet {
-      addressTextField.text = address
-      guard let address = address else { return }
-      if location == nil {
-        self.locationSpinner.isHidden = false
-        geocoder.geocodeAddressString(address) { [weak self] placemarks, _ in
-          self?.locationSpinner.isHidden = true
-          if let placemark = placemarks?.first {
-            self?.location = placemark.location
-          }
-        }
-      }
-    }
-  }
-  var startDate = Date() {
-    didSet {
-      startDateButton.setTitle(DateFormatter.dateAndTimeFormatter.string(from: startDate),
-                               for: .normal)
-    }
-  }
-  var endDate = Date() {
-    didSet {
-      endDateButton.setTitle(DateFormatter.dateAndTimeFormatter.string(from: endDate),
-                             for: .normal)
-    }
-  }
-  var activityCategory: TripActivity.Category = .attraction {
-    didSet {
-      let attractionColor = TripActivity.Category.attraction.color
-      let foodColor = TripActivity.Category.food.color
-      let drinkColor = TripActivity.Category.drink.color
-      let otherColor = TripActivity.Category.other.color
-      let gray = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-      attractionButton.tintColor =
-        activityCategory == .attraction ? attractionColor : gray
-      attractionButtonLabel.textColor =
-        activityCategory == .attraction ? attractionColor : gray
-      foodButton.tintColor = activityCategory == .food ? foodColor : gray
-      foodButtonLabel.textColor = activityCategory == .food ? foodColor : gray
-      drinkButton.tintColor = activityCategory == .drink ? drinkColor : gray
-      drinkButtonLabel.textColor = activityCategory == .drink ? drinkColor : gray
-      otherButton.tintColor = activityCategory == .other ? otherColor : gray
-      otherButtonLabel.textColor = activityCategory == .other ? otherColor : gray
-    }
-  }
+  var activityTitle = ""
+  var location: CLLocation?
+  var address: String?
+  var startDate = Date()
+  var endDate = Date().addingTimeInterval(60 * 60)
+  var activityCategory: TripActivity.Category = .attraction
 
   enum DateEditingMode {
     case startDate
@@ -126,21 +58,7 @@ class CreateTripActivityTableViewController: UITableViewController {
     case none
   }
 
-  private var dateEditingMode = DateEditingMode.none {
-    didSet {
-      if dateEditingMode == .startDate {
-        datePicker.setDate(startDate, animated: true)
-      } else if dateEditingMode == .endDate {
-        datePicker.setDate(endDate, animated: true)
-      }
-      UIView.animate(withDuration: 0.3) { [weak self] in
-        self?.startDateView.backgroundColor =
-          self?.dateEditingMode == .startDate ? #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 0.1) : .clear
-        self?.endDateView.backgroundColor =
-          self?.dateEditingMode == .endDate ? #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 0.1) : .clear
-      }
-    }
-  }
+  private var dateEditingMode = DateEditingMode.none
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -162,14 +80,13 @@ class CreateTripActivityTableViewController: UITableViewController {
         self?.tableViewHeight.constant = newHeight
       }
     }
-
-    startDate = Date()
-    endDate = Date().addingTimeInterval(60 * 60)
+    updateUI()
   }
 
   // MARK: - Actions
   @IBAction func startDateTapped(_ sender: Any) {
     dateEditingMode = dateEditingMode == .startDate ? .none : .startDate
+    updateDatePicker()
     // Reload table with animations:
     tableView.beginUpdates()
     tableView.endUpdates()
@@ -177,6 +94,7 @@ class CreateTripActivityTableViewController: UITableViewController {
 
   @IBAction func endDateTapped(_ sender: Any) {
     dateEditingMode = dateEditingMode == .endDate ? .none : .endDate
+    updateDatePicker()
     // Reload table with animations:
     tableView.beginUpdates()
     tableView.endUpdates()
@@ -203,6 +121,7 @@ class CreateTripActivityTableViewController: UITableViewController {
     case .none:
       break
     }
+    updateLabels()
   }
 
   @IBAction func categoryButtonTapped(_ sender: UITapGestureRecognizer) {
@@ -216,6 +135,90 @@ class CreateTripActivityTableViewController: UITableViewController {
     } else if view == otherButton || view == otherButtonLabel {
       activityCategory = .other
     }
+    updateCategoryButtons()
+  }
+
+  func updateAddressFromLocation() {
+    guard let location = self.location else { return }
+    self.locationSpinner.isHidden = false
+    geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, _ in
+      self?.locationSpinner.isHidden = true
+      if let placemark = placemarks?.first {
+        var str = placemark.name ?? ""
+        if let thoroughfare = placemark.thoroughfare {
+          str.append(", \(thoroughfare)")
+          if let subThoroughfare = placemark.subThoroughfare {
+            str.append(" \(subThoroughfare)")
+          }
+        }
+        if let locality = placemark.locality {
+          str.append(", \(locality)")
+        }
+        self?.address = str
+      }
+      self?.updateLabels()
+    }
+  }
+
+  func updateLocationFromAddress() {
+    guard let address = self.address else { return }
+    self.locationSpinner.isHidden = false
+    geocoder.geocodeAddressString(address) { [weak self] placemarks, _ in
+      self?.locationSpinner.isHidden = true
+      if let placemark = placemarks?.first {
+        self?.location = placemark.location
+      }
+      self?.updateLabels()
+    }
+  }
+
+  // MARK: - UI Updates
+  func updateUI() {
+    updateLabels()
+    updateCategoryButtons()
+    updateDatePicker()
+  }
+
+  func updateLabels() {
+    titleTextView.text = activityTitle
+    titlePlaceholderLabel.isHidden = !titleTextView.text.isEmpty
+    addressTextField.text = address
+    startDateButton.setTitle(DateFormatter.dateAndTimeFormatter.string(from: startDate),
+                             for: .normal)
+    endDateButton.setTitle(DateFormatter.dateAndTimeFormatter.string(from: endDate),
+                           for: .normal)
+  }
+
+  func updateDatePicker() {
+    if dateEditingMode == .startDate {
+      datePicker.setDate(startDate, animated: true)
+    } else if dateEditingMode == .endDate {
+      datePicker.setDate(endDate, animated: true)
+    }
+    UIView.animate(withDuration: 0.3) { [weak self] in
+      self?.startDateView.backgroundColor =
+        self?.dateEditingMode == .startDate ? #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 0.1) : .clear
+      self?.endDateView.backgroundColor =
+        self?.dateEditingMode == .endDate ? #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 0.1) : .clear
+    }
+  }
+
+  func updateCategoryButtons() {
+    let attractionColor = TripActivity.Category.attraction.color
+    let foodColor = TripActivity.Category.food.color
+    let drinkColor = TripActivity.Category.drink.color
+    let otherColor = TripActivity.Category.other.color
+    let gray = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    attractionButton.tintColor =
+      activityCategory == .attraction ? attractionColor : gray
+    attractionButtonLabel.textColor =
+      activityCategory == .attraction ? attractionColor : gray
+    foodButton.tintColor = activityCategory == .food ? foodColor : gray
+    foodButtonLabel.textColor = activityCategory == .food ? foodColor : gray
+    drinkButton.tintColor = activityCategory == .drink ? drinkColor : gray
+    drinkButtonLabel.textColor = activityCategory == .drink ? drinkColor : gray
+    otherButton.tintColor = activityCategory == .other ? otherColor : gray
+    otherButtonLabel.textColor = activityCategory == .other ? otherColor : gray
   }
 }
 
@@ -260,8 +263,9 @@ extension CreateTripActivityTableViewController: UITextFieldDelegate {
   }
 
   func textFieldDidEndEditing(_ textField: UITextField) {
-    location = nil
     address = textField.text
+    location = nil
+    updateLocationFromAddress()
   }
 }
 
@@ -270,6 +274,7 @@ extension CreateTripActivityTableViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager,
                        didUpdateLocations locations: [CLLocation]) {
     self.location = locations.last
+    updateAddressFromLocation()
   }
 
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

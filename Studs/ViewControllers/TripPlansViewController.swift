@@ -27,6 +27,7 @@ class TripPlansViewController: UIViewController {
       }
     }
   }
+  private lazy var user = UserManager.shared.user
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -60,6 +61,33 @@ class TripPlansViewController: UIViewController {
                         animated: true,
                         scrollPosition: .top)
   }
+
+  func editActivity(activity: TripActivity) {
+    let alert = UIAlertController(title: nil,
+                                  message: nil,
+                                  preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: "Edit", style: .default,
+                                  handler: { [weak self] _ in
+      self?.performSegue(withIdentifier: "editUserActivity", sender: activity)
+    }))
+    alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+      Firebase.deleteActivity(activity)
+    }))
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+  }
+
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard
+      segue.identifier == "editUserActivity",
+      let navVC = segue.destination as? UINavigationController,
+      let destinationVC =
+        navVC.viewControllers.first as? CreateTripActivityViewController,
+      let activity = sender as? TripActivity
+    else { return }
+    destinationVC.editingActivity = activity
+  }
 }
 
 // MARK: - UITableViewDelegate
@@ -78,7 +106,9 @@ extension TripPlansViewController: UITableViewDataSource {
                                                for: indexPath)
       let activity = activities[indexPath.row]
       if let tripCell = cell as? TripUserActivityTableViewCell {
+        tripCell.editButton.isHidden = user?.id != activity.author
         tripCell.titleLabel.text = activity.description
+//        tripCell.titleLabel.textColor = activity.category.color
         tripCell.dateLabel.text =
           DateFormatter.dateAndTimeFormatter.string(from: activity.startDate)
         tripCell.locationLabel.text = activity.location.address
@@ -87,6 +117,9 @@ extension TripPlansViewController: UITableViewDataSource {
         tripCell.categoryButton.tintColor = activity.category.color
         tripCell.registerButtonTappedAction = { [weak store] in
           store?.dispatch(action: .selectActivity(activity))
+        }
+        tripCell.editButtonTappedAction = { [weak self] in
+          self?.editActivity(activity: activity)
         }
       }
       return cell
