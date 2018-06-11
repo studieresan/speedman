@@ -36,6 +36,7 @@ struct TripActivity {
   let endDate: Date
   let peopleCount: Int
   let isUserActivity: Bool
+  let author: String?
 
   struct Location {
     let address: String

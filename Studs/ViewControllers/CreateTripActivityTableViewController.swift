@@ -237,6 +237,7 @@ extension CreateTripActivityTableViewController {
 extension CreateTripActivityTableViewController: UITextViewDelegate {
   func textViewDidChange(_ textView: UITextView) {
     titlePlaceholderLabel.isHidden = !textView.text.isEmpty
+    activityTitle = textView.text
   }
 
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
@@ -248,10 +249,6 @@ extension CreateTripActivityTableViewController: UITextViewDelegate {
     }
     // Limit to 140 characters
     return textView.text.count + (text.count - range.length) <= 140
-  }
-
-  func textViewDidEndEditing(_ textView: UITextView) {
-    activityTitle = textView.text
   }
 }
 

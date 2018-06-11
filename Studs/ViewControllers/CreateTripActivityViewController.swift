@@ -10,7 +10,7 @@ import UIKit
 
 class CreateTripActivityViewController: UIViewController {
   // MARK: - Properties
-  private var createActivityTable: CreateTripActivityTableViewController?
+  private var createActivityTable: CreateTripActivityTableViewController!
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -23,35 +23,54 @@ class CreateTripActivityViewController: UIViewController {
   }
 
   @IBAction func doneButtonTapped(_ sender: Any) {
-    if validateFields() {
-      print("Fields valid")
-    }
+    validateAndSubmit()
   }
 
-  func validateFields() -> Bool {
-    guard let createVC = createActivityTable else { return false }
-    if createVC.activityTitle.isEmpty {
+  func validateAndSubmit() {
+    let title = createActivityTable.activityTitle
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !title.isEmpty else {
       return showErrorPopup(message: "Activity title cannot be empty!")
     }
-    if (createVC.address ?? "").isEmpty {
+    guard let address = createActivityTable.address, !address.isEmpty else {
       return showErrorPopup(message: "Address cannot be empty!")
     }
-    if createVC.location == nil {
+    guard let clLocation = createActivityTable.location else {
       return showErrorPopup(message: "No coordinates available for address. Rewrite it!")
     }
-    if createVC.startDate > createVC.endDate {
+    guard createActivityTable.startDate > createActivityTable.endDate else {
       return showErrorPopup(message: "Activity has to start before it ends!")
     }
-    return true
+    guard let user = UserManager.shared.user else {
+      return showErrorPopup(message: "You are not even logged in!")
+    }
+    let location = TripActivity.Location(address: address,
+                                         coordinate: clLocation.coordinate)
+    let trimmedTitle = title.replacingOccurrences(of: " ", with: "-")
+    let id = String(format: "\(trimmedTitle)-%08X", arguments: [arc4random()])
+    let activity = TripActivity(id: id,
+                                city: nil,
+                                category: createActivityTable.activityCategory,
+                                title: nil,
+                                description: title,
+                                price: nil,
+                                location: location,
+                                createdDate: Date(),
+                                startDate: createActivityTable.startDate,
+                                endDate: createActivityTable.endDate,
+                                peopleCount: 0,
+                                isUserActivity: true,
+                                author: user.id)
+    Firebase.addOrUpdateActivity(activity)
+    self.dismiss(animated: true)
   }
 
-  func showErrorPopup(message: String) -> Bool {
+  func showErrorPopup(message: String) {
     let alert = UIAlertController(title: "Input Error",
                                   message: message,
                                   preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "I'll fix it!", style: .default, handler: nil))
     self.present(alert, animated: true, completion: nil)
-    return false
   }
 
   // MARK: - Navigation

@@ -225,6 +225,7 @@ extension TripActivity {
     self.endDate = endDate
     self.peopleCount = document["peopleCount"] as? Int ?? 0
     self.isUserActivity = document["isUserActivity"] as? Bool ?? false
+    self.author = document["author"] as? String
   }
 
   // A firebase data represenation of the activity
@@ -244,6 +245,7 @@ extension TripActivity {
       "startDate": self.startDate,
       "endDate": self.endDate,
       "isUserActivity": self.isUserActivity,
+      "author": self.author ?? "",
     ]
   }
 }
