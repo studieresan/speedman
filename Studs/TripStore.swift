@@ -13,6 +13,7 @@ struct TripState {
   var activities = [TripActivity]()
   var selectedActivity: TripActivity?
   var drawerPosition = DrawerPosition.partiallyRevealed
+  var drawerBottomSafeArea: Float = 0.0
   var drawerPage = DrawerPage.schedule
 }
 
@@ -32,6 +33,7 @@ enum TripAction {
   case selectActivity(TripActivity?)
   case changeDrawerPosition(DrawerPosition)
   case updateActivities([TripActivity])
+  case setDrawerBottomSafeArea(Float)
   case changeDrawerPage(DrawerPage)
 }
 
@@ -53,6 +55,8 @@ class TripStore: Store<TripState, TripAction> {
         }
       case .changeDrawerPage(let page):
         state.drawerPage = page
+      case .setDrawerBottomSafeArea(let newValue):
+        state.drawerBottomSafeArea = newValue
       }
       return state
     })

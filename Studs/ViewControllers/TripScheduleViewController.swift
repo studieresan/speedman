@@ -44,6 +44,9 @@ class TripScheduleViewController: UIViewController {
       self?.activities = state.activities.filter { !$0.isUserActivity }
       self?.selectedActivity = state.selectedActivity
       self?.tableView.isScrollEnabled = state.drawerPosition == .open
+      self?.tableView.contentInset =
+        UIEdgeInsets(top: 0.0, left: 0.0,
+                     bottom: CGFloat(state.drawerBottomSafeArea), right: 0.0)
     }
     store.dispatch(action: .changeDrawerPage(.schedule))
   }

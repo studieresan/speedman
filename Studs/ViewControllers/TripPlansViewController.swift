@@ -19,6 +19,14 @@ class TripPlansViewController: UIViewController {
   private var activities = [TripActivity]() {
     didSet { tableView.reloadData() }
   }
+  private var selectedActivity: TripActivity? {
+    didSet {
+      guard selectedActivity != oldValue else { return }
+      if let activity = selectedActivity {
+        selectActivityInTable(activity: activity)
+      }
+    }
+  }
 
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -31,7 +39,11 @@ class TripPlansViewController: UIViewController {
     super.viewDidAppear(animated)
     stateSubscription = store.subscribe { [weak self] state in
       self?.activities = state.activities.filter { $0.isUserActivity }
+      self?.selectedActivity = state.selectedActivity
       self?.tableView.isScrollEnabled = state.drawerPosition == .open
+      self?.tableView.contentInset =
+        UIEdgeInsets(top: 0.0, left: 0.0,
+                     bottom: CGFloat(state.drawerBottomSafeArea + 500), right: 0.0)
     }
     store.dispatch(action: .changeDrawerPage(.plans))
   }
@@ -43,6 +55,7 @@ class TripPlansViewController: UIViewController {
 
   func selectActivityInTable(activity: TripActivity) {
     guard let row = activities.index(of: activity) else { return }
+    guard tableView.indexPathForSelectedRow?.row != row else { return }
     tableView.selectRow(at: IndexPath(row: row, section: 0),
                         animated: true,
                         scrollPosition: .top)

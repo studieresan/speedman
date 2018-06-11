@@ -10,6 +10,7 @@ import UIKit
 
 class TripActivityDetailViewController: UIViewController {
   // MARK: - Outlets
+  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var cardView: CardViewWithColorStrip!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
@@ -26,7 +27,7 @@ class TripActivityDetailViewController: UIViewController {
 
   private var activity: TripActivity? {
     didSet {
-      if let activity = activity {
+      if let activity = activity, !activity.isUserActivity {
         titleLabel.text = activity.title
         dateLabel.text =
           DateFormatter.dateAndTimeFormatter.string(from: activity.startDate)
@@ -59,6 +60,10 @@ class TripActivityDetailViewController: UIViewController {
     super.viewDidAppear(animated)
     stateSubscription = store.subscribe { [weak self] state in
       self?.activity = state.selectedActivity
+      self?.scrollView.isScrollEnabled = state.drawerPosition == .open
+      self?.scrollView.contentInset =
+        UIEdgeInsets(top: 0.0, left: 0.0,
+                     bottom: CGFloat(state.drawerBottomSafeArea), right: 0.0)
     }
   }
 

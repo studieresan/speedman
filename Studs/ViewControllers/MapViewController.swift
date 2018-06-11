@@ -27,7 +27,11 @@ class MapViewController: UIViewController {
       activities.forEach { activity in
         let pin = activitiesToPins[activity] ?? MKPointAnnotation()
         pin.coordinate = activity.location.coordinate
-        pin.title = activity.title
+        if activity.isUserActivity {
+          pin.title = activity.description
+        } else {
+          pin.title = activity.title
+        }
         pin.subtitle = activity.location.address
         activitiesToPins[activity] = pin
         pinsToActivities[pin] = activity
@@ -69,7 +73,9 @@ class MapViewController: UIViewController {
       self?.activities = state.activities.filter {
         $0.isUserActivity == (state.drawerPage == .plans)
       }
-      self?.selectedActivity = state.selectedActivity
+      self?.selectedActivity = self?.activities.first {
+        $0.id == state.selectedActivity?.id
+      }
     }
   }
 

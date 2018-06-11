@@ -43,6 +43,7 @@ class TripTabBarController: PulleyCompatibleTabBarController {
 extension TripTabBarController {
   func drawerPositionDidChange(drawer: PulleyViewController, bottomSafeArea: CGFloat) {
     store.dispatch(action: .changeDrawerPosition(drawer.drawerPosition.drawerPosition))
+    store.dispatch(action: .setDrawerBottomSafeArea(Float(bottomSafeArea + 40)))
   }
 }
 
