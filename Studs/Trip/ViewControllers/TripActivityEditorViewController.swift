@@ -1,17 +1,18 @@
 //
-//  CreateTripActivityViewController.swift
+//  TripActivityEditorViewController.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-06-08.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  Viewcontroller for creating or editing a trip activity
 
 import UIKit
 import CoreLocation
 
-class CreateTripActivityViewController: UIViewController {
+class TripActivityEditorViewController: UIViewController {
   // MARK: - Properties
-  private var createActivityTable: CreateTripActivityTableViewController!
+  private var createActivityTable: TripActivityEditorTableViewController!
   var editingActivity: TripActivity?
   private var isCreating: Bool {
     return editingActivity == nil
@@ -85,7 +86,7 @@ class CreateTripActivityViewController: UIViewController {
 
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    createActivityTable = segue.destination as? CreateTripActivityTableViewController
+    createActivityTable = segue.destination as? TripActivityEditorTableViewController
     if let activity = editingActivity {
       createActivityTable.activityCategory = activity.category
       createActivityTable.activityTitle = activity.description

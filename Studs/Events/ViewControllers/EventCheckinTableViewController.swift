@@ -1,5 +1,5 @@
 //
-//  CheckInTableViewController.swift
+//  EventCheckinTableViewController.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-01-31.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckInTableViewController: UITableViewController {
+class EventCheckinTableViewController: UITableViewController {
 
   // MARK: - Properties
   var event: Event!

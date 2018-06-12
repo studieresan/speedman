@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		66B767C71991D25578D78A68 /* Pods_Studs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42D30DB152248835B06BB7B8 /* Pods_Studs.framework */; };
-		AB02D4AD204057B4007D7808 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB02D4AC204057B4007D7808 /* NotificationsManager.swift */; };
+		AB02D4AD204057B4007D7808 /* EventNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB02D4AC204057B4007D7808 /* EventNotificationsManager.swift */; };
 		AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB12A2192031DF280049DF6F /* UserManager.swift */; };
-		AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */; };
+		AB13C27F203B314C00DC6812 /* EventCheckinButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13C27E203B314C00DC6812 /* EventCheckinButtonViewController.swift */; };
 		AB235B7820C64D9D00D8C6C0 /* TripActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */; };
-		AB235B7A20C836B700D8C6C0 /* RegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB235B7920C836B700D8C6C0 /* RegistrationTableViewController.swift */; };
+		AB235B7A20C836B700D8C6C0 /* TripActivityRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB235B7920C836B700D8C6C0 /* TripActivityRegistrationTableViewController.swift */; };
 		AB235B7C20C8628600D8C6C0 /* TripActivityRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB235B7B20C8628600D8C6C0 /* TripActivityRegistration.swift */; };
 		AB2577F82088C918004E6C80 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */; };
 		AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB265668202C8FA200131CE6 /* 1Password.xcassets */; };
-		AB2AEE6420A05A18002A5A01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2AEE6320A05A18002A5A01 /* MapViewController.swift */; };
+		AB2AEE6420A05A18002A5A01 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2AEE6320A05A18002A5A01 /* TripMapViewController.swift */; };
 		AB319E9120A444CC00741B3C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB319E9020A444CC00741B3C /* Store.swift */; };
 		AB319E9320A4901300741B3C /* TripStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB319E9220A4901300741B3C /* TripStore.swift */; };
 		AB358194201105CA00673D3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB358193201105CA00673D3F /* LoginViewController.swift */; };
@@ -25,12 +25,12 @@
 		AB36D842208DFBB1002494E3 /* FadedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB36D841208DFBB1002494E3 /* FadedMapView.swift */; };
 		AB38FD0F20C40879004567FB /* TripActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB38FD0E20C40879004567FB /* TripActivityTableViewCell.swift */; };
 		AB4B329D207A2DC200887A51 /* EventTableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4B329C207A2DC200887A51 /* EventTableViewSectionHeader.swift */; };
-		AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B06B42022062000752C68 /* CheckInTableViewController.swift */; };
+		AB5B06B52022062000752C68 /* EventCheckinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B06B42022062000752C68 /* EventCheckinTableViewController.swift */; };
 		AB6DF34C201F6755002D3A71 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34B201F6755002D3A71 /* CardView.swift */; };
 		AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */; };
 		AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */; };
-		AB80EA1120CA943B0064673D /* CreateTripActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80EA1020CA943B0064673D /* CreateTripActivityViewController.swift */; };
-		AB80EA1320CAA5E10064673D /* CreateTripActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80EA1220CAA5E10064673D /* CreateTripActivityTableViewController.swift */; };
+		AB80EA1120CA943B0064673D /* TripActivityEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80EA1020CA943B0064673D /* TripActivityEditorViewController.swift */; };
+		AB80EA1320CAA5E10064673D /* TripActivityEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB80EA1220CAA5E10064673D /* TripActivityEditorTableViewController.swift */; };
 		AB89FDBD20A0935F00EE1EDC /* TripActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */; };
 		AB89FDBF20A1E66B00EE1EDC /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */; };
 		AB89FDC120A1EC8D00EE1EDC /* TripTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */; };
@@ -76,15 +76,15 @@
 		42D30DB152248835B06BB7B8 /* Pods_Studs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Studs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D426C87E169DCC6E29FC1E6 /* Pods-Studs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Studs/Pods-Studs.debug.xcconfig"; sourceTree = "<group>"; };
 		51D2133166048698BA35458C /* Pods-Studs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Studs.release.xcconfig"; path = "Pods/Target Support Files/Pods-Studs/Pods-Studs.release.xcconfig"; sourceTree = "<group>"; };
-		AB02D4AC204057B4007D7808 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		AB02D4AC204057B4007D7808 /* EventNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNotificationsManager.swift; sourceTree = "<group>"; };
 		AB12A2192031DF280049DF6F /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckinButtonViewController.swift; sourceTree = "<group>"; };
+		AB13C27E203B314C00DC6812 /* EventCheckinButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckinButtonViewController.swift; sourceTree = "<group>"; };
 		AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityDetailViewController.swift; sourceTree = "<group>"; };
-		AB235B7920C836B700D8C6C0 /* RegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewController.swift; sourceTree = "<group>"; };
+		AB235B7920C836B700D8C6C0 /* TripActivityRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		AB235B7B20C8628600D8C6C0 /* TripActivityRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityRegistration.swift; sourceTree = "<group>"; };
 		AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB265668202C8FA200131CE6 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Pods/1PasswordExtension/1Password.xcassets; sourceTree = SOURCE_ROOT; };
-		AB2AEE6320A05A18002A5A01 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AB2AEE6320A05A18002A5A01 /* TripMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
 		AB319E9020A444CC00741B3C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		AB319E9220A4901300741B3C /* TripStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStore.swift; sourceTree = "<group>"; };
 		AB358193201105CA00673D3F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -93,13 +93,13 @@
 		AB36D841208DFBB1002494E3 /* FadedMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadedMapView.swift; sourceTree = "<group>"; };
 		AB38FD0E20C40879004567FB /* TripActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityTableViewCell.swift; sourceTree = "<group>"; };
 		AB4B329C207A2DC200887A51 /* EventTableViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewSectionHeader.swift; sourceTree = "<group>"; };
-		AB5B06B42022062000752C68 /* CheckInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInTableViewController.swift; sourceTree = "<group>"; };
+		AB5B06B42022062000752C68 /* EventCheckinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCheckinTableViewController.swift; sourceTree = "<group>"; };
 		AB6DF34B201F6755002D3A71 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		AB7EE49320CECED40019F9E8 /* Studs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Studs.entitlements; sourceTree = "<group>"; };
-		AB80EA1020CA943B0064673D /* CreateTripActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripActivityViewController.swift; sourceTree = "<group>"; };
-		AB80EA1220CAA5E10064673D /* CreateTripActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripActivityTableViewController.swift; sourceTree = "<group>"; };
+		AB80EA1020CA943B0064673D /* TripActivityEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityEditorViewController.swift; sourceTree = "<group>"; };
+		AB80EA1220CAA5E10064673D /* TripActivityEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityEditorTableViewController.swift; sourceTree = "<group>"; };
 		AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivity.swift; sourceTree = "<group>"; };
 		AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleViewController.swift; sourceTree = "<group>"; };
 		AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTabBarController.swift; sourceTree = "<group>"; };
@@ -171,6 +171,7 @@
 		AB0499E32010F78D00810E31 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */,
 				ABC87C75209F8A990023D776 /* UIViewController+PulleyViewController.swift */,
 				AB265668202C8FA200131CE6 /* 1Password.xcassets */,
 				ABFD7FB72010EF6200BCA86C /* AppDelegate.swift */,
@@ -193,11 +194,7 @@
 		AB35819E2011334B00673D3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */,
-				AB235B7B20C8628600D8C6C0 /* TripActivityRegistration.swift */,
-				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
 				AB35819C2011307200673D3F /* User.swift */,
-				AB9B3780202C9F50002D641D /* EventCheckin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,20 +202,8 @@
 		AB35819F2011335700673D3F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				AB9085FE20CD694C004B08F8 /* TripPlansViewController.swift */,
-				AB80EA1020CA943B0064673D /* CreateTripActivityViewController.swift */,
-				AB80EA1220CAA5E10064673D /* CreateTripActivityTableViewController.swift */,
-				AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */,
-				AB235B7920C836B700D8C6C0 /* RegistrationTableViewController.swift */,
-				AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */,
-				AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */,
-				AB2AEE6320A05A18002A5A01 /* MapViewController.swift */,
-				ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */,
-				AB13C27E203B314C00DC6812 /* CheckinButtonViewController.swift */,
-				AB5B06B42022062000752C68 /* CheckInTableViewController.swift */,
-				AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */,
-				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
 				AB358193201105CA00673D3F /* LoginViewController.swift */,
+				ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -226,19 +211,131 @@
 		AB6DF34D20206661002D3A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AB38FD0E20C40879004567FB /* TripActivityTableViewCell.swift */,
-				AB9085FC20CD6741004B08F8 /* TripUserActivityTableViewCell.swift */,
+				AB784E0420CFF34900547C0B /* BarButton */,
 				AB36D841208DFBB1002494E3 /* FadedMapView.swift */,
-				ABFC38242088A5C40075C056 /* EventInfoCard.xib */,
-				ABFC38262088A8E50075C056 /* EventInfoCard.swift */,
-				ABFC76F6208750DC002534AE /* BarButton.xib */,
-				ABFC76F8208751F9002534AE /* BarButton.swift */,
-				AB4B329C207A2DC200887A51 /* EventTableViewSectionHeader.swift */,
 				AB6DF34B201F6755002D3A71 /* CardView.swift */,
 				AB9A064420C467E20083CEBB /* CardViewWithColorStrip.swift */,
+				AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB784DFB20CFF27E00547C0B /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				ABC87C6F209DFD120023D776 /* Trip.storyboard */,
+				AB319E9220A4901300741B3C /* TripStore.swift */,
+				AB784DFE20CFF29D00547C0B /* Models */,
+				AB784E0020CFF2CD00547C0B /* Views */,
+				AB784DFF20CFF2B000547C0B /* ViewControllers */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		AB784DFC20CFF28900547C0B /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				ABFD7FBB2010EF6200BCA86C /* Events.storyboard */,
+				AB02D4AC204057B4007D7808 /* EventNotificationsManager.swift */,
+				AB784E0520CFF36600547C0B /* Models */,
+				AB784E0220CFF32600547C0B /* Views */,
+				AB784E0120CFF30B00547C0B /* ViewControllers */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		AB784DFD20CFF29300547C0B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				ABC87C6A209DFA750023D776 /* Login.storyboard */,
+				AB319E9020A444CC00741B3C /* Store.swift */,
+				AB12A2192031DF280049DF6F /* UserManager.swift */,
+				AB35819E2011334B00673D3F /* Models */,
+				AB6DF34D20206661002D3A71 /* Views */,
+				AB35819F2011335700673D3F /* ViewControllers */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AB784DFE20CFF29D00547C0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */,
+				AB235B7B20C8628600D8C6C0 /* TripActivityRegistration.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AB784DFF20CFF2B000547C0B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB9085FE20CD694C004B08F8 /* TripPlansViewController.swift */,
+				AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */,
+				AB80EA1020CA943B0064673D /* TripActivityEditorViewController.swift */,
+				AB80EA1220CAA5E10064673D /* TripActivityEditorTableViewController.swift */,
+				AB235B7720C64D9D00D8C6C0 /* TripActivityDetailViewController.swift */,
+				AB235B7920C836B700D8C6C0 /* TripActivityRegistrationTableViewController.swift */,
+				AB89FDC020A1EC8D00EE1EDC /* TripTabBarController.swift */,
+				AB2AEE6320A05A18002A5A01 /* TripMapViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AB784E0020CFF2CD00547C0B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB38FD0E20C40879004567FB /* TripActivityTableViewCell.swift */,
+				AB9085FC20CD6741004B08F8 /* TripUserActivityTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB784E0120CFF30B00547C0B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB13C27E203B314C00DC6812 /* EventCheckinButtonViewController.swift */,
+				AB5B06B42022062000752C68 /* EventCheckinTableViewController.swift */,
+				AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */,
+				ABFD7FD92010F1F600BCA86C /* EventsTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AB784E0220CFF32600547C0B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB784E0320CFF33E00547C0B /* EventInfoCard */,
+				AB4B329C207A2DC200887A51 /* EventTableViewSectionHeader.swift */,
 				AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AB784E0320CFF33E00547C0B /* EventInfoCard */ = {
+			isa = PBXGroup;
+			children = (
+				ABFC38242088A5C40075C056 /* EventInfoCard.xib */,
+				ABFC38262088A8E50075C056 /* EventInfoCard.swift */,
+			);
+			path = EventInfoCard;
+			sourceTree = "<group>";
+		};
+		AB784E0420CFF34900547C0B /* BarButton */ = {
+			isa = PBXGroup;
+			children = (
+				ABFC76F6208750DC002534AE /* BarButton.xib */,
+				ABFC76F8208751F9002534AE /* BarButton.swift */,
+			);
+			path = BarButton;
+			sourceTree = "<group>";
+		};
+		AB784E0520CFF36600547C0B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABFD7FDB2010F2C400BCA86C /* Event.swift */,
+				AB9B3780202C9F50002D641D /* EventCheckin.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		ABFD7FAB2010EF6200BCA86C = {
@@ -264,23 +361,14 @@
 		ABFD7FB62010EF6200BCA86C /* Studs */ = {
 			isa = PBXGroup;
 			children = (
-				AB7EE49320CECED40019F9E8 /* Studs.entitlements */,
-				AB319E9020A444CC00741B3C /* Store.swift */,
-				AB319E9220A4901300741B3C /* TripStore.swift */,
+				AB784DFC20CFF28900547C0B /* Events */,
+				AB784DFB20CFF27E00547C0B /* Trip */,
+				AB784DFD20CFF29300547C0B /* Shared */,
 				ABFD7FC32010EF6200BCA86C /* Info.plist */,
-				AB35819E2011334B00673D3F /* Models */,
-				AB6DF34D20206661002D3A71 /* Views */,
-				AB35819F2011335700673D3F /* ViewControllers */,
-				ABFD7FBB2010EF6200BCA86C /* Events.storyboard */,
-				ABC87C6A209DFA750023D776 /* Login.storyboard */,
-				ABC87C6F209DFD120023D776 /* Trip.storyboard */,
-				AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */,
+				AB7EE49320CECED40019F9E8 /* Studs.entitlements */,
 				AB9B3782202CA5AA002D641D /* Firebase.swift */,
 				AB35819520110AC900673D3F /* API.swift */,
-				AB12A2192031DF280049DF6F /* UserManager.swift */,
-				AB02D4AC204057B4007D7808 /* NotificationsManager.swift */,
 				AB8A2C43204D2D12001445F1 /* Utilities.swift */,
-				ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */,
 				ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */,
 				AB0499E32010F78D00810E31 /* Supporting Files */,
 			);
@@ -534,16 +622,16 @@
 				ABFD7FDC2010F2C400BCA86C /* Event.swift in Sources */,
 				AB235B7C20C8628600D8C6C0 /* TripActivityRegistration.swift in Sources */,
 				AB12A21A2031DF280049DF6F /* UserManager.swift in Sources */,
-				AB2AEE6420A05A18002A5A01 /* MapViewController.swift in Sources */,
+				AB2AEE6420A05A18002A5A01 /* TripMapViewController.swift in Sources */,
 				ABFC38272088A8E50075C056 /* EventInfoCard.swift in Sources */,
 				AB35819D2011307200673D3F /* User.swift in Sources */,
-				AB235B7A20C836B700D8C6C0 /* RegistrationTableViewController.swift in Sources */,
+				AB235B7A20C836B700D8C6C0 /* TripActivityRegistrationTableViewController.swift in Sources */,
 				AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */,
-				AB80EA1320CAA5E10064673D /* CreateTripActivityTableViewController.swift in Sources */,
+				AB80EA1320CAA5E10064673D /* TripActivityEditorTableViewController.swift in Sources */,
 				AB38FD0F20C40879004567FB /* TripActivityTableViewCell.swift in Sources */,
 				ABFC76F9208751F9002534AE /* BarButton.swift in Sources */,
 				AB36D842208DFBB1002494E3 /* FadedMapView.swift in Sources */,
-				AB5B06B52022062000752C68 /* CheckInTableViewController.swift in Sources */,
+				AB5B06B52022062000752C68 /* EventCheckinTableViewController.swift in Sources */,
 				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
 				AB6DF34C201F6755002D3A71 /* CardView.swift in Sources */,
@@ -551,10 +639,10 @@
 				ABC87C74209E18C40023D776 /* PulleyCompatibleTabBarController.swift in Sources */,
 				AB89FDC120A1EC8D00EE1EDC /* TripTabBarController.swift in Sources */,
 				AB9A064520C467E20083CEBB /* CardViewWithColorStrip.swift in Sources */,
-				AB13C27F203B314C00DC6812 /* CheckinButtonViewController.swift in Sources */,
+				AB13C27F203B314C00DC6812 /* EventCheckinButtonViewController.swift in Sources */,
 				AB89FDBF20A1E66B00EE1EDC /* TripScheduleViewController.swift in Sources */,
 				AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */,
-				AB02D4AD204057B4007D7808 /* NotificationsManager.swift in Sources */,
+				AB02D4AD204057B4007D7808 /* EventNotificationsManager.swift in Sources */,
 				AB9085FF20CD694C004B08F8 /* TripPlansViewController.swift in Sources */,
 				AB319E9120A444CC00741B3C /* Store.swift in Sources */,
 				AB89FDBD20A0935F00EE1EDC /* TripActivity.swift in Sources */,
@@ -562,7 +650,7 @@
 				AB35819620110AC900673D3F /* API.swift in Sources */,
 				AB319E9320A4901300741B3C /* TripStore.swift in Sources */,
 				AB235B7820C64D9D00D8C6C0 /* TripActivityDetailViewController.swift in Sources */,
-				AB80EA1120CA943B0064673D /* CreateTripActivityViewController.swift in Sources */,
+				AB80EA1120CA943B0064673D /* TripActivityEditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

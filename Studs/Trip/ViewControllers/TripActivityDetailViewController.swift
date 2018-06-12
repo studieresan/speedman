@@ -5,6 +5,7 @@
 //  Created by Jonathan Berglind on 2018-06-05.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  A detail-view for trip activities
 
 import UIKit
 

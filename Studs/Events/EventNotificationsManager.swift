@@ -1,5 +1,5 @@
 //
-//  NotificationManager.swift
+//  EventNotificationsManager.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-02-23.
@@ -11,8 +11,8 @@
 import Foundation
 import UserNotifications
 
-class NotificationsManager {
-  static let shared = NotificationsManager()
+class EventNotificationsManager {
+  static let shared = EventNotificationsManager()
 
   private let center: UNUserNotificationCenter
 

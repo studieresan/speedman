@@ -37,7 +37,7 @@ class Store<State, Action> {
     }
   }
 
-  /// Dispatches an action trhough the reducer which updates the state
+  /// Dispatches an action through the reducer which updates the state
   func dispatch(action: Action) {
     let (newState, command) = reduce(state, action)
     state = newState

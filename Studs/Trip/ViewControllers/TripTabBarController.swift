@@ -5,6 +5,7 @@
 //  Created by Jonathan Berglind on 2018-05-08.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  The tab bar that displays the schedule, plans or information views
 
 import UIKit
 import Pulley

@@ -344,7 +344,7 @@
         <!--Check-ins-->
         <scene sceneID="hzq-Z9-yCA">
             <objects>
-                <tableViewController title="Check-ins" id="Uaj-hK-Paj" customClass="CheckInTableViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Check-ins" id="Uaj-hK-Paj" customClass="EventCheckinTableViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WZd-at-tPC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,10 +410,10 @@
             </objects>
             <point key="canvasLocation" x="-449" y="32"/>
         </scene>
-        <!--Checkin Button View Controller-->
+        <!--Event Checkin Button View Controller-->
         <scene sceneID="kh4-DR-uPv">
             <objects>
-                <viewController id="pPB-Rc-2AJ" customClass="CheckinButtonViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pPB-Rc-2AJ" customClass="EventCheckinButtonViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OTl-wF-Zfj" customClass="BarButton" customModule="Studs" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="359" height="54"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

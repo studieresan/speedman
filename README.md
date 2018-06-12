@@ -35,7 +35,7 @@ Point the app to a running instance in `Studs/API.js`.
 
 #### Firebase
 This project uses Firebase for some realtime functionality. In order for this to work, download and include the [GoogleService-Info.plist](https://support.google.com/firebase/answer/7015592) available in the Firebase Console.  
-Drop it into the `Studs/ ` directory.
+Drop it into the `Studs/Supporting Files ` directory.
 
 ## Built With
 * [Alamofire](https://github.com/Alamofire/Alamofire) - HTTP Networking

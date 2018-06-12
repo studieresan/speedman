@@ -1,15 +1,15 @@
 //
-//  RegistrationTableViewController.swift
+//  TripActivityRegistrationTableViewController.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-06-06.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
-//  Tableviewcontroller for registering people to a trip activity
+//  Viewcontroller for registering people to trip activities
 
 import UIKit
 
-class RegistrationTableViewController: UITableViewController {
+class TripActivityRegistrationTableViewController: UITableViewController {
   // MARK: - Properties
   private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
   private var stateSubscription: Subscription<TripState>?
@@ -66,7 +66,7 @@ class RegistrationTableViewController: UITableViewController {
 }
 
 // MARK: UITableViewDataSource
-extension RegistrationTableViewController {
+extension TripActivityRegistrationTableViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
     -> Int {
       return users.count
@@ -85,7 +85,7 @@ extension RegistrationTableViewController {
 }
 
 // MARK: UITableViewDelegate
-extension RegistrationTableViewController {
+extension TripActivityRegistrationTableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let user = users[indexPath.row]
     guard let actingUser = UserManager.shared.user else { return }

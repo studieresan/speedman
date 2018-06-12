@@ -5,6 +5,7 @@
 //  Created by Jonathan Berglind on 2018-06-10.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  The trip plans view shows all trip activities shared by users
 
 import UIKit
 
@@ -83,7 +84,7 @@ class TripPlansViewController: UIViewController {
       segue.identifier == "editUserActivity",
       let navVC = segue.destination as? UINavigationController,
       let destinationVC =
-        navVC.viewControllers.first as? CreateTripActivityViewController,
+        navVC.viewControllers.first as? TripActivityEditorViewController,
       let activity = sender as? TripActivity
     else { return }
     destinationVC.editingActivity = activity

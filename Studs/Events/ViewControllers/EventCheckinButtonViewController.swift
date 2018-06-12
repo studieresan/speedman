@@ -1,15 +1,16 @@
 //
-//  CheckinButtonViewController.swift
+//  EventCheckinButtonViewController.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-02-19.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  A button to check in the current user to an event
 
 import UIKit
 import CoreLocation
 
-class CheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
+class EventCheckinButtonViewController: UIViewController, CLLocationManagerDelegate {
   // MARK: - Outlets
   @IBOutlet var button: BarButton!
 

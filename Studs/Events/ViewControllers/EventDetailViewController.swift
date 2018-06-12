@@ -5,6 +5,7 @@
 //  Created by Jonathan Berglind on 2018-01-30.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  A detail view for events
 
 import UIKit
 import MapKit
@@ -169,11 +170,11 @@ UITextViewDelegate {
     guard let identifier = segue.identifier else { return }
     switch identifier {
     case "checkInSegue":
-      if let checkinVC = segue.destination as? CheckInTableViewController {
+      if let checkinVC = segue.destination as? EventCheckinTableViewController {
         checkinVC.event = self.event
       }
     case "checkinButtonSetupSegue":
-      if let buttonVC = segue.destination as? CheckinButtonViewController {
+      if let buttonVC = segue.destination as? EventCheckinButtonViewController {
         buttonVC.event = self.event
         // Make the container view size itself to the embedded VC
         buttonVC.view.translatesAutoresizingMaskIntoConstraints = false

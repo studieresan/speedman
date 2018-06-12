@@ -5,6 +5,7 @@
 //  Created by Jonathan Berglind on 2018-01-18.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  A tableview that lists events
 
 import UIKit
 
@@ -134,7 +135,7 @@ class EventsTableViewController: UITableViewController {
   }
 
   private func scheduleEventsNotifications() {
-    let manager = NotificationsManager.shared
+    let manager = EventNotificationsManager.shared
     events.forEach(manager.scheduleNotifications)
   }
 

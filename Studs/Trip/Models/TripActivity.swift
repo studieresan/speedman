@@ -44,6 +44,7 @@ struct TripActivity {
   }
 }
 
+// MARK: - Hashable
 extension TripActivity: Hashable {
   var hashValue: Int {
     return id.hashValue

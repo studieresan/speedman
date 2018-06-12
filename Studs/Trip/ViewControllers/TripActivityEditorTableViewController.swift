@@ -1,15 +1,16 @@
 //
-//  CreateTripActivityTableViewController.swift
+//  TripActivityEditorTableViewController.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-06-08.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  An edit form for trip activities
 
 import UIKit
 import CoreLocation
 
-class CreateTripActivityTableViewController: UITableViewController {
+class TripActivityEditorTableViewController: UITableViewController {
   // MARK: - Outlets
   @IBOutlet private weak var titleTextView: UITextView!
   @IBOutlet private weak var titlePlaceholderLabel: UILabel!
@@ -223,7 +224,7 @@ class CreateTripActivityTableViewController: UITableViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension CreateTripActivityTableViewController {
+extension TripActivityEditorTableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath)
     -> CGFloat {
     let cell = super.tableView(tableView, cellForRowAt: indexPath)
@@ -237,7 +238,7 @@ extension CreateTripActivityTableViewController {
 }
 
 // MARK: - UITextViewDelegate
-extension CreateTripActivityTableViewController: UITextViewDelegate {
+extension TripActivityEditorTableViewController: UITextViewDelegate {
   func textViewDidChange(_ textView: UITextView) {
     titlePlaceholderLabel.isHidden = !textView.text.isEmpty
     activityTitle = textView.text
@@ -256,7 +257,7 @@ extension CreateTripActivityTableViewController: UITextViewDelegate {
 }
 
 // MARK: - UITextFieldDelegate
-extension CreateTripActivityTableViewController: UITextFieldDelegate {
+extension TripActivityEditorTableViewController: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder()
     return true
@@ -270,7 +271,7 @@ extension CreateTripActivityTableViewController: UITextFieldDelegate {
 }
 
 // MARK: - CLLocationManagerDelegate
-extension CreateTripActivityTableViewController: CLLocationManagerDelegate {
+extension TripActivityEditorTableViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager,
                        didUpdateLocations locations: [CLLocation]) {
     self.location = locations.last

@@ -1,15 +1,16 @@
 //
-//  MapViewController.swift
+//  TripMapViewController.swift
 //  Studs
 //
 //  Created by Jonathan Berglind on 2018-05-07.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  Map view that shows trip activities either from the event group or user created ones.
 
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class TripMapViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var buttonsView: UIView!
@@ -143,7 +144,7 @@ class MapViewController: UIViewController {
 }
 
 // MARK: - MKMapViewDelegate
-extension MapViewController: MKMapViewDelegate {
+extension TripMapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation)
     -> MKAnnotationView? {
       guard let pin = annotation as? MKPointAnnotation else { return nil }

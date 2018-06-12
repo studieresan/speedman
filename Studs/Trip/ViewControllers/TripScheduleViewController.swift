@@ -5,6 +5,7 @@
 //  Created by Jonathan Berglind on 2018-05-08.
 //  Copyright © 2018 Studieresan. All rights reserved.
 //
+//  The trip schedule view shows all trip activities creeated by the event group
 
 import UIKit
 
