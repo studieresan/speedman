@@ -9,7 +9,8 @@
 
 import Foundation
 
-typealias Reducer<State, Action> = (State, Action) -> State
+typealias Command<Action> = (@escaping (Action) -> Void) -> Void
+typealias Reducer<State, Action> = (State, Action) -> (State, Command<Action>?)
 
 class Store<State, Action> {
   private(set) var state: State {
@@ -38,6 +39,10 @@ class Store<State, Action> {
 
   /// Dispatches an action trhough the reducer which updates the state
   func dispatch(action: Action) {
-    state = reduce(state, action)
+    let (newState, command) = reduce(state, action)
+    state = newState
+    command? { [weak self] action in
+      self?.dispatch(action: action)
+    }
   }
 }

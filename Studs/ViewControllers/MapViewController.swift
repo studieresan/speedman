@@ -216,7 +216,7 @@ extension TripActivity.Category {
     case .drink:
       return UIImage(named: "Cocktail")
     case .food:
-      return UIImage(named: "Circle")
+      return UIImage(named: "Food")
     case .attraction:
       return UIImage(named: "Camera")
     case .other:

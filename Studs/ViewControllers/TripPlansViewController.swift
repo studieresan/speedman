@@ -112,7 +112,12 @@ extension TripPlansViewController: UITableViewDataSource {
         tripCell.dateLabel.text =
           DateFormatter.dateAndTimeFormatter.string(from: activity.startDate)
         tripCell.locationLabel.text = activity.location.address
-        tripCell.peopleCountLabel.text = "\(activity.peopleCount) going"
+        if let author = store.state.users.first(where: { $0.id == activity.author }) {
+          tripCell.peopleCountLabel.text =
+            "\(author.firstName ?? "") & \(activity.peopleCount - 1) others"
+        } else {
+          tripCell.peopleCountLabel.text = "\(activity.peopleCount)"
+        }
         tripCell.categoryButton.setImage(activity.category.icon, for: .normal)
         tripCell.categoryButton.tintColor = activity.category.color
         tripCell.registerButtonTappedAction = { [weak store] in

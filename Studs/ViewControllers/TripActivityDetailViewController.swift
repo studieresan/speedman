@@ -16,6 +16,7 @@ class TripActivityDetailViewController: UIViewController {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
 
+  @IBOutlet weak var priceStackView: UIStackView!
   @IBOutlet weak var priceLabel: UILabel!
   @IBOutlet weak var peopleLabel: UILabel!
 
@@ -33,6 +34,7 @@ class TripActivityDetailViewController: UIViewController {
           DateFormatter.dateAndTimeFormatter.string(from: activity.startDate)
         locationLabel.text = activity.location.address
         peopleLabel.text = "\(activity.peopleCount) people going"
+        priceStackView.isHidden = activity.price == nil
         priceLabel.text = activity.price
 
         let attributedDescription = NSAttributedString(

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct User {
   let id: String
   let firstName: String?
   let lastName: String?
@@ -35,7 +35,19 @@ struct User: Codable {
     case lastName
     case phone
   }
+}
 
+extension User: Hashable {
+  var hashValue: Int {
+    return id.hashValue
+  }
+
+  static func == (lhs: User, rhs: User) -> Bool {
+    return lhs.id == rhs.id
+  }
+}
+
+extension User: Codable {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -60,4 +72,5 @@ struct User: Codable {
     try profile.encode(lastName, forKey: .lastName)
     try profile.encode(phone, forKey: .phone)
   }
+
 }

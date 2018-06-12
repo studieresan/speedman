@@ -12,9 +12,14 @@ import UIKit
 class RegistrationTableViewController: UITableViewController {
   // MARK: - Properties
   private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
+  private var stateSubscription: Subscription<TripState>?
   private lazy var activity: TripActivity! = self.store.state.selectedActivity
   private var users = [User]() {
-    didSet { tableView.reloadData() }
+    didSet {
+      guard oldValue != users else { return }
+      self.refreshControl?.endRefreshing()
+      tableView.reloadData()
+    }
   }
   private var registrations = [TripActivityRegistration]() {
     didSet { tableView.reloadData() }
@@ -45,22 +50,14 @@ class RegistrationTableViewController: UITableViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    stateSubscription = store.subscribe { [weak self] state in
+      self?.users = state.users
+    }
     self.tableView.triggerRefresh()
   }
 
   @objc func fetchUsers() {
-    API.getUsers { result in
-      switch result {
-      case .success(let users):
-        self.users = users.sorted { user1, user2 in
-          user1.fullName < user2.fullName
-        }
-      case .failure(let error):
-        self.dismiss(animated: true)
-        print(error)
-      }
-      self.refreshControl?.endRefreshing()
-    }
+    store.dispatch(action: .fetchUsers)
   }
 
   @IBAction func doneButtonTapped(_ sender: UIBarButtonItem) {
