@@ -11,6 +11,7 @@ import UserNotifications
 import SafariServices
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseMessaging
 
 enum DeepLink {
   case webView(url: URL)
@@ -21,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
   var window: UIWindow?
   lazy var firestoreDB: Firestore = {
-    // Setup Firebase
-    FirebaseApp.configure()
     return Firestore.firestore()
   }()
   lazy var tripStore = TripStore()
@@ -32,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
     ) -> Bool {
     // Override point for customization after application launch.
+    // Setup Firebase
+    FirebaseApp.configure()
 
     // Intercept arriving local notifications in
     // userNotificationCenter(_:didReceive:withCompletionHandler) below
@@ -52,6 +53,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = startingVC
     window?.makeKeyAndVisible()
+
+    // Register for push notifications
+    UNUserNotificationCenter.current().delegate = self
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(
+      options: authOptions,
+      completionHandler: {_, _ in })
+    application.registerForRemoteNotifications()
+
+    Messaging.messaging().delegate = self
+    UIApplication.shared.applicationIconBadgeNumber = 0
     return true
   }
 
@@ -111,4 +123,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // See also applicationDidEnterBackground:.
   }
 
+}
+
+extension AppDelegate: MessagingDelegate {
+  func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    Messaging.messaging().subscribe(toTopic: "locations")
+  }
 }

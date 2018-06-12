@@ -97,6 +97,7 @@
 		AB6DF34B201F6755002D3A71 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AB6DF34E2020A2E7002D3A71 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		AB7402F1201DF40D00F3094C /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		AB7EE49320CECED40019F9E8 /* Studs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Studs.entitlements; sourceTree = "<group>"; };
 		AB80EA1020CA943B0064673D /* CreateTripActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripActivityViewController.swift; sourceTree = "<group>"; };
 		AB80EA1220CAA5E10064673D /* CreateTripActivityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripActivityTableViewController.swift; sourceTree = "<group>"; };
 		AB89FDBC20A0935F00EE1EDC /* TripActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivity.swift; sourceTree = "<group>"; };
@@ -263,6 +264,7 @@
 		ABFD7FB62010EF6200BCA86C /* Studs */ = {
 			isa = PBXGroup;
 			children = (
+				AB7EE49320CECED40019F9E8 /* Studs.entitlements */,
 				AB319E9020A444CC00741B3C /* Store.swift */,
 				AB319E9220A4901300741B3C /* TripStore.swift */,
 				ABFD7FC32010EF6200BCA86C /* Info.plist */,
@@ -352,6 +354,9 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -731,6 +736,8 @@
 			baseConfigurationReference = 4D426C87E169DCC6E29FC1E6 /* Pods-Studs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Studs/Studs.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P3V9ZDGSU4;
@@ -751,6 +758,8 @@
 			baseConfigurationReference = 51D2133166048698BA35458C /* Pods-Studs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Studs/Studs.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P3V9ZDGSU4;
