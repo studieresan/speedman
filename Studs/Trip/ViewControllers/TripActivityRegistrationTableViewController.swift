@@ -99,4 +99,29 @@ extension TripActivityRegistrationTableViewController {
     }
     haptic.selectionChanged()
   }
+
+  override func tableView(_ tableView: UITableView,
+                          trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+    -> UISwipeActionsConfiguration? {
+      let user = users[indexPath.row]
+
+      let empty = UISwipeActionsConfiguration()
+      guard
+        let number = user.phone?
+          .replacingOccurrences(of: " ", with: "")
+          .replacingOccurrences(of: "-", with: ""),
+        let callURL = URL(string: "tel://\(number)"),
+        UIApplication.shared.canOpenURL(callURL)
+        else { return empty }
+
+      // If there's a number that can be made into an URL and called, setup action
+      let call = UIContextualAction(style: .normal, title: "Call") { _, _, completion in
+        UIApplication.shared.open(callURL)
+        completion(true)
+      }
+      call.image = UIImage(named: "Phone")
+      // TODO: Break out color to constant class
+      call.backgroundColor = UIColor(named: "StudsBlue")
+      return UISwipeActionsConfiguration(actions: [call])
+  }
 }
