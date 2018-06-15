@@ -173,7 +173,8 @@ struct Firebase {
     db?.collection(Collections.activities.rawValue)
       .document(activityId)
       .collection("people")
-      .addDocument(data: [
+      .document(userId)
+      .setData([
         "registeredAt": Date(),
         "userId": userId,
         "registeredById": byUserId,
