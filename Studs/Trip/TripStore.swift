@@ -11,6 +11,7 @@ import Foundation
 
 struct TripState {
   var activities = [TripActivity]()
+  var pendingUsersFetchRequest = false
   var users = [User]()
   var selectedActivity: TripActivity?
   var drawerPosition = DrawerPosition.partiallyRevealed
@@ -38,13 +39,11 @@ enum TripAction {
   case changeDrawerPage(DrawerPage)
   case fetchUsers
   case updateUsers([User])
+  case fetchUsersFailed
 }
 
 class TripStore: Store<TripState, TripAction> {
-  private lazy var activitiesSubscription: Subscription<[TripActivity]>? =
-    Firebase.streamActivities { [weak self] in
-    self?.dispatch(action: .updateActivities($0))
-  }
+  private var activitiesSubscription: Subscription<[TripActivity]>?
 
   init() {
     super.init(state: TripState(), reduce: { state, action in
@@ -65,21 +64,30 @@ class TripStore: Store<TripState, TripAction> {
       case .setDrawerBottomSafeArea(let newValue):
         state.drawerBottomSafeArea = newValue
       case .updateUsers(let users):
+        state.pendingUsersFetchRequest = false
         state.users = users
       case .fetchUsers:
+        state.pendingUsersFetchRequest = true
         command = { handler in
           API.getUsers {
             switch $0 {
             case .success(let users):
               handler(.updateUsers(users))
             case .failure(let error):
+              handler(.fetchUsersFailed)
               print(error)
             }
           }
         }
+      case .fetchUsersFailed:
+        state.pendingUsersFetchRequest = false
       }
       return (state, command)
     })
+    activitiesSubscription =
+      Firebase.streamActivities { [weak self] activities in
+        self?.dispatch(action: .updateActivities(activities))
+    }
     dispatch(action: .fetchUsers)
   }
 }

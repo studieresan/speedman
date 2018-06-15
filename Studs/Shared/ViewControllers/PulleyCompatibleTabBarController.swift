@@ -136,7 +136,7 @@ extension PulleyCompatibleTabBarController: PulleyDrawerViewControllerDelegate {
   }
 
   func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
-    return 264.0 + bottomSafeArea
+    return 300.0 + bottomSafeArea
   }
 
   func supportedDrawerPositions() -> [PulleyPosition] {

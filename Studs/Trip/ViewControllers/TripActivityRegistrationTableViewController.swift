@@ -17,7 +17,6 @@ class TripActivityRegistrationTableViewController: UITableViewController {
   private var users = [User]() {
     didSet {
       guard oldValue != users else { return }
-      self.refreshControl?.endRefreshing()
       tableView.reloadData()
     }
   }
@@ -52,8 +51,12 @@ class TripActivityRegistrationTableViewController: UITableViewController {
     super.viewDidAppear(animated)
     stateSubscription = store.subscribe { [weak self] state in
       self?.users = state.users
+      if state.pendingUsersFetchRequest {
+        self?.refreshControl?.beginRefreshing()
+      } else {
+        self?.refreshControl?.endRefreshing()
+      }
     }
-    self.tableView.triggerRefresh()
   }
 
   @objc func fetchUsers() {

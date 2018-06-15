@@ -717,7 +717,7 @@ Blir nog en snabb Uber</string>
             <objects>
                 <tableViewController id="cya-bD-6te" customClass="TripActivityRegistrationTableViewController" customModule="Studs" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bvr-n6-xIh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -1304,8 +1304,8 @@ Blir nog en snabb Uber</string>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gYs-OQ-8pH"/>
-        <segue reference="gU9-gu-BhV"/>
+        <segue reference="OCb-sy-52M"/>
+        <segue reference="zZo-9t-IIL"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="StudsBlue"/>
 </document>
