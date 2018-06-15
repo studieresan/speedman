@@ -115,7 +115,7 @@ extension TripPlansViewController: UITableViewDataSource {
         tripCell.locationLabel.text = activity.location.address
         if let author = store.state.users.first(where: { $0.id == activity.author }) {
           tripCell.peopleCountLabel.text =
-            "\(author.firstName ?? "") & \(activity.peopleCount - 1) others"
+            "\(author.firstName ?? "") & \(max((activity.peopleCount - 1), 0)) others"
         } else {
           tripCell.peopleCountLabel.text = "\(activity.peopleCount)"
         }
