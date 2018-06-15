@@ -73,6 +73,11 @@ class TripActivityEditorViewController: UIViewController {
     activity.category = category
 
     Firebase.addOrUpdateActivity(activity)
+    if let user = user {
+      // Register at least the person that created the activity
+      Firebase.addActivityRegistration(userId: user.id, byUserId: user.id,
+                                       activityId: activity.id)
+    }
     self.dismiss(animated: true)
   }
 

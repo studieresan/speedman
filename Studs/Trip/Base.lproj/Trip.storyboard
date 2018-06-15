@@ -486,7 +486,9 @@
                         <constraints>
                             <constraint firstItem="wao-l5-1Qa" firstAttribute="leading" secondItem="RYS-P2-J9S" secondAttribute="leading" constant="12" id="5hT-Zn-0Sd"/>
                             <constraint firstItem="FPV-aB-vwo" firstAttribute="top" secondItem="RYS-P2-J9S" secondAttribute="top" constant="8" id="F3b-RN-7Ks"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FPV-aB-vwo" secondAttribute="trailing" constant="20" symbolic="YES" id="Uqc-DC-49g"/>
                             <constraint firstItem="wao-l5-1Qa" firstAttribute="top" secondItem="FPV-aB-vwo" secondAttribute="bottom" constant="8" id="hTU-wk-47p"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wao-l5-1Qa" secondAttribute="trailing" constant="20" symbolic="YES" id="lM2-2i-b9L"/>
                             <constraint firstItem="FPV-aB-vwo" firstAttribute="leading" secondItem="RYS-P2-J9S" secondAttribute="leading" constant="12" id="tu3-MQ-AwB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RYS-P2-J9S"/>

@@ -40,7 +40,7 @@ class TripActivityRegistrationTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     if let activity = activity {
-      navigationItem.prompt = activity.title
+      navigationItem.prompt = activity.title ?? activity.description
       registrationSubscription =
         Firebase.streamActivityRegistrations(activityId: activity.id) { [weak self] in
         self?.registrations = $0
