@@ -45,6 +45,7 @@ enum TripAction {
 class TripStore: Store<TripState, TripAction> {
   private var activitiesSubscription: Subscription<[TripActivity]>?
 
+  // swiftlint:disable cyclomatic_complexity
   init() {
     super.init(state: TripState(), reduce: { state, action in
       var state = state
@@ -72,7 +73,7 @@ class TripStore: Store<TripState, TripAction> {
           API.getUsers {
             switch $0 {
             case .success(let users):
-              handler(.updateUsers(users))
+              handler(.updateUsers(users.sorted(by: { $0.fullName < $1.fullName })))
             case .failure(let error):
               handler(.fetchUsersFailed)
               print(error)
@@ -84,6 +85,7 @@ class TripStore: Store<TripState, TripAction> {
       }
       return (state, command)
     })
+    // swiftlint:enable cyclomatic_complexity
     activitiesSubscription =
       Firebase.streamActivities { [weak self] activities in
         self?.dispatch(action: .updateActivities(activities))

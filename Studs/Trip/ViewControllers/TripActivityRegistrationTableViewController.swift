@@ -20,6 +20,16 @@ class TripActivityRegistrationTableViewController: UITableViewController {
       tableView.reloadData()
     }
   }
+  private var registeredUsers: [User] {
+    return users.filter { user in
+      return registrations.contains(where: { $0.userId == user.id })
+    }
+  }
+  private var unregisteredUsers: [User] {
+    return users.filter { user in
+      return !registrations.contains(where: { $0.userId == user.id })
+    }
+  }
   private var registrations = [TripActivityRegistration]() {
     didSet { tableView.reloadData() }
   }
@@ -70,15 +80,25 @@ class TripActivityRegistrationTableViewController: UITableViewController {
 
 // MARK: UITableViewDataSource
 extension TripActivityRegistrationTableViewController {
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
+    -> String? {
+      return section == 0 ? "Registered" : "Not Registered"
+  }
+
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)
     -> Int {
-      return users.count
+      return section == 0 ? registeredUsers.count : unregisteredUsers.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
     -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
-      let user = users[indexPath.row]
+      let row = indexPath.row
+      let user = indexPath.section == 0 ? registeredUsers[row] : unregisteredUsers[row]
       cell.accessoryType = registrations.contains { user.id == $0.userId }
         ? .checkmark
         : .none
@@ -90,7 +110,8 @@ extension TripActivityRegistrationTableViewController {
 // MARK: UITableViewDelegate
 extension TripActivityRegistrationTableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let user = users[indexPath.row]
+    let row = indexPath.row
+    let user = indexPath.section == 0 ? registeredUsers[row] : unregisteredUsers[row]
     guard let actingUser = UserManager.shared.user else { return }
     if let registration = registrations.first(where: { user.id == $0.userId }) {
       Firebase.removeActivityRegistration(registrationId: registration.id,
