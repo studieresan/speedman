@@ -128,7 +128,10 @@ extension UIColor {
 }
 
 extension NSAttributedString {
-  internal convenience init?(html: String, font: UIFont, color: UIColor) {
+  internal convenience
+  init?(html: String,
+        font: UIFont = UIFont.systemFont(ofSize: UIFont.systemFontSize),
+        color: UIColor = .black) {
     let additionalStyles =
     """
     <style>

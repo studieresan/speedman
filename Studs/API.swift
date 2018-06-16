@@ -12,6 +12,7 @@ import Alamofire
 struct API {
   private static let baseURL = "https://studs18-overlord.herokuapp.com"
   private static let loginURL = baseURL + "/login"
+  private static let travelURL = baseURL + "/travel"
   private static let logoutURL = baseURL + "/logout"
   private static let graphQLURL = baseURL + "/graphql"
 
@@ -141,5 +142,11 @@ struct API {
     """
     performGraphQLQuery(queryName: "users", query: query,
                         completion: completion)
+  }
+
+  static func getTravelInformation(completion: @escaping (Result<Any>) -> Void) {
+    Alamofire.request(travelURL)
+      .validate()
+      .responseJSON { completion($0.result) }
   }
 }

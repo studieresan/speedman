@@ -53,7 +53,8 @@ class TripActivityEditorViewController: UIViewController {
       return showErrorPopup(message: "Address cannot be empty!")
     }
     guard let clLocation = createActivityTable.location else {
-      return showErrorPopup(message: "No coordinates available for address. Rewrite it!")
+      return showErrorPopup(message: "No coordinates available for address. " +
+        "Be more specific!")
     }
     let startDate = createActivityTable.startDate
     let endDate = createActivityTable.endDate
@@ -73,7 +74,7 @@ class TripActivityEditorViewController: UIViewController {
     activity.category = category
 
     Firebase.addOrUpdateActivity(activity)
-    if let user = user {
+    if isCreating, let user = user {
       // Register at least the person that created the activity
       Firebase.addActivityRegistration(userId: user.id, byUserId: user.id,
                                        activityId: activity.id)

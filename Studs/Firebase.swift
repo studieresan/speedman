@@ -131,7 +131,7 @@ struct Firebase {
                                   completion: ((Error?) -> Void)? = nil) {
     db?.collection(Collections.activities.rawValue)
       .document(activity.id)
-      .setData(activity.data) { error in
+      .setData(activity.data, options: SetOptions.merge()) { error in
         if let error = error { print(error) }
         completion?(error)
     }

@@ -45,6 +45,7 @@
 		ABC87C71209DFD120023D776 /* Trip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC87C6F209DFD120023D776 /* Trip.storyboard */; };
 		ABC87C74209E18C40023D776 /* PulleyCompatibleTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */; };
 		ABC87C76209F8A990023D776 /* UIViewController+PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC87C75209F8A990023D776 /* UIViewController+PulleyViewController.swift */; };
+		ABD4020820D4407B00DE9FA4 /* TripInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD4020720D4407B00DE9FA4 /* TripInformationViewController.swift */; };
 		ABD4DD1B202B8E150077E943 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */; };
 		ABE7619F2035D0900098D838 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE7619E2035D0900098D838 /* SafariServices.framework */; };
 		ABFC38252088A5C40075C056 /* EventInfoCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFC38242088A5C40075C056 /* EventInfoCard.xib */; };
@@ -114,6 +115,7 @@
 		ABC87C70209DFD120023D776 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trip.storyboard; sourceTree = "<group>"; };
 		ABC87C73209E18C40023D776 /* PulleyCompatibleTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulleyCompatibleTabBarController.swift; sourceTree = "<group>"; };
 		ABC87C75209F8A990023D776 /* UIViewController+PulleyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PulleyViewController.swift"; sourceTree = "<group>"; };
+		ABD4020720D4407B00DE9FA4 /* TripInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInformationViewController.swift; sourceTree = "<group>"; };
 		ABD4DD1A202B8E150077E943 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABE7619E2035D0900098D838 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		ABFC38242088A5C40075C056 /* EventInfoCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventInfoCard.xib; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		AB784DFF20CFF2B000547C0B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ABD4020720D4407B00DE9FA4 /* TripInformationViewController.swift */,
 				AB9085FE20CD694C004B08F8 /* TripPlansViewController.swift */,
 				AB89FDBE20A1E66B00EE1EDC /* TripScheduleViewController.swift */,
 				AB80EA1020CA943B0064673D /* TripActivityEditorViewController.swift */,
@@ -634,6 +637,7 @@
 				AB5B06B52022062000752C68 /* EventCheckinTableViewController.swift in Sources */,
 				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
+				ABD4020820D4407B00DE9FA4 /* TripInformationViewController.swift in Sources */,
 				AB6DF34C201F6755002D3A71 /* CardView.swift in Sources */,
 				ABC87C76209F8A990023D776 /* UIViewController+PulleyViewController.swift in Sources */,
 				ABC87C74209E18C40023D776 /* PulleyCompatibleTabBarController.swift in Sources */,
