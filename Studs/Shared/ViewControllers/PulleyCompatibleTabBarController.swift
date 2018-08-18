@@ -26,7 +26,7 @@ class PulleyCompatibleTabBarController: UITabBarController {
   // A view covering the safe area between the tab bar and the bottom of the screen
   // Since we reposition the tab bar we don't get the extended background of the bar
   // like usual. So we cover it up manually.
-  private lazy var safeAreaCoveringView: UIVisualEffectView = {
+  internal lazy var safeAreaCoveringView: UIVisualEffectView = {
     let coveringView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     view.insertSubview(coveringView, belowSubview: tabBar)
     coveringView.translatesAutoresizingMaskIntoConstraints = false

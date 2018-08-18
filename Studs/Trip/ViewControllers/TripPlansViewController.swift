@@ -12,6 +12,8 @@ import UIKit
 class TripPlansViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var addNewButton: UIButton!
 
   // MARK: - Properties
   private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
@@ -35,6 +37,7 @@ class TripPlansViewController: UIViewController {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
+    setupTheming() // Themable
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -133,5 +136,16 @@ extension TripPlansViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return activities.count
+  }
+}
+
+// MARK: - Themable
+extension TripPlansViewController: Themable {
+  func applyTheme(_ theme: Theme) {
+    titleLabel.textColor = theme.primaryTextColor
+    addNewButton.tintColor = theme.tintColor
+    addNewButton.setTitleColor(theme.tintColor, for: .normal)
+    addNewButton.titleLabel?.tintColor = theme.tintColor
+    addNewButton.titleLabel?.textColor = theme.tintColor
   }
 }

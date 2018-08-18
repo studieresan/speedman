@@ -32,6 +32,7 @@ class TripActivityEditorViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupTheming() // Themable
   }
 
   // MARK: - Actions
@@ -103,5 +104,15 @@ class TripActivityEditorViewController: UIViewController {
       createActivityTable.startDate = activity.startDate
       createActivityTable.endDate = activity.endDate
     }
+  }
+}
+
+// MARK: - Themable
+extension TripActivityEditorViewController: Themable {
+  func applyTheme(_ theme: Theme) {
+    view.backgroundColor = theme.backgroundColor
+    navigationItem.leftBarButtonItem?.tintColor = theme.tintColor
+    navigationItem.rightBarButtonItem?.tintColor = theme.tintColor
+    navigationController?.navigationBar.barStyle = theme.barStyle
   }
 }

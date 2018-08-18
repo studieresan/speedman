@@ -11,6 +11,7 @@ import UIKit
 
 class TripScheduleViewController: UIViewController {
   // MARK: - Outlets
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
 
   // MARK: - Properties
@@ -36,6 +37,7 @@ class TripScheduleViewController: UIViewController {
 
     tableView.delegate = self
     tableView.dataSource = self
+    setupTheming() // Themable
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -103,5 +105,12 @@ extension TripActivity.Category {
     case .other:
       return UIColor(named: "OtherBlue") ?? .blue
     }
+  }
+}
+
+// MARK: - Themable
+extension TripScheduleViewController: Themable {
+  func applyTheme(_ theme: Theme) {
+    titleLabel.textColor = theme.primaryTextColor
   }
 }

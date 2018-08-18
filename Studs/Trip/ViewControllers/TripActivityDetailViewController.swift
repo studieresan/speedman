@@ -13,15 +13,21 @@ class TripActivityDetailViewController: UIViewController {
   // MARK: - Outlets
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var cardView: CardViewWithColorStrip!
+  @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var locationLabel: UILabel!
 
+  @IBOutlet weak var priceIcon: UIButton!
   @IBOutlet weak var priceStackView: UIStackView!
   @IBOutlet weak var priceLabel: UILabel!
+  @IBOutlet weak var peopleIcon: UIButton!
   @IBOutlet weak var peopleLabel: UILabel!
+  @IBOutlet weak var registerButton: UIButton!
 
   @IBOutlet weak var descriptionTextView: UITextView!
+
+  @IBOutlet var separators: [UIView]!
 
   // MARK: - Properties
   private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
@@ -56,6 +62,7 @@ class TripActivityDetailViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupTheming() // Themable
     descriptionTextView.textContainer.lineFragmentPadding = 0
   }
 
@@ -78,5 +85,24 @@ class TripActivityDetailViewController: UIViewController {
   // MARK: Actions
   @IBAction func backButtonTapped(_ sender: UIButton) {
     store.dispatch(action: .selectActivity(nil))
+  }
+}
+
+extension TripActivityDetailViewController: Themable {
+  func applyTheme(_ theme: Theme) {
+    cardView.backgroundColor = theme.backgroundColor
+    backButton.tintColor = theme.secondaryTextColor
+    backButton.setTitleColor(theme.secondaryTextColor, for: .normal)
+    titleLabel.textColor = theme.primaryTextColor
+    dateLabel.textColor = theme.secondaryTextColor
+    locationLabel.textColor = theme.secondaryTextColor
+    priceLabel.textColor = theme.primaryTextColor
+    priceIcon.tintColor = theme.secondaryTextColor
+    peopleLabel.textColor = theme.primaryTextColor
+    peopleIcon.tintColor = theme.secondaryTextColor
+    descriptionTextView.textColor = theme.primaryTextColor
+    descriptionTextView.tintColor = theme.tintColor
+    registerButton.tintColor = theme.tintColor
+    separators.forEach { $0.backgroundColor = theme.separatorColor }
   }
 }

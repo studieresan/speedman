@@ -51,6 +51,8 @@ class TripActivityRegistrationTableViewController: UITableViewController {
     // Setup swipe down to refresh action
     refreshControl?.addTarget(self, action: #selector(fetchUsers),
                               for: .valueChanged)
+
+    setupTheming() // Themable
   }
 
   deinit {
@@ -103,6 +105,7 @@ extension TripActivityRegistrationTableViewController {
         ? .checkmark
         : .none
       cell.textLabel?.text = user.fullName
+      applyThemeToCell(cell, theme: themeManager.currentTheme)
       return cell
   }
 }
@@ -144,8 +147,24 @@ extension TripActivityRegistrationTableViewController {
         completion(true)
       }
       call.image = UIImage(named: "Phone")
-      // TODO: Break out color to constant class
       call.backgroundColor = UIColor(named: "StudsBlue")
       return UISwipeActionsConfiguration(actions: [call])
+  }
+}
+
+extension TripActivityRegistrationTableViewController: Themable {
+  func applyThemeToCell(_ cell: UITableViewCell, theme: Theme) {
+    cell.backgroundColor = theme.backgroundColor
+    cell.tintColor = theme.tintColor
+    cell.textLabel?.textColor = theme.primaryTextColor
+  }
+
+  func applyTheme(_ theme: Theme) {
+    tableView.visibleCells.forEach { applyThemeToCell($0, theme: theme) }
+    tableView.separatorColor = theme.separatorColor
+    view.backgroundColor = theme.backgroundColor
+    tableView.refreshControl?.tintColor = theme.tintColor
+    navigationItem.rightBarButtonItem?.tintColor = theme.tintColor
+    navigationController?.navigationBar.barStyle = theme.barStyle
   }
 }

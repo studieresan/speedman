@@ -14,6 +14,7 @@ class TripTabBarController: PulleyCompatibleTabBarController {
   // MARK: - Properties
   private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
   private var stateSubscription: Subscription<TripState>?
+  private var statusBarStyle = UIStatusBarStyle.lightContent
 
   private var drawerPosition = DrawerPosition.partiallyRevealed {
     didSet {
@@ -26,8 +27,14 @@ class TripTabBarController: PulleyCompatibleTabBarController {
   }
 
   // MARK: - Lifecycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupTheming()
+  }
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    applyTheme(themeManager.currentTheme)
 
     stateSubscription = store.subscribe { [weak self] state in
       self?.drawerPosition = state.drawerPosition
@@ -37,6 +44,29 @@ class TripTabBarController: PulleyCompatibleTabBarController {
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     stateSubscription?.unsubscribe()
+  }
+
+  @IBAction func gripperLongTapped(_ sender: UILongPressGestureRecognizer) {
+    guard sender.state == .began else { return }
+    themeManager.nextTheme()
+  }
+}
+
+extension TripTabBarController: Themable {
+  func applyTheme(_ theme: Theme) {
+    pulleyViewController?.drawerBackgroundVisualEffectView?.effect = theme.visualEffect
+    safeAreaCoveringView.effect = theme.visualEffect
+    tabBar.tintColor = theme.tintColor
+    statusBarStyle = theme.statusBarStyle
+    setNeedsStatusBarAppearanceUpdate()
+  }
+
+  override var childViewControllerForStatusBarStyle: UIViewController? {
+    return nil
+  }
+
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return statusBarStyle
   }
 }
 

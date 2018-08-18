@@ -12,13 +12,16 @@ import MapKit
 
 class TripMapViewController: UIViewController {
   // MARK: - Outlets
+  @IBOutlet weak var safeAreaCover: UIVisualEffectView!
   @IBOutlet weak var mapView: MKMapView!
   @IBOutlet weak var buttonsView: UIView!
+  @IBOutlet weak var addNewButton: UIButton!
   @IBOutlet weak var userLocationButton: UIButton!
 
   // MARK: - Properties
   private lazy var store = (UIApplication.shared.delegate as? AppDelegate)!.tripStore
   private var stateSubscription: Subscription<TripState>?
+  private var statusBarStyle = UIStatusBarStyle.default
 
   private let locationManager = CLLocationManager()
   private var shouldZoomToPins = true
@@ -55,6 +58,7 @@ class TripMapViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupTheming() // Themable
 
     mapView.delegate = self
 
@@ -223,5 +227,21 @@ extension TripActivity.Category {
     case .other:
       return UIImage(named: "MoreHorizontal")
     }
+  }
+}
+
+// MARK: - Themable
+extension TripMapViewController: Themable {
+  func applyTheme(_ theme: Theme) {
+    safeAreaCover.effect = theme.visualEffect
+    buttonsView.backgroundColor = theme.backgroundColor
+    addNewButton.tintColor = theme.tintColor
+    userLocationButton.tintColor = theme.tintColor
+    statusBarStyle = theme.statusBarStyle
+    setNeedsStatusBarAppearanceUpdate()
+  }
+
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return statusBarStyle
   }
 }

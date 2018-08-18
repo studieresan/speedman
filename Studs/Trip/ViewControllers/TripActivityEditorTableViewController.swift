@@ -17,6 +17,7 @@ class TripActivityEditorTableViewController: UITableViewController {
   @IBOutlet private weak var addressTextField: UITextField!
   @IBOutlet private weak var locationSpinner: UIActivityIndicatorView!
   @IBOutlet private weak var userLocationButton: UIButton!
+  @IBOutlet weak var dateButtonSeparator: UIView!
   @IBOutlet private weak var startDateView: UIView!
   @IBOutlet private weak var startDateButton: UIButton!
   @IBOutlet private weak var endDateView: UIView!
@@ -64,6 +65,7 @@ class TripActivityEditorTableViewController: UITableViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupTheming() // Themable
     titleTextView.delegate = self
     addressTextField.delegate = self
 
@@ -280,5 +282,27 @@ extension TripActivityEditorTableViewController: CLLocationManagerDelegate {
 
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print(error)
+  }
+}
+
+// MARK: - Themable
+extension TripActivityEditorTableViewController: Themable {
+  func applyTheme(_ theme: Theme) {
+    tableView.backgroundColor = theme.backgroundColor
+    tableView.separatorColor = theme.separatorColor
+    titlePlaceholderLabel.textColor = theme.secondaryTextColor
+    titleTextView.textColor = theme.primaryTextColor
+    addressTextField.textColor = theme.primaryTextColor
+    addressTextField.attributedPlaceholder =
+      NSAttributedString(
+        string: addressTextField.placeholder ?? "",
+        attributes: [.foregroundColor: theme.secondaryTextColor]
+      )
+    userLocationButton.tintColor = theme.tintColor
+    locationSpinner.color = theme.secondaryTextColor
+    dateButtonSeparator.backgroundColor = theme.separatorColor
+    startDateButton.setTitleColor(theme.tintColor, for: .normal)
+    endDateButton.setTitleColor(theme.tintColor, for: .normal)
+    datePicker.setValue(theme.primaryTextColor, forKey: "textColor")
   }
 }

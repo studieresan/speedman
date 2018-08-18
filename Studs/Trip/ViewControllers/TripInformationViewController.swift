@@ -10,6 +10,7 @@ import UIKit
 
 class TripInformationViewController: UIViewController {
   // MARK: - Outlets
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var contentStackView: UIStackView!
 
@@ -28,6 +29,7 @@ class TripInformationViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupTheming() // Themable
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -71,6 +73,7 @@ class TripInformationViewController: UIViewController {
     headerLabel.text = text
     headerLabel.translatesAutoresizingMaskIntoConstraints = false
     contentStackView.addArrangedSubview(headerLabel)
+    applyThemeToLabel(headerLabel, theme: themeManager.currentTheme)
   }
 
   func addList(_ items: [String]) {
@@ -91,6 +94,29 @@ class TripInformationViewController: UIViewController {
       contentStackView.leftAnchor.constraint(equalTo: textView.leftAnchor),
       contentStackView.rightAnchor.constraint(equalTo: textView.rightAnchor),
     ])
+    applyThemeToTextView(textView, theme: themeManager.currentTheme)
+  }
+}
+
+// MARK: - Themable
+extension TripInformationViewController: Themable {
+  func applyThemeToTextView(_ textView: UITextView, theme: Theme) {
+    textView.textColor = theme.primaryTextColor
+    textView.tintColor = theme.tintColor
   }
 
+  func applyThemeToLabel(_ label: UILabel, theme: Theme) {
+    label.textColor = theme.primaryTextColor
+  }
+
+  func applyTheme(_ theme: Theme) {
+    titleLabel.textColor = theme.primaryTextColor
+    contentStackView.arrangedSubviews.forEach {
+      if let textView = $0 as? UITextView {
+        applyThemeToTextView(textView, theme: theme)
+      } else if let label = $0 as? UILabel {
+        applyThemeToLabel(label, theme: theme)
+      }
+    }
+  }
 }

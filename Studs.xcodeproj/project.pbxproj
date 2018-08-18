@@ -16,6 +16,10 @@
 		AB235B7C20C8628600D8C6C0 /* TripActivityRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB235B7B20C8628600D8C6C0 /* TripActivityRegistration.swift */; };
 		AB2577F82088C918004E6C80 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */; };
 		AB265669202C8FA200131CE6 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB265668202C8FA200131CE6 /* 1Password.xcassets */; };
+		AB2A548D20E342B200A62C07 /* Themable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A548C20E342B200A62C07 /* Themable.swift */; };
+		AB2A549020E35EF300A62C07 /* SubscribableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A548F20E35EF300A62C07 /* SubscribableValue.swift */; };
+		AB2A549220E5518F00A62C07 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A549120E5518F00A62C07 /* ThemeManager.swift */; };
+		AB2A549420E551ED00A62C07 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2A549320E551ED00A62C07 /* Theme.swift */; };
 		AB2AEE6420A05A18002A5A01 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2AEE6320A05A18002A5A01 /* TripMapViewController.swift */; };
 		AB319E9120A444CC00741B3C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB319E9020A444CC00741B3C /* Store.swift */; };
 		AB319E9320A4901300741B3C /* TripStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB319E9220A4901300741B3C /* TripStore.swift */; };
@@ -85,6 +89,10 @@
 		AB235B7B20C8628600D8C6C0 /* TripActivityRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivityRegistration.swift; sourceTree = "<group>"; };
 		AB2577F72088C918004E6C80 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB265668202C8FA200131CE6 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Pods/1PasswordExtension/1Password.xcassets; sourceTree = SOURCE_ROOT; };
+		AB2A548C20E342B200A62C07 /* Themable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themable.swift; sourceTree = "<group>"; };
+		AB2A548F20E35EF300A62C07 /* SubscribableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableValue.swift; sourceTree = "<group>"; };
+		AB2A549120E5518F00A62C07 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		AB2A549320E551ED00A62C07 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AB2AEE6320A05A18002A5A01 /* TripMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
 		AB319E9020A444CC00741B3C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		AB319E9220A4901300741B3C /* TripStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStore.swift; sourceTree = "<group>"; };
@@ -180,6 +188,17 @@
 				ABFD7FC02010EF6200BCA86C /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB2A548E20E347E300A62C07 /* Theming */ = {
+			isa = PBXGroup;
+			children = (
+				AB2A548F20E35EF300A62C07 /* SubscribableValue.swift */,
+				AB2A548C20E342B200A62C07 /* Themable.swift */,
+				AB2A549120E5518F00A62C07 /* ThemeManager.swift */,
+				AB2A549320E551ED00A62C07 /* Theme.swift */,
+			);
+			path = Theming;
 			sourceTree = "<group>";
 		};
 		AB35819720110DB600673D3F /* Frameworks */ = {
@@ -374,6 +393,7 @@
 				AB8A2C43204D2D12001445F1 /* Utilities.swift */,
 				ABFD7FBE2010EF6200BCA86C /* Assets.xcassets */,
 				AB0499E32010F78D00810E31 /* Supporting Files */,
+				AB2A548E20E347E300A62C07 /* Theming */,
 			);
 			path = Studs;
 			sourceTree = "<group>";
@@ -628,6 +648,7 @@
 				AB2AEE6420A05A18002A5A01 /* TripMapViewController.swift in Sources */,
 				ABFC38272088A8E50075C056 /* EventInfoCard.swift in Sources */,
 				AB35819D2011307200673D3F /* User.swift in Sources */,
+				AB2A548D20E342B200A62C07 /* Themable.swift in Sources */,
 				AB235B7A20C836B700D8C6C0 /* TripActivityRegistrationTableViewController.swift in Sources */,
 				AB6DF34F2020A2E7002D3A71 /* EventDetailViewController.swift in Sources */,
 				AB80EA1320CAA5E10064673D /* TripActivityEditorTableViewController.swift in Sources */,
@@ -635,6 +656,7 @@
 				ABFC76F9208751F9002534AE /* BarButton.swift in Sources */,
 				AB36D842208DFBB1002494E3 /* FadedMapView.swift in Sources */,
 				AB5B06B52022062000752C68 /* EventCheckinTableViewController.swift in Sources */,
+				AB2A549020E35EF300A62C07 /* SubscribableValue.swift in Sources */,
 				AB9B3783202CA5AA002D641D /* Firebase.swift in Sources */,
 				ABFD7FB82010EF6200BCA86C /* AppDelegate.swift in Sources */,
 				ABD4020820D4407B00DE9FA4 /* TripInformationViewController.swift in Sources */,
@@ -644,6 +666,7 @@
 				AB89FDC120A1EC8D00EE1EDC /* TripTabBarController.swift in Sources */,
 				AB9A064520C467E20083CEBB /* CardViewWithColorStrip.swift in Sources */,
 				AB13C27F203B314C00DC6812 /* EventCheckinButtonViewController.swift in Sources */,
+				AB2A549420E551ED00A62C07 /* Theme.swift in Sources */,
 				AB89FDBF20A1E66B00EE1EDC /* TripScheduleViewController.swift in Sources */,
 				AB7402F3201DF40D00F3094C /* EventTableViewCell.swift in Sources */,
 				AB02D4AD204057B4007D7808 /* EventNotificationsManager.swift in Sources */,
@@ -655,6 +678,7 @@
 				AB319E9320A4901300741B3C /* TripStore.swift in Sources */,
 				AB235B7820C64D9D00D8C6C0 /* TripActivityDetailViewController.swift in Sources */,
 				AB80EA1120CA943B0064673D /* TripActivityEditorViewController.swift in Sources */,
+				AB2A549220E5518F00A62C07 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
